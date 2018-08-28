@@ -1,0 +1,15 @@
+*.user
+*.user.*
+translations/*.qm
+build
+release
+version.js
+# IOS stuff below
+moc_*
+*.o
+*.mak
+*.build
+*.xcodeproj
+monero-wallet-gui_plugin_import.cpp
+monero-wallet-gui_qml_plugin_import.cpp
+
