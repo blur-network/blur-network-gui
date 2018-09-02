@@ -33,8 +33,8 @@ import QtQuick.Layouts 1.1
 import QtQuick.Dialogs 1.2
 
 import "../components"
-import blurComponents.Clipboard 1.0
-import blurComponents.WalletManager 1.0
+import moneroComponents.Clipboard 1.0
+import moneroComponents.WalletManager 1.0
 
 Rectangle {
     id: mainLayout

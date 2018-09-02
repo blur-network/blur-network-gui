@@ -33,7 +33,7 @@ import QtQuick.Layouts 1.1
 import QtQuick.Controls.Styles 1.4
 import QtQuick.Window 2.0
 
-import "../components" as BlurComponents
+import "../components" as MoneroComponents
 
 Window {
     id: root
@@ -104,7 +104,7 @@ Window {
             spacing: 60
             Layout.alignment: Qt.AlignHCenter
 
-            BlurComponents.StandardButton {
+            MoneroComponents.StandardButton {
                 id: okButton
                 visible:false
                 fontSize: 14
@@ -118,7 +118,7 @@ Window {
                 }
             }
 
-            BlurComponents.StandardButton {
+            MoneroComponents.StandardButton {
                 id: cancelButton
                 fontSize: 14
                 text: qsTr("Use custom settings")

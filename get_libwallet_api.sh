@@ -1,6 +1,6 @@
 #!/bin/bash
-MONERO_URL=https://github.com/blur-network/blur
-MONERO_BRANCH=v0.1.7
+MONERO_URL=https://github.com/blur-network/blur.git
+MONERO_BRANCH=master
 
 pushd $(pwd)
 ROOT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -8,16 +8,16 @@ ROOT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source $ROOT_DIR/utils.sh
 
 INSTALL_DIR=$ROOT_DIR/wallet
-MONERO_DIR=$ROOT_DIR/blur
+MONERO_DIR=$ROOT_DIR/monero
 BUILD_LIBWALLET=false
 
 # init and update monero submodule
 if [ ! -d $MONERO_DIR/src ]; then
-    git submodule init blur
+    git submodule init monero
 fi
 git submodule update --remote
 git -C $MONERO_DIR fetch
-git -C $MONERO_DIR checkout v0.1.7
+git -C $MONERO_DIR checkout master
 
 # get monero core tag
 get_tag
@@ -33,8 +33,8 @@ git -C $MONERO_DIR submodule update
 # Save current user settings and revert back when we are done with merging PR's
 OLD_GIT_USER=$(git -C $MONERO_DIR config --local user.name)
 OLD_GIT_EMAIL=$(git -C $MONERO_DIR config --local user.email)
-git -C $MONERO_DIR config user.name "Blur GUI"
-git -C $MONERO_DIR config user.email "gui@blur.local"
+git -C $MONERO_DIR config user.name "Monero GUI"
+git -C $MONERO_DIR config user.email "gui@monero.local"
 # check for PR requirements in most recent commit message (i.e requires #xxxx)
 for PR in $(git log --format=%B -n 1 | grep -io "requires #[0-9]*" | sed 's/[^0-9]*//g'); do
     echo "Merging monero push request #$PR"
@@ -49,11 +49,11 @@ $(git -C $MONERO_DIR config user.name "$OLD_GIT_USER")
 $(git -C $MONERO_DIR config user.email "$OLD_GIT_EMAIL")
 
 # Build libwallet if it doesnt exist
-if [ ! -f $MONERO_DIR/lib/libwallet_merged.a ]; then
+if [ ! -f $MONERO_DIR/lib/libwallet_merged.a ]; then 
     echo "libwallet_merged.a not found - Building libwallet"
     BUILD_LIBWALLET=true
 # Build libwallet if no previous version file exists
-elif [ ! -f $MONERO_DIR/version.sh ]; then
+elif [ ! -f $MONERO_DIR/version.sh ]; then 
     echo "monero/version.h not found - Building libwallet"
     BUILD_LIBWALLET=true
 ## Compare previously built version with submodule + merged PR's version. 

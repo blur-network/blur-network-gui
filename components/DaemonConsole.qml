@@ -33,7 +33,7 @@ import QtQuick.Layouts 1.1
 import QtQuick.Controls.Styles 1.4
 import QtQuick.Window 2.0
 
-import "../components" as BlurComponents
+import "../components" as MoneroComponents
 
 Window {
     id: root
@@ -106,7 +106,7 @@ Window {
             spacing: 60
             Layout.alignment: Qt.AlignHCenter
 
-            BlurComponents.StandardButton {
+            MoneroComponents.StandardButton {
                 id: okButton
                 width: 120
                 fontSize: 14
@@ -118,7 +118,7 @@ Window {
                 }
             }
 
-            BlurComponents.LineEdit {
+            MoneroComponents.LineEdit {
                 id: sendCommandText
                 width: 300
                 placeholderText: qsTr("command + enter (e.g help)") + translationManager.emptyString
@@ -130,7 +130,7 @@ Window {
             }
 
             // Status button
-//            BlurComponents.StandardButton {
+//            MoneroComponents.StandardButton {
 //                id: sendCommandButton
 //                enabled: sendCommandText.text.length > 0
 //                fontSize: 14

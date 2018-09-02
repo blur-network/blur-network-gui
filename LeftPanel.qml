@@ -1,3 +1,4 @@
+// Copyright (c) 2018, Blur Network
 // Copyright (c) 2014-2018, The Monero Project
 // 
 // All rights reserved.
@@ -29,8 +30,8 @@
 import QtQuick 2.2
 import QtQuick.Layouts 1.1
 import QtGraphicalEffects 1.0
-import blurComponents.Wallet 1.0
-import blurComponents.NetworkType 1.0
+import moneroComponents.Wallet 1.0
+import moneroComponents.NetworkType 1.0
 import "components"
 
 Rectangle {
@@ -90,7 +91,7 @@ Rectangle {
         z: 1
     }
 
-    // card with monero logo
+    // card with blur logo
     Column {
         visible: true
         z: 2
@@ -310,7 +311,7 @@ Rectangle {
                 anchors.right: parent.right
                 text: qsTr("Send") + translationManager.emptyString
                 symbol: qsTr("S") + translationManager.emptyString
-                dotColor: "#4CB860"
+                dotColor: "#2E1866"
                 onClicked: {
                     parent.previousButton.checked = false
                     parent.previousButton = transferButton
@@ -335,7 +336,7 @@ Rectangle {
                 anchors.right: parent.right
                 text: qsTr("Address book") + translationManager.emptyString
                 symbol: qsTr("B") + translationManager.emptyString
-                dotColor: "#FF4F41"
+                dotColor: "#9E273D"
                 under: transferButton
                 onClicked: {
                     parent.previousButton.checked = false
@@ -360,7 +361,7 @@ Rectangle {
                 anchors.right: parent.right
                 text: qsTr("Receive") + translationManager.emptyString
                 symbol: qsTr("R") + translationManager.emptyString
-                dotColor: "#AAFFBB"
+                dotColor: "#9E273D"
                 onClicked: {
                     parent.previousButton.checked = false
                     parent.previousButton = receiveButton
@@ -376,6 +377,30 @@ Rectangle {
                 height: 1
             }
 
+            // ------------- Mining tab ---------------
+            MenuButton {
+                id: miningButton
+                visible: !isAndroid && !isIOS
+                anchors.left: parent.left
+                anchors.right: parent.right
+                text: qsTr("Mining") + translationManager.emptyString
+                symbol: qsTr("M") + translationManager.emptyString
+                dotColor: "#5858A8"
+                onClicked: {
+                    parent.previousButton.checked = false
+                    parent.previousButton = miningButton
+                    panel.miningClicked()
+                }
+            }
+            Rectangle {
+                visible: miningButton.present
+                anchors.left: parent.left
+                anchors.right: parent.right
+                anchors.leftMargin: 16
+                color: miningButton.checked || settingsButton.checked ? "#1C1C1C" : "#313131"
+                height: 1
+            }
+            
             // ------------- History tab ---------------
 
             MenuButton {
@@ -384,7 +409,7 @@ Rectangle {
                 anchors.right: parent.right
                 text: qsTr("History") + translationManager.emptyString
                 symbol: qsTr("H") + translationManager.emptyString
-                dotColor: "#6B0072"
+                dotColor: "#CD374F"
                 onClicked: {
                     parent.previousButton.checked = false
                     parent.previousButton = historyButton
@@ -399,7 +424,7 @@ Rectangle {
                 color: "#313131"
                 height: 1
             }
-
+            
             // ------------- Advanced tab ---------------
             MenuButton {
                 id: advancedButton
@@ -407,7 +432,7 @@ Rectangle {
                 anchors.right: parent.right
                 text: qsTr("Advanced") + translationManager.emptyString
                 symbol: qsTr("D") + translationManager.emptyString
-                dotColor: "#FFD781"
+                dotColor: "#622FBC"
                 onClicked: {
                     parent.previousButton.checked = false
                     parent.previousButton = advancedButton
@@ -422,31 +447,6 @@ Rectangle {
                 height: 1
             }
 
-            // ------------- Mining tab ---------------
-            MenuButton {
-                id: miningButton
-                visible: !isAndroid && !isIOS
-                anchors.left: parent.left
-                anchors.right: parent.right
-                text: qsTr("Mining") + translationManager.emptyString
-                symbol: qsTr("M") + translationManager.emptyString
-                dotColor: "#FFD781"
-                under: advancedButton
-                onClicked: {
-                    parent.previousButton.checked = false
-                    parent.previousButton = miningButton
-                    panel.miningClicked()
-                }
-            }
-
-            Rectangle {
-                visible: miningButton.present
-                anchors.left: parent.left
-                anchors.right: parent.right
-                anchors.leftMargin: 16
-                color: miningButton.checked || settingsButton.checked ? "#1C1C1C" : "#313131"
-                height: 1
-            }
             // ------------- TxKey tab ---------------
             MenuButton {
                 id: txkeyButton
@@ -454,7 +454,7 @@ Rectangle {
                 anchors.right: parent.right
                 text: qsTr("Prove/check") + translationManager.emptyString
                 symbol: qsTr("K") + translationManager.emptyString
-                dotColor: "#FFD781"
+                dotColor: "#622FBC"
                 under: advancedButton
                 onClicked: {
                     parent.previousButton.checked = false
@@ -477,7 +477,7 @@ Rectangle {
                 anchors.right: parent.right
                 text: qsTr("Shared RingDB") + translationManager.emptyString
                 symbol: qsTr("S") + translationManager.emptyString
-                dotColor: "#FFD781"
+                dotColor: "#622FBC"
                 under: advancedButton
                 onClicked: {
                     parent.previousButton.checked = false
@@ -502,7 +502,7 @@ Rectangle {
                 anchors.right: parent.right
                 text: qsTr("Sign/verify") + translationManager.emptyString
                 symbol: qsTr("I") + translationManager.emptyString
-                dotColor: "#FFD781"
+                dotColor: "#622FBC"
                 under: advancedButton
                 onClicked: {
                     parent.previousButton.checked = false
@@ -525,7 +525,7 @@ Rectangle {
                 anchors.right: parent.right
                 text: qsTr("Settings") + translationManager.emptyString
                 symbol: qsTr("E") + translationManager.emptyString
-                dotColor: "#36B25C"
+                dotColor: "#723A85"
                 onClicked: {
                     parent.previousButton.checked = false
                     parent.previousButton = settingsButton
@@ -547,7 +547,7 @@ Rectangle {
                 anchors.right: parent.right
                 text: qsTr("Seed & Keys") + translationManager.emptyString
                 symbol: qsTr("Y") + translationManager.emptyString
-                dotColor: "#FFD781"
+                dotColor: "#723A85"
                 under: settingsButton
                 onClicked: {
                     parent.previousButton.checked = false

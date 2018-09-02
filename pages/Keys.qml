@@ -31,7 +31,7 @@ import QtQuick.Controls 1.4
 import QtQuick.Controls.Styles 1.4
 import QtQuick.Layouts 1.1
 import QtQuick.Dialogs 1.2
-import blurComponents.Clipboard 1.0
+import moneroComponents.Clipboard 1.0
 import "../version.js" as Version
 import "../components"
 import "." 1.0

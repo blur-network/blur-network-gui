@@ -26,7 +26,7 @@
 // STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-import blurComponents.WalletManager 1.0
+import moneroComponents.WalletManager 1.0
 import QtQuick 2.2
 import QtQuick.Layouts 1.1
 import "../components"

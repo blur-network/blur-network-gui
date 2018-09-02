@@ -34,7 +34,7 @@ import QtQuick 2.2
 import QtQuick.Controls 1.4
 import QtQuick.Layouts 1.1
 import QtGraphicalEffects 1.0
-import blurComponents.Wallet 1.0
+import moneroComponents.Wallet 1.0
 
 import "./pages"
 
@@ -50,6 +50,7 @@ Rectangle {
     property string unlockedBalanceText
     property int minHeight: (appWindow.height > 800) ? appWindow.height : 800 * scaleRatio
     property alias contentHeight: mainFlickable.contentHeight
+    property alias flickable: mainFlickable
 //    property int headerHeight: header.height
 
     property Transfer transferView: Transfer { }
@@ -144,29 +145,13 @@ Rectangle {
             }, State {
                 name: "Mining"
                 PropertyChanges { target: root; currentView: miningView }
-                PropertyChanges { target: mainFlickable; contentHeight: minHeight  }
+                PropertyChanges { target: mainFlickable; contentHeight: minHeight * scaleRatio }
             }, State {
                 name: "Keys"
                 PropertyChanges { target: root; currentView: keysView }
                 PropertyChanges { target: mainFlickable; contentHeight: minHeight  + 200 * scaleRatio }
             }
         ]
-
-    // color stripe at the top
-    Row {
-        id: styledRow
-        height: 4
-        anchors.top: parent.top
-        anchors.left: parent.left
-        anchors.right: parent.right
-
-
-        Rectangle { height: 4; width: parent.width / 5; color: "#CD374F" }
-        Rectangle { height: 4; width: parent.width / 5; color: "#6B0072" }
-        Rectangle { height: 4; width: parent.width / 5; color: "#4CB860" }
-        Rectangle { height: 4; width: parent.width / 5; color: "#FFD781" }
-        Rectangle { height: 4; width: parent.width / 5; color: "#FF4F41" }
-    }
 
     ColumnLayout {
         anchors.fill: parent
@@ -226,7 +211,7 @@ Rectangle {
         anchors.bottom: parent.bottom
         anchors.left: parent.left
         width: 1
-        color: "#313131"
+        color: "#B2B2B2"
     }
 
     /* connect "payment" click */

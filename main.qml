@@ -33,9 +33,9 @@ import QtQuick.Controls.Styles 1.1
 import QtQuick.Dialogs 1.2
 import Qt.labs.settings 1.0
 
-import blurComponents.Wallet 1.0
-import blurComponents.PendingTransaction 1.0
-import blurComponents.NetworkType 1.0
+import moneroComponents.Wallet 1.0
+import moneroComponents.PendingTransaction 1.0
+import moneroComponents.NetworkType 1.0
 
 
 import "components"
@@ -43,7 +43,7 @@ import "wizard"
 
 ApplicationWindow {
     id: appWindow
-    title: "Blur-GUI"
+    title: "Blur Network GUI Wallet"
 
     property var currentItem
     property bool whatIsEnable: false
@@ -73,7 +73,7 @@ ApplicationWindow {
     property bool remoteNodeConnected: false
     property bool androidCloseTapped: false;
     // Default daemon addresses
-    readonly property string localDaemonAddress : persistentSettings.nettype == NetworkType.MAINNET ? "localhost:14895" : persistentSettings.nettype == NetworkType.TESTNET ? "localhost:21111" : "localhost:21113"
+    readonly property string localDaemonAddress : persistentSettings.nettype == NetworkType.MAINNET ? "localhost:14895" : persistentSettings.nettype == NetworkType.TESTNET ? "localhost:21111" : "localhost:14895"
     property string currentDaemonAddress;
     property bool startLocalNodeCancelled: false
 
@@ -588,9 +588,9 @@ ApplicationWindow {
             console.error("Can't create transaction: ", transaction.errorString);
             informationPopup.title = qsTr("Error") + translationManager.emptyString;
             if (currentWallet.connected() == Wallet.ConnectionStatus_WrongVersion)
-                informationPopup.text  = qsTr("Can't create transaction: Wrong daemon version: ") + transaction.errorString
+                informationPopup.text  = qsTr("Can't Create Transaction: Wrong daemon version: ") + transaction.errorString
             else
-                informationPopup.text  = qsTr("Can't create transaction: ") + transaction.errorString
+                informationPopup.text  = qsTr("Can't Create Transaction: ") + transaction.errorString
             informationPopup.icon  = StandardIcon.Critical
             informationPopup.onCloseCallback = null
             informationPopup.open();
@@ -610,20 +610,16 @@ ApplicationWindow {
                     + ", fee: " + walletManager.displayAmount(transaction.fee));
 
             // here we show confirmation popup;
-            transactionConfirmationPopup.title = qsTr("Please confirm transaction:\n") + translationManager.emptyString;
+            transactionConfirmationPopup.title = qsTr("Please Confirm Transaction:\n") + translationManager.emptyString;
             transactionConfirmationPopup.text = "";
             transactionConfirmationPopup.text += (address === "" ? "" : (qsTr("Address: ") + address));
             transactionConfirmationPopup.text += (paymentId === "" ? "" : (qsTr("\nPayment ID: ") + paymentId));
             transactionConfirmationPopup.text +=  qsTr("\n\nAmount: ") + walletManager.displayAmount(transaction.amount);
             transactionConfirmationPopup.text +=  qsTr("\nFee: ") + walletManager.displayAmount(transaction.fee);
-            transactionConfirmationPopup.text +=  qsTr("\nRingsize: ") + (mixinCount + 1);
-            if(mixinCount !== 4){
-                transactionConfirmationPopup.text +=  qsTr("\n\nWARNING: incorrect ring size");
-            }
-            transactionConfirmationPopup.text +=  qsTr("\n\nNumber of transactions: ") + transaction.txCount
-            transactionConfirmationPopup.text +=  (transactionDescription === "" ? "" : (qsTr("Description: ") + transactionDescription))
+            transactionConfirmationPopup.text +=  qsTr("\n\nNumber Of Transactions: ") + transaction.txCount
+            transactionConfirmationPopup.text +=  (transactionDescription === "" ? "" : (qsTr("\nDescription: ") + transactionDescription))
             for (var i = 0; i < transaction.subaddrIndices.length; ++i){
-                transactionConfirmationPopup.text += qsTr("\nSpending address index: ") + transaction.subaddrIndices[i];
+                transactionConfirmationPopup.text += qsTr("\nSpending Address Index: ") + transaction.subaddrIndices[i];
             }
 
             transactionConfirmationPopup.text += translationManager.emptyString;
@@ -655,7 +651,7 @@ ApplicationWindow {
             if (amountxmr <= 0) {
                 hideProcessingSplash()
                 informationPopup.title = qsTr("Error") + translationManager.emptyString;
-                informationPopup.text  = qsTr("Amount is wrong: expected number from %1 to %2")
+                informationPopup.text  = qsTr("Amount Is Wrong: Expected number from %1 to %2")
                         .arg(walletManager.displayAmount(0))
                         .arg(walletManager.maximumAllowedAmountAsSting())
                         + translationManager.emptyString
@@ -667,7 +663,7 @@ ApplicationWindow {
             } else if (amountxmr > currentWallet.unlockedBalance) {
                 hideProcessingSplash()
                 informationPopup.title = qsTr("Error") + translationManager.emptyString;
-                informationPopup.text  = qsTr("Insufficient funds. Unlocked balance: %1")
+                informationPopup.text  = qsTr("Insufficient Funds. Unlocked balance: %1")
                         .arg(walletManager.displayAmount(currentWallet.unlockedBalance))
                         + translationManager.emptyString
 
@@ -779,7 +775,7 @@ ApplicationWindow {
                     txid_text += ", "
                 txid_text += txid[i]
             }
-            informationPopup.text  = (viewOnly)? qsTr("Transaction saved to file: %1").arg(path) : qsTr("Blur Network sent successfully: %1 transaction(s) ").arg(txid.length) + txid_text + translationManager.emptyString
+            informationPopup.text  = (viewOnly)? qsTr("Transaction saved to file: %1").arg(path) : qsTr("BLUR sent successfully: %1 transaction(s) ").arg(txid.length) + txid_text + translationManager.emptyString
             informationPopup.icon  = StandardIcon.Information
             if (transactionDescription.length > 0) {
                 for (var i = 0; i < txid.length; ++i)
@@ -850,10 +846,10 @@ ApplicationWindow {
             } else if (received > 0) {
                 received = received / 1e12
                 if (in_pool) {
-                    informationPopup.text = qsTr("This address received %1 blur, but the transaction is not yet mined").arg(received);
+                    informationPopup.text = qsTr("This address received %1 BLUR, but the transaction is not yet mined").arg(received);
                 }
                 else {
-                    informationPopup.text = qsTr("This address received %1 blur, with %2 confirmation(s).").arg(received).arg(confirmations);
+                    informationPopup.text = qsTr("This address received %1 BLUR, with %2 confirmation(s).").arg(received).arg(confirmations);
                 }
             }
             else {
@@ -1019,7 +1015,7 @@ ApplicationWindow {
         property bool   allow_background_mining : false
         property bool   miningIgnoreBattery : true
         property var    nettype: NetworkType.MAINNET
-        property string daemon_address: nettype == NetworkType.TESTNET ? "localhost:48081" : nettype == NetworkType.STAGENET ? "localhost:58081" : "localhost:14895"
+        property string daemon_address: nettype == NetworkType.TESTNET ? "localhost:21111" : nettype == NetworkType.STAGENET ? "localhost:31106" : "localhost:14895"
         property string payment_id
         property int    restore_height : 0
         property bool   is_recovering : false
@@ -1474,7 +1470,7 @@ ApplicationWindow {
         WizardMain {
             id: wizard
             anchors.fill: parent
-            onUseBlurClicked: {
+            onUseMoneroClicked: {
                 rootItem.state = "normal" // TODO: listen for this state change in appWindow;
                 appWindow.initialize();
             }
@@ -1739,7 +1735,17 @@ ApplicationWindow {
             middlePanel.focus = true
             middlePanel.focus = false
         }
-
-
     }
+
+    // Daemon console
+    DaemonConsole {
+        id: daemonConsolePopup
+        height:500
+        width:800
+        title: qsTr("Daemon Log") + translationManager.emptyString
+        onAccepted: {
+            close();
+        }
+    }
+
 }

@@ -61,8 +61,8 @@ Rectangle {
 
     Item{
         id: titlebarlogo
-        width: 91
-        height: 50
+        width: 125
+        height: parent.height
         anchors.centerIn: parent
         visible: customDecorations
         z: 1
@@ -70,9 +70,7 @@ Rectangle {
         Image {
             anchors.left: parent.left
             anchors.top: parent.top
-            anchors.topMargin: 11
-            width: 91
-            height: 28
+            anchors.topMargin: 9
             source: "../images/titlebarLogo.png"
         }
     }

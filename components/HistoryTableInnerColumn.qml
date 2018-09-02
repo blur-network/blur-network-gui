@@ -29,11 +29,11 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.1
 import QtQuick.Dialogs 1.2
-import blurComponents.Clipboard 1.0
-import blurComponents.PendingTransaction 1.0
-import blurComponents.Wallet 1.0
+import moneroComponents.Clipboard 1.0
+import moneroComponents.PendingTransaction 1.0
+import moneroComponents.Wallet 1.0
 
-import "../components" as BlurComponents
+import "../components" as MoneroComponents
 
 
 Rectangle{
@@ -50,20 +50,20 @@ Rectangle{
     Text {
         id: label1
         anchors.left: parent.left
-        font.family: BlurComponents.Style.fontRegular.name
+        font.family: MoneroComponents.Style.fontRegular.name
         font.pixelSize: 14 * scaleRatio
         text: labelHeader
-        color: BlurComponents.Style.greyFontColor
+        color: MoneroComponents.Style.greyFontColor
     }
 
     Text {
         id: label2
         anchors.left: parent.left
         anchors.top: label1.bottom
-        font.family: BlurComponents.Style.fontRegular.name
+        font.family: MoneroComponents.Style.fontRegular.name
         font.pixelSize: 14 * scaleRatio
         text: labelValue
-        color: BlurComponents.Style.dimmedFontColor
+        color: MoneroComponents.Style.dimmedFontColor
     }
 
     // hover effect / copy value
@@ -73,12 +73,12 @@ Rectangle{
         anchors.fill: parent
         cursorShape: Qt.PointingHandCursor
         onEntered: {
-            label1.color = BlurComponents.Style.defaultFontColor;
-            label2.color = BlurComponents.Style.defaultFontColor;
+            label1.color = MoneroComponents.Style.defaultFontColor;
+            label2.color = MoneroComponents.Style.defaultFontColor;
         }
         onExited: {
-            label1.color = BlurComponents.Style.greyFontColor;
-            label2.color = BlurComponents.Style.dimmedFontColor;
+            label1.color = MoneroComponents.Style.greyFontColor;
+            label2.color = MoneroComponents.Style.dimmedFontColor;
         }
         onClicked: {
             if(copyValue){

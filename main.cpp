@@ -81,14 +81,14 @@ int main(int argc, char *argv[])
 //#endif
 
     // Log settings
-    Monero::Wallet::init(argv[0], "blur-gui-wallet");
+    Monero::Wallet::init(argv[0], "blur-network-gui");
 //    qInstallMessageHandler(messageHandler);
 
     MainApp app(argc, argv);
 
     qDebug() << "app startd";
 
-    app.setApplicationName("blur-gui");
+    app.setApplicationName("blur-network-gui");
     app.setOrganizationDomain("blur.cash");
     app.setOrganizationName("blur-network");
 
@@ -100,50 +100,50 @@ int main(int argc, char *argv[])
     app.installEventFilter(eventFilter);
 
     // registering types for QML
-    qmlRegisterType<clipboardAdapter>("blurComponents.Clipboard", 1, 0, "Clipboard");
+    qmlRegisterType<clipboardAdapter>("moneroComponents.Clipboard", 1, 0, "Clipboard");
 
-    qmlRegisterUncreatableType<Wallet>("blurComponents.Wallet", 1, 0, "Wallet", "Wallet can't be instantiated directly");
+    qmlRegisterUncreatableType<Wallet>("moneroComponents.Wallet", 1, 0, "Wallet", "Wallet can't be instantiated directly");
 
 
-    qmlRegisterUncreatableType<PendingTransaction>("blurComponents.PendingTransaction", 1, 0, "PendingTransaction",
+    qmlRegisterUncreatableType<PendingTransaction>("moneroComponents.PendingTransaction", 1, 0, "PendingTransaction",
                                                    "PendingTransaction can't be instantiated directly");
 
-    qmlRegisterUncreatableType<UnsignedTransaction>("blurComponents.UnsignedTransaction", 1, 0, "UnsignedTransaction",
+    qmlRegisterUncreatableType<UnsignedTransaction>("moneroComponents.UnsignedTransaction", 1, 0, "UnsignedTransaction",
                                                    "UnsignedTransaction can't be instantiated directly");
 
-    qmlRegisterUncreatableType<WalletManager>("blurComponents.WalletManager", 1, 0, "WalletManager",
+    qmlRegisterUncreatableType<WalletManager>("moneroComponents.WalletManager", 1, 0, "WalletManager",
                                                    "WalletManager can't be instantiated directly");
 
-    qmlRegisterUncreatableType<TranslationManager>("blurComponents.TranslationManager", 1, 0, "TranslationManager",
+    qmlRegisterUncreatableType<TranslationManager>("moneroComponents.TranslationManager", 1, 0, "TranslationManager",
                                                    "TranslationManager can't be instantiated directly");
 
 
 
-    qmlRegisterUncreatableType<TransactionHistoryModel>("blurComponents.TransactionHistoryModel", 1, 0, "TransactionHistoryModel",
+    qmlRegisterUncreatableType<TransactionHistoryModel>("moneroComponents.TransactionHistoryModel", 1, 0, "TransactionHistoryModel",
                                                         "TransactionHistoryModel can't be instantiated directly");
 
-    qmlRegisterUncreatableType<TransactionHistorySortFilterModel>("blurComponents.TransactionHistorySortFilterModel", 1, 0, "TransactionHistorySortFilterModel",
+    qmlRegisterUncreatableType<TransactionHistorySortFilterModel>("moneroComponents.TransactionHistorySortFilterModel", 1, 0, "TransactionHistorySortFilterModel",
                                                         "TransactionHistorySortFilterModel can't be instantiated directly");
 
-    qmlRegisterUncreatableType<TransactionHistory>("blurComponents.TransactionHistory", 1, 0, "TransactionHistory",
+    qmlRegisterUncreatableType<TransactionHistory>("moneroComponents.TransactionHistory", 1, 0, "TransactionHistory",
                                                         "TransactionHistory can't be instantiated directly");
 
-    qmlRegisterUncreatableType<TransactionInfo>("blurComponents.TransactionInfo", 1, 0, "TransactionInfo",
+    qmlRegisterUncreatableType<TransactionInfo>("moneroComponents.TransactionInfo", 1, 0, "TransactionInfo",
                                                         "TransactionHistory can't be instantiated directly");
 #ifndef Q_OS_IOS
-    qmlRegisterUncreatableType<DaemonManager>("blurComponents.DaemonManager", 1, 0, "DaemonManager",
+    qmlRegisterUncreatableType<DaemonManager>("moneroComponents.DaemonManager", 1, 0, "DaemonManager",
                                                    "DaemonManager can't be instantiated directly");
 #endif
-    qmlRegisterUncreatableType<AddressBookModel>("blurComponents.AddressBookModel", 1, 0, "AddressBookModel",
+    qmlRegisterUncreatableType<AddressBookModel>("moneroComponents.AddressBookModel", 1, 0, "AddressBookModel",
                                                         "AddressBookModel can't be instantiated directly");
 
-    qmlRegisterUncreatableType<AddressBook>("blurComponents.AddressBook", 1, 0, "AddressBook",
+    qmlRegisterUncreatableType<AddressBook>("moneroComponents.AddressBook", 1, 0, "AddressBook",
                                                         "AddressBook can't be instantiated directly");
 
-    qmlRegisterUncreatableType<SubaddressModel>("blurComponents.SubaddressModel", 1, 0, "SubaddressModel",
+    qmlRegisterUncreatableType<SubaddressModel>("moneroComponents.SubaddressModel", 1, 0, "SubaddressModel",
                                                         "SubaddressModel can't be instantiated directly");
 
-    qmlRegisterUncreatableType<Subaddress>("blurComponents.Subaddress", 1, 0, "Subaddress",
+    qmlRegisterUncreatableType<Subaddress>("moneroComponents.Subaddress", 1, 0, "Subaddress",
                                                         "Subaddress can't be instantiated directly");
 
     qRegisterMetaType<PendingTransaction::Priority>();
@@ -151,10 +151,10 @@ int main(int argc, char *argv[])
     qRegisterMetaType<TransactionHistoryModel::TransactionInfoRole>();
 
     qRegisterMetaType<NetworkType::Type>();
-    qmlRegisterType<NetworkType>("blurComponents.NetworkType", 1, 0, "NetworkType");
+    qmlRegisterType<NetworkType>("moneroComponents.NetworkType", 1, 0, "NetworkType");
 
 #ifdef WITH_SCANNER
-    qmlRegisterType<QrCodeScanner>("blurComponents.QRCodeScanner", 1, 0, "QRCodeScanner");
+    qmlRegisterType<QrCodeScanner>("moneroComponents.QRCodeScanner", 1, 0, "QRCodeScanner");
 #endif
 
     QQmlApplicationEngine engine;
@@ -238,7 +238,7 @@ int main(int argc, char *argv[])
 
 
     if (!moneroAccountsRootDir.empty()) {
-        QString moneroAccountsDir = moneroAccountsRootDir.at(0) + "/Blur/wallets";
+        QString moneroAccountsDir = moneroAccountsRootDir.at(0) + "/Blur Network/wallets";
         engine.rootContext()->setContextProperty("moneroAccountsDir", moneroAccountsDir);
     }
 

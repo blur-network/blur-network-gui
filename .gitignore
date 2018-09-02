@@ -12,4 +12,3 @@ moc_*
 *.xcodeproj
 monero-wallet-gui_plugin_import.cpp
 monero-wallet-gui_qml_plugin_import.cpp
-

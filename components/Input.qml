@@ -29,15 +29,15 @@
 import QtQuick.Controls 2.0
 import QtQuick 2.7
 
-import "../components" as BlurComponents
+import "../components" as MoneroComponents
 
 TextField {
-    font.family: BlurComponents.Style.fontRegular.name
+    font.family: MoneroComponents.Style.fontRegular.name
     font.pixelSize: 18 * scaleRatio
     font.bold: true
     horizontalAlignment: TextInput.AlignLeft
     selectByMouse: true
-    color: BlurComponents.Style.defaultFontColor
+    color: MoneroComponents.Style.defaultFontColor
 
     background: Rectangle {
         color: "transparent"

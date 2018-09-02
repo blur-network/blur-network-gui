@@ -29,7 +29,7 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.1
 
-import "../components" as BlurComponents
+import "../components" as MoneroComponents
 
 RowLayout {
     id: checkBox
@@ -85,9 +85,9 @@ RowLayout {
 
         Text {
             id: label
-            font.family: BlurComponents.Style.fontRegular.name
+            font.family: MoneroComponents.Style.fontRegular.name
             font.pixelSize: checkBox.fontSize
-            color: BlurComponents.Style.defaultFontColor
+            color: MoneroComponents.Style.defaultFontColor
             wrapMode: Text.Wrap
             Layout.fillWidth: true
             anchors.left: backgroundRect.right

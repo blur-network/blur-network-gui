@@ -28,7 +28,7 @@
 
 import QtQuick 2.0
 
-import "../components" as BlurComponents
+import "../components" as MoneroComponents
 
 Item {
     id: dropdown
@@ -91,7 +91,7 @@ Item {
             anchors.left: parent.left
             anchors.leftMargin: 12 * scaleRatio
             elide: Text.ElideRight
-            font.family: BlurComponents.Style.fontRegular.name
+            font.family: MoneroComponents.Style.fontRegular.name
             font.bold: dropdown.headerFontBold
             font.pixelSize: dropdown.fontHeaderSize
             color: "#FFFFFF"
@@ -184,7 +184,7 @@ Item {
                         anchors.right: col2Text.left
                         anchors.leftMargin: 12 * scaleRatio
                         anchors.rightMargin: 0
-                        font.family: BlurComponents.Style.fontRegular.name
+                        font.family: MoneroComponents.Style.fontRegular.name
                         font.bold: true
                         font.pixelSize: fontItemSize
                         color: itemArea.containsMouse || index === column.currentIndex || itemArea.containsMouse ? "#BC2F42" : "#FFFFFF"
@@ -196,7 +196,7 @@ Item {
                         anchors.verticalCenter: parent.verticalCenter
                         anchors.right: parent.right
                         anchors.rightMargin: 45 * scaleRatio
-                        font.family: BlurComponents.Style.fontRegular.name
+                        font.family: MoneroComponents.Style.fontRegular.name
                         font.pixelSize: 14 * scaleRatio
                         color: "#FFFFFF"
                         text: ""

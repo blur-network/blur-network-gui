@@ -29,9 +29,9 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.1
 import QtQuick.Dialogs 1.2
-import blurComponents.Clipboard 1.0
-import blurComponents.PendingTransaction 1.0
-import blurComponents.Wallet 1.0
+import moneroComponents.Clipboard 1.0
+import moneroComponents.PendingTransaction 1.0
+import moneroComponents.Wallet 1.0
 import "../components"
 import "." 1.0
 
@@ -46,9 +46,11 @@ Rectangle {
     property string startLinkText: qsTr("<style type='text/css'>a {text-decoration: none; color: #4CB860; font-size: 14px;}</style><font size='2'> (</font><a href='#'>Start daemon</a><font size='2'>)</font>") + translationManager.emptyString
     property bool showAdvanced: false
 
+    // NOTE: Mixin represents the number of fake inputs/outputs, +1 for the real transaction.
     property int fixedMixin: 5
 
     Clipboard { id: clipboard }
+
     function isValidOpenAliasAddress(address) {
       address = address.trim()
       var dot = address.indexOf('.')
@@ -65,7 +67,6 @@ Rectangle {
       oaPopup.onCloseCallback = null
       oaPopup.open()
     }
-
 
     function updateFromQrCode(address, payment_id, amount, tx_description, recipient_name) {
         console.log("updateFromQrCode")
@@ -241,7 +242,7 @@ Rectangle {
               labelText: qsTr("<style type='text/css'>a {text-decoration: none; color: #858585; font-size: 14px;}</style>\
                 Address <font size='2'>  ( </font> <a href='#'>Address book</a><font size='2'> )</font>")
                 + translationManager.emptyString
-              placeholderText: "5.."
+              placeholderText: "bL..."
               onInputLabelLinkActivated: { appWindow.showPageRequest("AddressBook") }
           }
 
@@ -259,49 +260,49 @@ Rectangle {
       }
       
       StandardButton {
-                id: resolveButton
-                anchors.left: parent.left
-                width: 80
-                text: qsTr("Resolve") + translationManager.emptyString
-                visible: isValidOpenAliasAddress(addressLine.text)
-                enabled : isValidOpenAliasAddress(addressLine.text)
-                onClicked: {
-                    var result = walletManager.resolveOpenAlias(addressLine.text)
-                    if (result) {
-                        var parts = result.split("|")
-                        if (parts.length == 2) {
-                            var address_ok = walletManager.addressValid(parts[1], appWindow.persistentSettings.testnet)
-                            if (parts[0] === "true") {
-                                if (address_ok) {
-                                    addressLine.text = parts[1]
-                                    addressLine.cursorPosition = 0
-                                }
-                                else
-                                    oa_message(qsTr("No valid address found at this OpenAlias address"))
+          id: resolveButton
+          anchors.left: parent.left
+          width: 80
+          text: qsTr("Resolve") + translationManager.emptyString
+          visible: isValidOpenAliasAddress(addressLine.text)
+          enabled : isValidOpenAliasAddress(addressLine.text)
+          onClicked: {
+              var result = walletManager.resolveOpenAlias(addressLine.text)
+              if (result) {
+                  var parts = result.split("|")
+                  if (parts.length == 2) {
+                      var address_ok = walletManager.addressValid(parts[1], appWindow.persistentSettings.nettype)
+                      if (parts[0] === "true") {
+                          if (address_ok) {
+                              addressLine.text = parts[1]
+                              addressLine.cursorPosition = 0
+                          }
+                          else
+                              oa_message(qsTr("No valid address found at this OpenAlias address"))
+                      }
+                      else if (parts[0] === "false") {
+                            if (address_ok) {
+                                addressLine.text = parts[1]
+                                addressLine.cursorPosition = 0
+                                oa_message(qsTr("Address found, but the DNSSEC signatures could not be verified, so this address may be spoofed"))
                             }
-                            else if (parts[0] === "false") {
-                                  if (address_ok) {
-                                      addressLine.text = parts[1]
-                                      addressLine.cursorPosition = 0
-                                      oa_message(qsTr("Address found, but the DNSSEC signatures could not be verified, so this address may be spoofed"))
-                                  }
-                                  else
-                                  {
-                                      oa_message(qsTr("No valid address found at this OpenAlias address, but the DNSSEC signatures could not be verified, so this may be spoofed"))
-                                  }
+                            else
+                            {
+                                oa_message(qsTr("No valid address found at this OpenAlias address, but the DNSSEC signatures could not be verified, so this may be spoofed"))
                             }
-                            else {
-                                oa_message(qsTr("Internal error"))
-                            }
-                        }
-                        else {
-                            oa_message(qsTr("Internal error"))
-                        }
-                    }
-                    else {
-                        oa_message(qsTr("No address found"))
-                    }
-                }
+                      }
+                      else {
+                          oa_message(qsTr("Internal error"))
+                      }
+                  }
+                  else {
+                      oa_message(qsTr("Internal error"))
+                  }
+              }
+              else {
+                  oa_message(qsTr("No address found"))
+              }
+          }
       }
 
       RowLayout {
@@ -309,7 +310,7 @@ Rectangle {
           LineEdit {
               id: paymentIdLine
               fontBold: true
-              labelText: qsTr("Payment ID <font size='2'>( Optional )</font>") + translationManager.emptyString
+              labelText: qsTr("Payment ID <font size='2'>(Optional)</font>") + translationManager.emptyString
               placeholderText: qsTr("16 or 64 hexadecimal characters") + translationManager.emptyString
               Layout.fillWidth: true
           }
@@ -318,7 +319,7 @@ Rectangle {
       RowLayout {
           LineEdit {
               id: descriptionLine
-              labelText: qsTr("Description <font size='2'>( Optional )</font>") + translationManager.emptyString
+              labelText: qsTr("Description <font size='2'>(Optional)</font>") + translationManager.emptyString
               placeholderText: qsTr("Saved to local wallet history") + translationManager.emptyString
               Layout.fillWidth: true
           }
@@ -361,8 +362,8 @@ Rectangle {
                   console.log("amount: " + amountLine.text)
                   addressLine.text = addressLine.text.trim()
                   paymentIdLine.text = paymentIdLine.text.trim()
-                  root.paymentClicked(addressLine.text, paymentIdLine.text, amountLine.text, fixedMixin,
-                                 priority, descriptionLine.text)
+
+                  root.paymentClicked(addressLine.text, paymentIdLine.text, amountLine.text, fixedMixin, priority, descriptionLine.text)
 
               }
           }
@@ -412,7 +413,7 @@ Rectangle {
                 onClicked: {
                     persistentSettings.transferShowAdvanced = !persistentSettings.transferShowAdvanced
                 }
-                text: qsTr("Advanced options") + translationManager.emptyString
+                text: qsTr("Advanced Options") + translationManager.emptyString
             }
         }
 
@@ -420,46 +421,8 @@ Rectangle {
             visible: persistentSettings.transferShowAdvanced
             Layout.fillWidth: true
             height: 1
-            color: Style.dividerColor
+            color: Qt.rgba(255, 255, 255, 0.25)
             opacity: Style.dividerOpacity
-            Layout.bottomMargin: 30 * scaleRatio
-        }
-
-        RowLayout {
-            visible: false
-            anchors.left: parent.left
-            anchors.right: parent.right
-            Layout.fillWidth: true
-            Label {
-                id: privacyLabel
-                fontSize: 15
-                text: ""
-            }
-
-            Label {
-                id: costLabel
-                fontSize: 14
-                text: qsTr("Transaction cost") + translationManager.emptyString
-                anchors.right: parent.right
-            }
-        }
-
-        PrivacyLevel {
-            visible: false
-            id: privacyLevelItem
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.rightMargin: 17 * scaleRatio
-            onFillLevelChanged: updateMixin()
-        }
-
-        PrivacyLevelSmall {
-            visible: false
-            id: privacyLevelItemSmall
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.rightMargin: 17 * scaleRatio
-            onFillLevelChanged: updateMixin()
         }
 
         GridLayout {
@@ -494,8 +457,7 @@ Rectangle {
                     console.log("amount: " + amountLine.text)
                     addressLine.text = addressLine.text.trim()
                     paymentIdLine.text = paymentIdLine.text.trim()
-                    root.paymentClicked(addressLine.text, paymentIdLine.text, amountLine.text, scaleValueToMixinCount(privacyLevelItem.fillLevel),
-                                   priority, descriptionLine.text)
+                    root.paymentClicked(addressLine.text, paymentIdLine.text, amountLine.text, fixedMixin, priority, descriptionLine.text)
 
                 }
             }
@@ -625,7 +587,6 @@ Rectangle {
     function onPageCompleted() {
         console.log("transfer page loaded")
         updateStatus();
-        updateMixin();
         updatePriorityDropdown()
     }
 

@@ -33,13 +33,13 @@ import QtQuick.Layouts 1.1
 import QtQuick.Dialogs 1.2
 
 import "../components"
-import blurComponents.Clipboard 1.0
-import blurComponents.Wallet 1.0
-import blurComponents.WalletManager 1.0
-import blurComponents.TransactionHistory 1.0
-import blurComponents.TransactionHistoryModel 1.0
-import blurComponents.Subaddress 1.0
-import blurComponents.SubaddressModel 1.0
+import moneroComponents.Clipboard 1.0
+import moneroComponents.Wallet 1.0
+import moneroComponents.WalletManager 1.0
+import moneroComponents.TransactionHistory 1.0
+import moneroComponents.TransactionHistoryModel 1.0
+import moneroComponents.Subaddress 1.0
+import moneroComponents.SubaddressModel 1.0
 
 Rectangle {
     id: pageReceive
@@ -72,12 +72,12 @@ Rectangle {
     }
 
     function update() {
-        if (!appWindow.currentWallet) {
+        if (!appWindow.currentWallet || !trackingEnabled.checked) {
             setTrackingLineText("-")
             return
         }
         if (appWindow.currentWallet.connected() == Wallet.ConnectionStatus_Disconnected) {
-            setTrackingLineText(qsTr("WARNING: no connection to daemon"))
+            setTrackingLineText(qsTr("WARNING: No connection to daemon"))
             return
         }
 
@@ -302,13 +302,13 @@ Rectangle {
                 textFormat: Text.RichText
                 text: "<style type='text/css'>a {text-decoration: none; color: #4CB860; font-size: 14px;}</style>" +
                       qsTr("Tracking") +
-                      "<font size='2'> (</font><a href='#'>" +
-                      qsTr("help") +
-                      "</a><font size='2'>)</font>" +
+                      " <a href='#'>(" +
+                      qsTr("Help") +
+                      ")</a>" +
                       translationManager.emptyString
                 width: mainLayout.labelWidth
                 onLinkActivated: {
-                    trackingHowToUseDialog.title  = qsTr("Tracking payments") + translationManager.emptyString;
+                    trackingHowToUseDialog.title  = qsTr("Tracking Payments") + translationManager.emptyString;
                     trackingHowToUseDialog.text = qsTr(
                         "<p><font size='+2'>This is a simple sales tracker:</font></p>" +
                         "<p>Let your customer scan that QR code to make a payment (if that customer has software which " +
@@ -323,6 +323,11 @@ Rectangle {
                     trackingHowToUseDialog.icon = StandardIcon.Information
                     trackingHowToUseDialog.open()
                 }
+            }
+
+            CheckBox {
+                id: trackingEnabled
+                text: qsTr("Enable") + translationManager.emptyString
             }
 
             TextEdit {
@@ -368,23 +373,31 @@ Rectangle {
                 }
             }
 
-            Image {
-                id: qrCode
-                anchors.margins: 50 * scaleRatio
-                Layout.fillWidth: true
-                Layout.minimumHeight: mainLayout.qrCodeSize
-                smooth: false
-                fillMode: Image.PreserveAspectFit
-                source: "image://qrcode/" + makeQRCodeString()
-                MouseArea {
-                    anchors.fill: parent
-                    acceptedButtons: Qt.RightButton
-                    onClicked: {
-                        if (mouse.button == Qt.RightButton)
-                            qrMenu.popup()
-                    }
-                    onPressAndHold: qrFileDialog.open()
-                }
+            Rectangle {
+              color: "white"
+              Layout.topMargin: parent.spacing
+              Layout.fillWidth: true
+              Layout.maximumWidth: mainLayout.qrCodeSize
+              Layout.preferredHeight: width
+
+              Image {
+                  id: qrCode
+                  anchors.fill: parent
+                  anchors.margins: 6
+                  smooth: false
+
+                  fillMode: Image.PreserveAspectFit
+                  source: "image://qrcode/" + makeQRCodeString()
+                  MouseArea {
+                      anchors.fill: parent
+                      acceptedButtons: Qt.RightButton
+                      onClicked: {
+                          if (mouse.button == Qt.RightButton)
+                              qrMenu.popup()
+                      }
+                      onPressAndHold: qrFileDialog.open()
+                  }
+              }
             }
         }
     }
@@ -407,6 +420,8 @@ Rectangle {
 
         update()
         timer.running = true
+
+        trackingEnabled.checked = false
     }
 
     function onPageClosed() {

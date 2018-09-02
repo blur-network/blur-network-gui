@@ -29,11 +29,11 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.1
 import QtQuick.Dialogs 1.2
-import blurComponents.Wallet 1.0
-import blurComponents.WalletManager 1.0
-import blurComponents.TransactionHistory 1.0
-import blurComponents.TransactionInfo 1.0
-import blurComponents.TransactionHistoryModel 1.0
+import moneroComponents.Wallet 1.0
+import moneroComponents.WalletManager 1.0
+import moneroComponents.TransactionHistory 1.0
+import moneroComponents.TransactionInfo 1.0
+import moneroComponents.TransactionHistoryModel 1.0
 
 import "../components"
 

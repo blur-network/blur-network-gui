@@ -26,7 +26,7 @@
 // STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-import blurComponents.WalletManager 1.0
+import moneroComponents.WalletManager 1.0
 import QtQuick 2.2
 import QtQuick.Layouts 1.1
 import "../components"
@@ -196,7 +196,7 @@ ColumnLayout {
                 daemonPortText: {
                     var node_split = persistentSettings.bootstrapNodeAddress.split(":");
                     if(node_split.length == 2){
-                        (node_split[1].trim() == "") ? "14895" : node_split[1];
+                        (node_split[1].trim() == "") ? "38081" : node_split[1];
                     } else {
                         return ""
                     }
@@ -228,7 +228,7 @@ ColumnLayout {
                 id: remoteNodeEdit
                 property var rna: persistentSettings.remoteNodeAddress
                 daemonAddrText: rna.search(":") != -1 ? rna.split(":")[0].trim() : ""
-                daemonPortText: rna.search(":") != -1 ? (rna.split(":")[1].trim() == "") ? "14895" : persistentSettings.remoteNodeAddress.split(":")[1] : ""
+                daemonPortText: rna.search(":") != -1 ? (rna.split(":")[1].trim() == "") ? "38081" : persistentSettings.remoteNodeAddress.split(":")[1] : ""
 
                 placeholderFontBold: true
                 placeholderFontFamily: "Arial"
