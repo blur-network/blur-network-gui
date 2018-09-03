@@ -50,7 +50,7 @@ Rectangle {
     property string trackingLineText: ""
 
     function makeQRCodeString() {
-        var s = "blur:"
+        var s = ""
         var nfields = 0
         s += current_address;
         var amount = amountLine.text.trim()
@@ -286,7 +286,7 @@ Rectangle {
                 Layout.fillWidth: true
                 validator: DoubleValidator {
                     bottom: 0.0
-                    top: 18446744.073709551615
+                    top: 9223300.0000000000000
                     decimals: 12
                     notation: DoubleValidator.StandardNotation
                     locale: "C"
@@ -302,9 +302,9 @@ Rectangle {
                 textFormat: Text.RichText
                 text: "<style type='text/css'>a {text-decoration: none; color: #4CB860; font-size: 14px;}</style>" +
                       qsTr("Tracking") +
-                      " <a href='#'>(" +
-                      qsTr("Help") +
-                      ")</a>" +
+                      "<font size='2'> (</font><a href='#'>" +
+                      qsTr("help") +
+                      "</a><font size='2'>)</font>" +
                       translationManager.emptyString
                 width: mainLayout.labelWidth
                 onLinkActivated: {
@@ -323,11 +323,6 @@ Rectangle {
                     trackingHowToUseDialog.icon = StandardIcon.Information
                     trackingHowToUseDialog.open()
                 }
-            }
-
-            CheckBox {
-                id: trackingEnabled
-                text: qsTr("Enable") + translationManager.emptyString
             }
 
             TextEdit {
@@ -373,31 +368,23 @@ Rectangle {
                 }
             }
 
-            Rectangle {
-              color: "white"
-              Layout.topMargin: parent.spacing
-              Layout.fillWidth: true
-              Layout.maximumWidth: mainLayout.qrCodeSize
-              Layout.preferredHeight: width
-
-              Image {
-                  id: qrCode
-                  anchors.fill: parent
-                  anchors.margins: 6
-                  smooth: false
-
-                  fillMode: Image.PreserveAspectFit
-                  source: "image://qrcode/" + makeQRCodeString()
-                  MouseArea {
-                      anchors.fill: parent
-                      acceptedButtons: Qt.RightButton
-                      onClicked: {
-                          if (mouse.button == Qt.RightButton)
-                              qrMenu.popup()
-                      }
-                      onPressAndHold: qrFileDialog.open()
-                  }
-              }
+            Image {
+                id: qrCode
+                anchors.margins: 50 * scaleRatio
+                Layout.fillWidth: true
+                Layout.minimumHeight: mainLayout.qrCodeSize
+                smooth: false
+                fillMode: Image.PreserveAspectFit
+                source: "image://qrcode/" + makeQRCodeString()
+                MouseArea {
+                    anchors.fill: parent
+                    acceptedButtons: Qt.RightButton
+                    onClicked: {
+                        if (mouse.button == Qt.RightButton)
+                            qrMenu.popup()
+                    }
+                    onPressAndHold: qrFileDialog.open()
+                }
             }
         }
     }
@@ -420,8 +407,6 @@ Rectangle {
 
         update()
         timer.running = true
-
-        trackingEnabled.checked = false
     }
 
     function onPageClosed() {

@@ -50,7 +50,6 @@ Rectangle {
     property string unlockedBalanceText
     property int minHeight: (appWindow.height > 800) ? appWindow.height : 800 * scaleRatio
     property alias contentHeight: mainFlickable.contentHeight
-    property alias flickable: mainFlickable
 //    property int headerHeight: header.height
 
     property Transfer transferView: Transfer { }
@@ -129,7 +128,7 @@ Rectangle {
             }, State {
                name: "SharedRingDB"
                PropertyChanges { target: root; currentView: sharedringdbView }
-               PropertyChanges { target: mainFlickable; contentHeight: minHeight  }
+               PropertyChanges { target: mainFlickable; contentHeight: sharedringdbView.panelHeight + 100  }
             }, State {
                 name: "AddressBook"
                 PropertyChanges {  target: root; currentView: addressBookView  }
@@ -141,11 +140,11 @@ Rectangle {
             }, State {
                 name: "Settings"
                PropertyChanges { target: root; currentView: settingsView }
-               PropertyChanges { target: mainFlickable; contentHeight: 2000 * scaleRatio }
+               PropertyChanges { target: mainFlickable; contentHeight: settingsView.settingsHeight + 100 }
             }, State {
                 name: "Mining"
                 PropertyChanges { target: root; currentView: miningView }
-                PropertyChanges { target: mainFlickable; contentHeight: minHeight * scaleRatio }
+                PropertyChanges { target: mainFlickable; contentHeight: minHeight  }
             }, State {
                 name: "Keys"
                 PropertyChanges { target: root; currentView: keysView }

@@ -31,7 +31,7 @@ import QtQuick.XmlListModel 2.0
 import QtQuick.Layouts 1.1
 import QtQml 2.2
 
-
+import "../components"
 
 ColumnLayout {
 //    anchors.fill:parent

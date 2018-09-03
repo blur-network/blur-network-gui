@@ -251,6 +251,7 @@ Rectangle {
                 fontSize: mainLayout.lineEditFontSize
                 placeholderText: qsTr("Paste key image") + translationManager.emptyString
                 readOnly: false
+                copyButton: true
                 width: mainLayout.editWidth
                 Layout.fillWidth: true
 

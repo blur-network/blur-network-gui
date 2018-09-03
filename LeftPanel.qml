@@ -66,8 +66,8 @@ Rectangle {
         else if(pos === "History") menuColumn.previousButton = historyButton
         else if(pos === "Transfer") menuColumn.previousButton = transferButton
         else if(pos === "Receive")  menuColumn.previousButton = receiveButton
-        else if(pos === "AddressBook") menuColumn.previousButton = addressBookButton
         else if(pos === "Mining") menuColumn.previousButton = miningButton
+        else if(pos === "AddressBook") menuColumn.previousButton = addressBookButton
         else if(pos === "TxKey")  menuColumn.previousButton = txkeyButton
         else if(pos === "SharedRingDB")  menuColumn.previousButton = sharedringdbButton
         else if(pos === "Sign") menuColumn.previousButton = signButton

@@ -46,10 +46,17 @@ Rectangle {
     property string startLinkText: qsTr("<style type='text/css'>a {text-decoration: none; color: #4CB860; font-size: 14px;}</style><font size='2'> (</font><a href='#'>Start daemon</a><font size='2'>)</font>") + translationManager.emptyString
     property bool showAdvanced: false
 
-    // NOTE: Mixin represents the number of fake inputs/outputs, +1 for the real transaction.
-    property int fixedMixin: 5
 
     Clipboard { id: clipboard }
+
+    function scaleValueToMixinCount(scaleValue) {
+        var scaleToMixinCount = [12];
+        if (scaleValue < scaleToMixinCount.length) {
+            return scaleToMixinCount[scaleValue];
+        } else {
+            return 0;
+        }
+    }
 
     function isValidOpenAliasAddress(address) {
       address = address.trim()
@@ -66,6 +73,14 @@ Rectangle {
       oaPopup.icon = StandardIcon.Information
       oaPopup.onCloseCallback = null
       oaPopup.open()
+    }
+
+    function updateMixin() {
+        var fillLevel = (isMobile) ? privacyLevelItemSmall.fillLevel : privacyLevelItem.fillLevel
+        var mixin = scaleValueToMixinCount(fillLevel)
+        console.log("PrivacyLevel changed:"  + fillLevel)
+        console.log("mixin count: "  + mixin)
+        privacyLabel.text = qsTr("Privacy level (ringsize %1)").arg(mixin+1) + translationManager.emptyString
     }
 
     function updateFromQrCode(address, payment_id, amount, tx_description, recipient_name) {
@@ -181,7 +196,7 @@ Rectangle {
 
                       validator: DoubleValidator {
                           bottom: 0.0
-                          top: 18446744.073709551615
+                          top: 9223300.000000000000
                           decimals: 12
                           notation: DoubleValidator.StandardNotation
                           locale: "C"
@@ -260,49 +275,49 @@ Rectangle {
       }
       
       StandardButton {
-          id: resolveButton
-          anchors.left: parent.left
-          width: 80
-          text: qsTr("Resolve") + translationManager.emptyString
-          visible: isValidOpenAliasAddress(addressLine.text)
-          enabled : isValidOpenAliasAddress(addressLine.text)
-          onClicked: {
-              var result = walletManager.resolveOpenAlias(addressLine.text)
-              if (result) {
-                  var parts = result.split("|")
-                  if (parts.length == 2) {
-                      var address_ok = walletManager.addressValid(parts[1], appWindow.persistentSettings.nettype)
-                      if (parts[0] === "true") {
-                          if (address_ok) {
-                              addressLine.text = parts[1]
-                              addressLine.cursorPosition = 0
-                          }
-                          else
-                              oa_message(qsTr("No valid address found at this OpenAlias address"))
-                      }
-                      else if (parts[0] === "false") {
-                            if (address_ok) {
-                                addressLine.text = parts[1]
-                                addressLine.cursorPosition = 0
-                                oa_message(qsTr("Address found, but the DNSSEC signatures could not be verified, so this address may be spoofed"))
+                id: resolveButton
+                anchors.left: parent.left
+                width: 80
+                text: qsTr("Resolve") + translationManager.emptyString
+                visible: isValidOpenAliasAddress(addressLine.text)
+                enabled : isValidOpenAliasAddress(addressLine.text)
+                onClicked: {
+                    var result = walletManager.resolveOpenAlias(addressLine.text)
+                    if (result) {
+                        var parts = result.split("|")
+                        if (parts.length == 2) {
+                            var address_ok = walletManager.addressValid(parts[1], appWindow.persistentSettings.testnet)
+                            if (parts[0] === "true") {
+                                if (address_ok) {
+                                    addressLine.text = parts[1]
+                                    addressLine.cursorPosition = 0
+                                }
+                                else
+                                    oa_message(qsTr("No valid address found at this OpenAlias address"))
                             }
-                            else
-                            {
-                                oa_message(qsTr("No valid address found at this OpenAlias address, but the DNSSEC signatures could not be verified, so this may be spoofed"))
+                            else if (parts[0] === "false") {
+                                  if (address_ok) {
+                                      addressLine.text = parts[1]
+                                      addressLine.cursorPosition = 0
+                                      oa_message(qsTr("Address found, but the DNSSEC signatures could not be verified, so this address may be spoofed"))
+                                  }
+                                  else
+                                  {
+                                      oa_message(qsTr("No valid address found at this OpenAlias address, but the DNSSEC signatures could not be verified, so this may be spoofed"))
+                                  }
                             }
-                      }
-                      else {
-                          oa_message(qsTr("Internal error"))
-                      }
-                  }
-                  else {
-                      oa_message(qsTr("Internal error"))
-                  }
-              }
-              else {
-                  oa_message(qsTr("No address found"))
-              }
-          }
+                            else {
+                                oa_message(qsTr("Internal error"))
+                            }
+                        }
+                        else {
+                            oa_message(qsTr("Internal error"))
+                        }
+                    }
+                    else {
+                        oa_message(qsTr("No address found"))
+                    }
+                }
       }
 
       RowLayout {
@@ -362,8 +377,8 @@ Rectangle {
                   console.log("amount: " + amountLine.text)
                   addressLine.text = addressLine.text.trim()
                   paymentIdLine.text = paymentIdLine.text.trim()
-
-                  root.paymentClicked(addressLine.text, paymentIdLine.text, amountLine.text, fixedMixin, priority, descriptionLine.text)
+                  root.paymentClicked(addressLine.text, paymentIdLine.text, amountLine.text, scaleValueToMixinCount(privacyLevelItem.fillLevel),
+                                 priority, descriptionLine.text)
 
               }
           }
@@ -423,6 +438,44 @@ Rectangle {
             height: 1
             color: Qt.rgba(255, 255, 255, 0.25)
             opacity: Style.dividerOpacity
+            Layout.bottomMargin: 30 * scaleRatio
+        }
+
+        RowLayout {
+            visible: false
+            anchors.left: parent.left
+            anchors.right: parent.right
+            Layout.fillWidth: true
+            Label {
+                id: privacyLabel
+                fontSize: 15
+                text: ""
+            }
+
+            Label {
+                id: costLabel
+                fontSize: 14
+                text: qsTr("Transaction cost") + translationManager.emptyString
+                anchors.right: parent.right
+            }
+        }
+
+        PrivacyLevel {
+            visible: false
+            id: privacyLevelItem
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.rightMargin: 17 * scaleRatio
+            onFillLevelChanged: updateMixin()
+        }
+
+        PrivacyLevelSmall {
+            visible: false
+            id: privacyLevelItemSmall
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.rightMargin: 17 * scaleRatio
+            onFillLevelChanged: updateMixin()
         }
 
         GridLayout {
@@ -457,7 +510,8 @@ Rectangle {
                     console.log("amount: " + amountLine.text)
                     addressLine.text = addressLine.text.trim()
                     paymentIdLine.text = paymentIdLine.text.trim()
-                    root.paymentClicked(addressLine.text, paymentIdLine.text, amountLine.text, fixedMixin, priority, descriptionLine.text)
+                    root.paymentClicked(addressLine.text, paymentIdLine.text, amountLine.text, scaleValueToMixinCount(privacyLevelItem.fillLevel),
+                                   priority, descriptionLine.text)
 
                 }
             }
@@ -576,8 +630,6 @@ Rectangle {
 
     }
 
-
-
     Component.onCompleted: {
         //Disable password page until enabled by updateStatus
         pageRoot.enabled = false
@@ -587,6 +639,7 @@ Rectangle {
     function onPageCompleted() {
         console.log("transfer page loaded")
         updateStatus();
+        updateMixin();
         updatePriorityDropdown()
     }
 
@@ -639,4 +692,3 @@ Rectangle {
         descriptionLine.text = description
     }
 }
-

@@ -47,7 +47,7 @@ Rectangle {
     Item {
         id: test
         width: parent.width
-        height: 50
+        height:  50 * scaleRatio
         z: 1
 
         // use jpg for gradiency
@@ -203,7 +203,7 @@ Rectangle {
             anchors.top: parent.top
             anchors.bottom: parent.bottom
             width: 42
-            color: containsMouse ? "#E04343" : "#00000000"
+            color: containsMouse ? "#E04343" : "#010101"
 
             Image {
                 anchors.centerIn: parent

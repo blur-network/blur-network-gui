@@ -72,7 +72,7 @@ Rectangle {
         Image {
             id: logo
             anchors.verticalCenter: parent.verticalCenter
-            anchors.verticalCenterOffset: -5
+            anchors.verticalCenterOffset: 0
             anchors.left: parent.left
             anchors.leftMargin: 20
             source: "images/moneroLogo2.png"
