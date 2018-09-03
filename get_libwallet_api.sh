@@ -1,6 +1,6 @@
 #!/bin/bash
 MONERO_URL=https://github.com/blur-network/blur.git
-MONERO_BRANCH=master
+MONERO_BRANCH=gui-v0.1.7.1
 
 pushd $(pwd)
 ROOT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
