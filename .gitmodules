@@ -3,3 +3,7 @@
 	url = https://github.com/blur-network/blur.git
         ignore = all
 	branch = gui-v0.1.7.1
+[submodule "blur"]
+	path = monero
+	url = https://github.com/blur-network/blur.git
+	branch = gui-v0.1.7.1
