@@ -33,7 +33,7 @@ import QtQuick.Layouts 1.1
 import QtQuick.Controls.Styles 1.4
 import QtQuick.Window 2.0
 
-import "../components" as BlurComponents
+import "../components" as MoneroComponents
 
 Rectangle {
     id: root
@@ -103,12 +103,12 @@ Rectangle {
             Layout.topMargin: 14 * scaleRatio
             Layout.alignment: Qt.AlignHCenter
 
-            BlurComponents.Label {
+            MoneroComponents.Label {
                 id: dialogTitle
                 horizontalAlignment: Text.AlignHCenter
                 fontSize: 18 * scaleRatio
                 fontFamily: "Arial"
-                color: BlurComponents.Style.defaultFontColor
+                color: MoneroComponents.Style.defaultFontColor
             }
 
         }
@@ -119,13 +119,13 @@ Rectangle {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 renderType: Text.QtRendering
-                font.family: BlurComponents.Style.fontLight.name
+                font.family: MoneroComponents.Style.fontLight.name
                 textFormat: TextEdit.AutoText
                 readOnly: true
                 font.pixelSize: 14 * scaleRatio
                 selectByMouse: false
                 wrapMode: TextEdit.Wrap
-                color: BlurComponents.Style.defaultFontColor
+                color: MoneroComponents.Style.defaultFontColor
 
                 MouseArea {
                     anchors.fill: parent
@@ -149,7 +149,7 @@ Rectangle {
             spacing: 60
             Layout.alignment: Qt.AlignHCenter
 
-            BlurComponents.StandardButton {
+            MoneroComponents.StandardButton {
                 id: cancelButton
                 text: qsTr("Cancel") + translationManager.emptyString
                 onClicked: {
@@ -158,7 +158,7 @@ Rectangle {
                 }
             }
 
-            BlurComponents.StandardButton {
+            MoneroComponents.StandardButton {
                 id: okButton
                 text: qsTr("OK")
                 KeyNavigation.tab: cancelButton
@@ -174,7 +174,7 @@ Rectangle {
     // window borders
     Rectangle{
         width: 1
-        color: BlurComponents.Style.grey
+        color: MoneroComponents.Style.grey
         anchors.left: parent.left
         anchors.top: parent.top
         anchors.bottom: parent.bottom
@@ -182,7 +182,7 @@ Rectangle {
 
     Rectangle{
         width: 1
-        color: BlurComponents.Style.grey
+        color: MoneroComponents.Style.grey
         anchors.right: parent.right
         anchors.top: parent.top
         anchors.bottom: parent.bottom
@@ -190,7 +190,7 @@ Rectangle {
 
     Rectangle{
         height: 1
-        color: BlurComponents.Style.grey
+        color: MoneroComponents.Style.grey
         anchors.left: parent.left
         anchors.top: parent.top
         anchors.right: parent.right
@@ -198,7 +198,7 @@ Rectangle {
 
     Rectangle{
         height: 1
-        color: BlurComponents.Style.grey
+        color: MoneroComponents.Style.grey
         anchors.left: parent.left
         anchors.bottom: parent.bottom
         anchors.right: parent.right

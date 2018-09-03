@@ -28,7 +28,7 @@
 
 import QtQuick 2.0
 
-import "../components" as BlurComponents
+import "../components" as MoneroComponents
 
 Item {
     id: item
@@ -36,10 +36,10 @@ Item {
 
     property alias placeholderText: placeholderLabel.text
     property bool placeholderCenter: false
-    property string placeholderFontFamily: BlurComponents.Style.fontRegular.name
+    property string placeholderFontFamily: MoneroComponents.Style.fontRegular.name
     property bool placeholderFontBold: false
     property int placeholderFontSize: 18 * scaleRatio
-    property string placeholderColor: BlurComponents.Style.defaultFontColor
+    property string placeholderColor: MoneroComponents.Style.defaultFontColor
     property real placeholderOpacity: 0.25
 
     property alias validator: input.validator
@@ -106,11 +106,11 @@ Item {
         anchors.top: parent.top
         anchors.left: parent.left
         anchors.topMargin: 2 * scaleRatio
-        font.family: BlurComponents.Style.fontLight.name
+        font.family: MoneroComponents.Style.fontLight.name
         font.pixelSize: labelFontSize
         font.bold: labelFontBold
         textFormat: Text.RichText
-        color: BlurComponents.Style.defaultFontColor
+        color: MoneroComponents.Style.defaultFontColor
         onLinkActivated: item.labelLinkActivated()
 
         MouseArea {
@@ -120,7 +120,7 @@ Item {
         }
     }
 
-    BlurComponents.LabelButton {
+    MoneroComponents.LabelButton {
         id: copyButtonId
         text: qsTr("Copy")
         anchors.right: parent.right
@@ -191,7 +191,7 @@ Item {
             visible: false
         }
 
-        BlurComponents.Input {
+        MoneroComponents.Input {
             id: input
             anchors.fill: parent
             anchors.leftMargin: inlineIcon.visible ? 38 : 0
@@ -202,7 +202,7 @@ Item {
             onTextChanged: item.textUpdated()
         }
 
-        BlurComponents.InlineButton {
+        MoneroComponents.InlineButton {
             id: inlineButtonId
             visible: item.inlineButtonText ? true : false
             anchors.right: parent.right

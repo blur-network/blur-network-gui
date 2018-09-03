@@ -28,7 +28,7 @@
 
 import QtQuick 2.0
 
-import "../components" as BlurComponents
+import "../components" as MoneroComponents
 
 Label {
     id: item
@@ -40,7 +40,7 @@ Label {
         anchors.left: parent.left
         anchors.right: parent.right
         height: 2
-        color: BlurComponents.Style.dividerColor
-        opacity: BlurComponents.Style.dividerOpacity
+        color: MoneroComponents.Style.dividerColor
+        opacity: MoneroComponents.Style.dividerOpacity
     }
 }

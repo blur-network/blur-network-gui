@@ -28,7 +28,7 @@
 
 import QtQuick 2.0
 
-import "../components" as BlurComponents
+import "../components" as MoneroComponents
 
 Item {
     id: item
@@ -215,7 +215,7 @@ Item {
             }
         }
 
-        BlurComponents.StandardButton {
+        MoneroComponents.StandardButton {
             id: button
             anchors.top: parent.top
             anchors.bottom: parent.bottom

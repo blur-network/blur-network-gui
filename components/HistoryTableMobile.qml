@@ -28,10 +28,10 @@
 
 import QtQuick 2.0
 import QtQuick.Layouts 1.1
-import blurComponents.Clipboard 1.0
-import blurComponents.AddressBookModel 1.0
+import moneroComponents.Clipboard 1.0
+import moneroComponents.AddressBookModel 1.0
 
-import "../components" as BlurComponents
+import "../components" as MoneroComponents
 
 ListView {
     id: listView
@@ -154,16 +154,16 @@ ListView {
                 Layout.topMargin: 20 * scaleRatio
                 Layout.leftMargin: 10 * scaleRatio
                 Text {
-                    font.family: BlurComponents.Style.fontMedium.name
+                    font.family: MoneroComponents.Style.fontMedium.name
                     font.pixelSize: 14 * scaleRatio
-                    color: BlurComponents.Style.defaultFontColor
+                    color: MoneroComponents.Style.defaultFontColor
                     text: date
                 }
 
                 Text {
                     font.family: Style.fontRegular.name
                     font.pixelSize: 14 * scaleRatio
-                    color: BlurComponents.Style.dimmedFontColor
+                    color: MoneroComponents.Style.dimmedFontColor
                     text: time
                 }
 
@@ -171,7 +171,7 @@ ListView {
                 Text {
                     visible: confirmations < confirmationsRequired || isPending
                     Layout.leftMargin: 5 * scaleRatio
-                    font.family: BlurComponents.Style.fontRegular.name
+                    font.family: MoneroComponents.Style.fontRegular.name
                     font.pixelSize: 14 * scaleRatio
                     color:  (confirmations < confirmationsRequired)? "#BC2F42" : "#545454"
                     text: {
@@ -195,7 +195,7 @@ ListView {
                 Text {
                     font.family: "Arial"
                     font.pixelSize: 14 * scaleRatio
-                    color: isOut ? BlurComponents.Style.defaultFontColor : "#2eb358"
+                    color: isOut ? MoneroComponents.Style.defaultFontColor : "#2eb358"
                     text: isOut ? "↓" : "↑"
                 }
 
@@ -203,7 +203,7 @@ ListView {
                     id: amountText
                     font.family: "Arial"
                     font.pixelSize: 18 * scaleRatio
-                    color: isOut ? BlurComponents.Style.defaultFontColor : "#2eb358"
+                    color: isOut ? MoneroComponents.Style.defaultFontColor : "#2eb358"
                     text:  displayAmount
                 }
             }

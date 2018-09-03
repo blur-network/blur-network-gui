@@ -28,7 +28,7 @@
 
 import QtQuick 2.0
 
-import "../components" as BlurComponents
+import "../components" as MoneroComponents
 
 Item {
     id: delegateItem
@@ -52,7 +52,7 @@ Item {
             font.family: "Arial"
             font.bold: true
             font.pixelSize: 12 * scaleRatio
-            color: BlurComponents.Style.defaultFontColor
+            color: MoneroComponents.Style.defaultFontColor
             text: {
                 if(currentIndex === 0) return qsTr("Default") + translationManager.emptyString
                 if(currentIndex === 13) return qsTr("High") + translationManager.emptyString

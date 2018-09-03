@@ -28,7 +28,7 @@
 
 import QtQuick 2.0
 import QtQuick.Controls 1.4
-import blurComponents.Wallet 1.0
+import moneroComponents.Wallet 1.0
 
 Item {
     id: item

@@ -60,7 +60,7 @@ ColumnLayout {
     property var pages: paths[currentPath]
 
     signal wizardRestarted();
-    signal useBlurClicked()
+    signal useMoneroClicked()
     signal openWalletFromFileClicked()
 //    border.color: "#DBDBDB"
 //    border.width: 1
@@ -368,7 +368,7 @@ ColumnLayout {
         visible: parent.paths[currentPath][currentPage] === finishPage
         onClicked: {
             wizard.applySettings();
-            wizard.useBlurClicked();
+            wizard.useMoneroClicked();
         }
     }
 

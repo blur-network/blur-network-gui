@@ -1,5 +1,5 @@
 import QtQuick 2.0
-import blurComponents.Clipboard 1.0
+import moneroComponents.Clipboard 1.0
 
 Column {
 

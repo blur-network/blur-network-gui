@@ -33,7 +33,7 @@ import QtQuick.Layouts 1.1
 import QtQuick.Controls.Styles 1.4
 import QtQuick.Window 2.0
 
-import "../components" as BlurComponents
+import "../components" as MoneroComponents
 
 Item {
     id: root
@@ -85,9 +85,9 @@ Item {
                 Layout.fillWidth: true
 
                 font.pixelSize: 16 * scaleRatio
-                font.family: BlurComponents.Style.fontLight.name
+                font.family: MoneroComponents.Style.fontLight.name
 
-                color: BlurComponents.Style.defaultFontColor
+                color: MoneroComponents.Style.defaultFontColor
             }
 
             TextField {
@@ -97,14 +97,14 @@ Item {
                 anchors.left: parent.left
                 horizontalAlignment: TextInput.AlignLeft
                 verticalAlignment: TextInput.AlignVCenter
-                font.family: BlurComponents.Style.fontLight.name
+                font.family: MoneroComponents.Style.fontLight.name
                 font.pixelSize: 24 * scaleRatio
                 echoMode: TextInput.Password
                 KeyNavigation.tab: okButton
                 bottomPadding: 10
                 leftPadding: 10
                 topPadding: 10
-                color: BlurComponents.Style.defaultFontColor
+                color: MoneroComponents.Style.defaultFontColor
 
                 background: Rectangle {
                     radius: 2
@@ -141,7 +141,7 @@ Item {
                 Layout.topMargin: 16
                 Layout.alignment: Qt.AlignRight
 
-                BlurComponents.StandardButton {
+                MoneroComponents.StandardButton {
                     id: cancelButton
                     small: true
                     text: qsTr("Cancel") + translationManager.emptyString
@@ -152,7 +152,7 @@ Item {
                     }
                 }
 
-                BlurComponents.StandardButton {
+                MoneroComponents.StandardButton {
                     id: okButton
                     small: true
                     text: qsTr("Continue")

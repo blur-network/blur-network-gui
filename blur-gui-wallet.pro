@@ -2,7 +2,7 @@ TEMPLATE = app
 
 QT += qml quick widgets
 
-WALLET_ROOT=$$PWD/blur
+WALLET_ROOT=$$PWD/monero
 
 CONFIG += c++11 link_pkgconfig
 packagesExist(libpcsclite) {
@@ -199,7 +199,7 @@ win32 {
     }
 
     # WIN64 Target settings
-    contains(MSYS_HOST_ARCH, x86_64) {
+    contains(QMAKE_HOST.arch, x86_64) {
         MSYS_MINGW_PATH=/mingw64
 
     # WIN32 Target settings
@@ -220,15 +220,15 @@ win32 {
     
     LIBS+= \
         -Wl,-Bstatic \
-        -lboost_serialization-mt-s \
-        -lboost_thread-mt-s \
-        -lboost_system-mt-s \
-        -lboost_date_time-mt-s \
-        -lboost_filesystem-mt-s \
-        -lboost_regex-mt-s \
-        -lboost_chrono-mt-s \
-        -lboost_program_options-mt-s \
-        -lboost_locale-mt-s \
+        -lboost_serialization-mt \
+        -lboost_thread-mt \
+        -lboost_system-mt \
+        -lboost_date_time-mt \
+        -lboost_filesystem-mt \
+        -lboost_regex-mt \
+        -lboost_chrono-mt \
+        -lboost_program_options-mt \
+        -lboost_locale-mt \
         -licuio \
         -licuin \
         -licuuc \
@@ -243,7 +243,7 @@ win32 {
         -lIphlpapi \
         -lgdi32
     
-    !contains(MSYS_HOST_ARCH, x86_64) {
+    !contains(QMAKE_TARGET.arch, x86_64) {
         message("Target is 32bit")
         ## Windows x86 (32bit) specific build here
         ## there's 2Mb stack in libwallet allocated internally, so we set stack=4Mb
@@ -262,7 +262,7 @@ linux {
         LIBS+= -Wl,-Bstatic    
         QMAKE_LFLAGS += -static-libgcc -static-libstdc++
    #     contains(QT_ARCH, x86_64) {
-            LIBS+= -lunbound
+            LIBS+= -lunbound -ldl
    #     }
     } else {
       # On some distro's we need to add dynload
@@ -281,6 +281,7 @@ linux {
         -lssl \
         -llmdb \
         -lcrypto
+	-ldl
 
     if(!android) {
         LIBS+= \
@@ -320,6 +321,7 @@ macx {
         -lssl \
         -lcrypto \
         -ldl
+
     LIBS+= -framework PCSC
 
     QMAKE_LFLAGS += -pie
@@ -434,8 +436,7 @@ macx {
 win32 {
     deploy.commands += windeployqt $$sprintf("%1/%2/%3.exe", $$OUT_PWD, $$DESTDIR, $$TARGET) -release -qmldir=$$PWD
     # Win64 msys2 deploy settings
-    MSYS_HOST_ARCH = $$system(uname -a | grep -o "x86_64")
-    contains(MSYS_HOST_ARCH, x86_64) {
+    contains(QMAKE_HOST.arch, x86_64) {
         deploy.commands += $$escape_expand(\n\t) $$PWD/windeploy_helper.sh $$DESTDIR
     }
 }

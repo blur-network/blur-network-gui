@@ -28,7 +28,7 @@
 
 import QtQuick 2.5
 
-import "../components" as BlurComponents
+import "../components" as MoneroComponents
 
 Rectangle {
     id: button
@@ -104,7 +104,7 @@ Rectangle {
             anchors.verticalCenter: parent.verticalCenter
             anchors.left: parent.right
             anchors.leftMargin: 8 * scaleRatio
-            font.family: BlurComponents.Style.fontMedium.name
+            font.family: MoneroComponents.Style.fontMedium.name
             font.bold: true
             font.pixelSize: 16 * scaleRatio
             color: "#FFFFFF"

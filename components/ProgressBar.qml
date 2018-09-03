@@ -27,9 +27,9 @@
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import QtQuick 2.0
-import blurComponents.Wallet 1.0
+import moneroComponents.Wallet 1.0
 
-import "../components" as BlurComponents
+import "../components" as MoneroComponents
 
 Rectangle {
     id: item
@@ -63,7 +63,7 @@ Rectangle {
             id: progressText
             anchors.top: parent.top
             anchors.topMargin: 6
-            font.family: BlurComponents.Style.fontMedium.name
+            font.family: MoneroComponents.Style.fontMedium.name
             font.pixelSize: 13 * scaleRatio
             font.bold: true
             color: "white"
@@ -76,7 +76,7 @@ Rectangle {
             anchors.top: parent.top
             anchors.topMargin: 6
             anchors.right: parent.right
-            font.family: BlurComponents.Style.fontMedium.name
+            font.family: MoneroComponents.Style.fontMedium.name
             font.pixelSize: 13 * scaleRatio
             font.bold: true
             color: "white"

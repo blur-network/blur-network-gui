@@ -27,9 +27,9 @@
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import QtQuick 2.0
-import blurComponents.Clipboard 1.0
+import moneroComponents.Clipboard 1.0
 
-import "../components" as BlurComponents
+import "../components" as MoneroComponents
 
 ListView {
     id: listView
@@ -48,7 +48,7 @@ ListView {
         width: listView.width
         clip: true
 
-        BlurComponents.LineEditMulti {
+        MoneroComponents.LineEditMulti {
             id: addressLine
 
             fontSize: 14
@@ -68,7 +68,7 @@ ListView {
             addressValidation: false
         }
 
-        BlurComponents.IconButton {
+        MoneroComponents.IconButton {
             id: clipboardButton
             imageSource: "../images/copyToClipboard.png"
 
@@ -91,7 +91,7 @@ ListView {
             font.family: "Arial"
             font.bold: true
             font.pixelSize: 12
-            color: white
+            color: "#FFFFFF"
             text: "#" + index
         }
 
@@ -104,7 +104,7 @@ ListView {
             font.family: "Arial"
             font.bold: true
             font.pixelSize: 12
-            color: BlurComponents.Style.greyFontColor
+            color: MoneroComponents.Style.greyFontColor
             text: label
         }
 
@@ -126,7 +126,7 @@ ListView {
             anchors.top: parent.top
             anchors.bottom: parent.bottom
             width: 1
-            color: BlurComponents.Style.grey
+            color: MoneroComponents.Style.grey
             z: 6
         }
 
@@ -135,7 +135,7 @@ ListView {
             anchors.top: parent.top
             anchors.bottom: parent.bottom
             width: 1
-            color: BlurComponents.Style.grey
+            color: MoneroComponents.Style.grey
             z: 6
         }
 
@@ -143,14 +143,14 @@ ListView {
             anchors.right: parent.right
             anchors.left: parent.left
             anchors.bottom: parent.bottom
-            color: BlurComponents.Style.grey
+            color: MoneroComponents.Style.grey
             height: 1
             z: 6
         }
 
         Rectangle {
             width: 3
-            color: 'white'
+            color: "#FFFFFF"
             visible: listView.currentIndex == index
             anchors.left: parent.left
             anchors.top: parent.top
