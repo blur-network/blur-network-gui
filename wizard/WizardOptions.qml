@@ -136,7 +136,7 @@ ColumnLayout {
                 Layout.preferredWidth: page.buttonSize
                 font.family: "Lato Black"
                 font.pixelSize: 16 * scaleRatio
-                color: "#4A4949"
+                color: "#C9C9C9"
                 horizontalAlignment: Text.AlignHCenter
                 wrapMode: Text.WordWrap
                 text: qsTr("Create a new wallet") + translationManager.emptyString
@@ -178,7 +178,7 @@ ColumnLayout {
                 Layout.preferredWidth: page.buttonSize
                 font.family: "Lato Black"
                 font.pixelSize: 16 * scaleRatio
-                color: "#4A4949"
+                color: "#C9C9C9"
                 horizontalAlignment: Text.AlignHCenter
                 text: qsTr("Restore wallet from keys or mnemonic seed") + translationManager.emptyString
                 width:page.buttonSize
@@ -221,7 +221,7 @@ ColumnLayout {
                 Layout.preferredWidth: page.buttonSize
                 font.family: "Lato Black"
                 font.pixelSize: 16 * scaleRatio
-                color: "#4A4949"
+                color: "#C9C9C9"
                 horizontalAlignment: Text.AlignHCenter
                 text: qsTr("Open a wallet from file") + translationManager.emptyString
                 wrapMode: Text.WordWrap
