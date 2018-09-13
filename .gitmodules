@@ -2,4 +2,4 @@
 	path = monero
 	url = https://github.com/blur-network/blur.git
         ignore = all
-	branch = master
+	branch = gui-prerelease
