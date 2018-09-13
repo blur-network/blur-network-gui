@@ -71,7 +71,7 @@ Item {
         anchors.leftMargin: 16
         width: parent.width - dotsRow.width - 16
 
-        font.family: "Arial"
+        font.family: "Lato Black"
         font.pixelSize: 28
         wrapMode: Text.Wrap
         //renderType: Text.NativeRendering
@@ -106,7 +106,7 @@ Item {
             Text {
                 anchors.left: parent.left
                 anchors.right: parent.right
-                font.family: "Arial"
+                font.family: "Lato Black"
                 font.pixelSize: 15
                 color: "#C9C9C9"
                 wrapMode: Text.Wrap
@@ -133,7 +133,7 @@ Item {
             Text {
                 anchors.left: parent.left
                 anchors.right: parent.right
-                font.family: "Arial"
+                font.family: "Lato Black"
                 font.pixelSize: 15
                 color: "#C9C9C9"
                 wrapMode: Text.Wrap
@@ -162,7 +162,7 @@ Item {
             Text {
                 anchors.left: parent.left
                 anchors.right: parent.right
-                font.family: "Arial"
+                font.family: "Lato Black"
                 font.pixelSize: 15
                 color: "#C9C9C9"
                 wrapMode: Text.Wrap

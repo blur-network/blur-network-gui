@@ -88,7 +88,7 @@ Rectangle {
 
                 width: 116
                 height: 20
-                font.family: "Arial"
+                font.family: "Lato Black"
                 font.pixelSize: 12
                 elide: Text.ElideRight
                 horizontalAlignment: Text.AlignLeft
@@ -101,7 +101,7 @@ Rectangle {
                 id: balanceText
                 width: 110
                 height: 20
-                font.family: "Arial"
+                font.family: "Lato Black"
                 font.pixelSize: 18
                 elide: Text.ElideRight
                 horizontalAlignment: Text.AlignLeft
@@ -124,7 +124,7 @@ Rectangle {
             Text {
                 width: 116
                 height: 20
-                font.family: "Arial"
+                font.family: "Lato Black"
                 font.pixelSize: 12
                 elide: Text.ElideRight
                 horizontalAlignment: Text.AlignLeft
@@ -137,7 +137,7 @@ Rectangle {
                 id: availableBalanceText
                 width: 110
                 height: 20
-                font.family: "Arial"
+                font.family: "Lato Black"
                 font.pixelSize: 14
                 elide: Text.ElideRight
                 horizontalAlignment: Text.AlignLeft

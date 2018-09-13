@@ -142,7 +142,7 @@ ColumnLayout {
             Layout.fillWidth: true
             horizontalAlignment: Text.AlignHCenter
             id: titleText
-            font.family: "Arial"
+            font.family: "Lato Black"
             font.pixelSize: 28 * scaleRatio
             wrapMode: Text.Wrap
             color: "#C9C9C9"
@@ -154,7 +154,7 @@ ColumnLayout {
 
         Label {
             Layout.topMargin: 20 * scaleRatio
-            fontFamily: "Arial"
+            fontFamily: "Lato Black"
             fontColor: "#555555"
             fontSize: 14 * scaleRatio
             text:  qsTr("Wallet name")
@@ -237,7 +237,7 @@ ColumnLayout {
             Layout.maximumWidth: 600 * scaleRatio
             Layout.minimumWidth: 200 * scaleRatio
             placeholderFontBold: true
-            placeholderFontFamily: "Arial"
+            placeholderFontFamily: "Lato Black"
             placeholderColor: Style.legacy_placeholderFontColor
             placeholderText: qsTr("Account address (public)") + translationManager.emptyString
             placeholderOpacity: 1.0
@@ -253,7 +253,7 @@ ColumnLayout {
             Layout.maximumWidth: 600 * scaleRatio
             Layout.minimumWidth: 200 * scaleRatio
             placeholderFontBold: true
-            placeholderFontFamily: "Arial"
+            placeholderFontFamily: "Lato Black"
             placeholderColor: Style.legacy_placeholderFontColor
             placeholderText: qsTr("View key (private)") + translationManager.emptyString
             placeholderOpacity: 1.0
@@ -270,7 +270,7 @@ ColumnLayout {
             Layout.minimumWidth: 200 * scaleRatio
             id: spendKeyLine
             placeholderFontBold: true
-            placeholderFontFamily: "Arial"
+            placeholderFontFamily: "Lato Black"
             placeholderColor: Style.legacy_placeholderFontColor
             placeholderText: qsTr("Spend key (private)") + translationManager.emptyString
             placeholderOpacity: 1.0
@@ -290,7 +290,7 @@ ColumnLayout {
             Layout.maximumWidth: 600 * scaleRatio
             Layout.minimumWidth: 200 * scaleRatio
             placeholderFontBold: true
-            placeholderFontFamily: "Arial"
+            placeholderFontFamily: "Lato Black"
             placeholderColor: Style.legacy_placeholderFontColor
             placeholderText: qsTr("Restore height (optional)") + translationManager.emptyString
             placeholderOpacity: 1.0
@@ -310,7 +310,7 @@ ColumnLayout {
             Layout.fillWidth: true
             Layout.topMargin: 20 * scaleRatio
             fontSize: 14
-            fontFamily: "Arial"
+            fontFamily: "Lato Black"
             fontColor: "#555555"
             text: qsTr("Your wallet is stored in") + ": " + fileUrlInput.text;
         }

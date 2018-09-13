@@ -1,6 +1,6 @@
 #!/bin/bash
-MONERO_URL=https://github.com/blur-network/blur.git
-MONERO_BRANCH=gui-v0.1.7.1
+#MONERO_URL=https://github.com/blur-network/blur.git
+#MONERO_BRANCH=gui-v0.1.7.1
 
 pushd $(pwd)
 ROOT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -11,21 +11,21 @@ INSTALL_DIR=$ROOT_DIR/wallet
 MONERO_DIR=$ROOT_DIR/monero
 BUILD_LIBWALLET=false
 
-# init and update monero submodule
-if [ ! -d $MONERO_DIR/src ]; then
-    git submodule init monero
-fi
-git submodule update --remote
-git -C $MONERO_DIR fetch
-git -C $MONERO_DIR checkout gui-v0.1.7.1
+## init and update monero submodule
+#if [ ! -d $MONERO_DIR/src ]; then
+#    git submodule init monero
+#fi
+#git submodule update --remote
+#git -C $MONERO_DIR fetch
+#git -C $MONERO_DIR checkout gui-v0.1.7.1
 
 # get monero core tag
-get_tag
+#get_tag
 # create local monero branch
-git -C $MONERO_DIR checkout -B $VERSIONTAG
+#git -C $MONERO_DIR checkout -B $VERSIONTAG
 
-git -C $MONERO_DIR submodule init
-git -C $MONERO_DIR submodule update
+#git -C $MONERO_DIR submodule init
+#git -C $MONERO_DIR submodule update
 
 # Merge monero PR dependencies
 
@@ -207,23 +207,23 @@ fi
 
 # set CPU core count
 # thanks to SO: http://stackoverflow.com/a/20283965/4118915
-if test -z "$CPU_CORE_COUNT"; then
+if test -z "4"; then
   CPU_CORE_COUNT=$(grep -c ^processor /proc/cpuinfo 2>/dev/null || sysctl -n hw.ncpu)
 fi
 
 # Build libwallet_merged
 pushd $MONERO_DIR/build/$BUILD_TYPE/src/wallet
 eval $make_exec version -C ../..
-eval $make_exec  -j$CPU_CORE_COUNT
-eval $make_exec  install -j$CPU_CORE_COUNT
+eval $make_exec  -j4
+eval $make_exec  install -j4
 popd
 
 # Build monerod
 # win32 need to build daemon manually with msys2 toolchain
 if [ "$platform" != "mingw32" ] && [ "$ANDROID" != true ]; then
     pushd $MONERO_DIR/build/$BUILD_TYPE/src/daemon
-    eval make  -j$CPU_CORE_COUNT
-    eval make install -j$CPU_CORE_COUNT
+    eval make  -j4
+    eval make install -j4
     popd
 fi
 
@@ -240,8 +240,8 @@ eval make -C $MONERO_DIR/build/$BUILD_TYPE/external/db_drivers/liblmdb all insta
 echo "Installing libunbound..."
 pushd $MONERO_DIR/build/$BUILD_TYPE/external/unbound
 # no need to make, it was already built as dependency for libwallet
-# make -j$CPU_CORE_COUNT
-$make_exec install -j$CPU_CORE_COUNT
+# make -j4
+$make_exec install -j4
 popd
 
 

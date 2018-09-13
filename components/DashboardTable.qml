@@ -41,7 +41,7 @@ ListView {
 
         Text {
             anchors.centerIn: parent
-            font.family: "Arial"
+            font.family: "Lato Black"
             font.pixelSize: 14
             color: "#545454"
             text: qsTr("No more results") + translationManager.emptyString
@@ -81,7 +81,7 @@ ListView {
                 id: descriptionText
                 width: text.length ? (descriptionArea.containsMouse ? parent.width - x - 12 : 120) : 0
                 anchors.verticalCenter: dot.verticalCenter
-                font.family: "Arial"
+                font.family: "Lato Black"
                 font.bold: true
                 font.pixelSize: 19
                 color: "#444444"
@@ -106,7 +106,7 @@ ListView {
                 anchors.verticalCenter: dot.verticalCenter
                 width: parent.width - x - 12
                 elide: Text.ElideRight
-                font.family: "Arial"
+                font.family: "Lato Black"
                 font.pixelSize: 14
                 color: "#545454"
                 text: address
@@ -131,7 +131,7 @@ ListView {
                 
                 Text {
                     anchors.left: parent.left
-                    font.family: "Arial"
+                    font.family: "Lato Black"
                     font.pixelSize: 12
                     color: "#545454"
                     text: qsTr("Date")  + translationManager.emptyString
@@ -143,14 +143,14 @@ ListView {
                     spacing: 33
 
                     Text {
-                        font.family: "Arial"
+                        font.family: "Lato Black"
                         font.pixelSize: 18
                         color: "#000000"
                         text: date
                     }
 
                     Text {
-                        font.family: "Arial"
+                        font.family: "Lato Black"
                         font.pixelSize: 18
                         color: "#000000"
                         text: time
@@ -164,14 +164,14 @@ ListView {
                 
                 Text {
                     anchors.left: parent.left
-                    font.family: "Arial"
+                    font.family: "Lato Black"
                     font.pixelSize: 12
                     color: "#545454"
                     text: qsTr("Balance") + translationManager.emptyString
                 }
                 
                 Text {
-                    font.family: "Arial"
+                    font.family: "Lato Black"
                     font.pixelSize: 18
                     color: "#000000"
                     text: balance
@@ -184,7 +184,7 @@ ListView {
                 
                 Text {
                     anchors.left: parent.left
-                    font.family: "Arial"
+                    font.family: "Lato Black"
                     font.pixelSize: 12
                     color: "#545454"
                     text: qsTr("Amount") + translationManager.emptyString
@@ -195,7 +195,7 @@ ListView {
                     Text {
                         anchors.bottom: parent.bottom
                         anchors.bottomMargin: 3
-                        font.family: "Arial"
+                        font.family: "Lato Black"
                         font.pixelSize: 16
                         color: out ? "#FF4F41" : "#36B05B"
                         text: out ? "↓" : "↑"
@@ -203,7 +203,7 @@ ListView {
                     
                     Text {
                         anchors.bottom: parent.bottom
-                        font.family: "Arial"
+                        font.family: "Lato Black"
                         font.pixelSize: 18
                         color: out ? "#FF4F41" : "#36B05B"
                         text: amount

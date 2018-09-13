@@ -41,7 +41,7 @@ ListView {
 
         Text {
             anchors.centerIn: parent
-            font.family: "Arial"
+            font.family: "Lato Black"
             font.pixelSize: 14
             color: "#808080"
             text: qsTr("No more results") + translationManager.emptyString
@@ -63,7 +63,7 @@ ListView {
             anchors.top: parent.top
             anchors.topMargin: 12
             width: text.length ? (descriptionArea.containsMouse ? 139 : 139) : 0
-            font.family: "Arial"
+            font.family: "Lato Black"
             font.bold: true
             font.pixelSize: 19
             color: "#ffffff"
@@ -85,7 +85,7 @@ ListView {
             anchors.right: dropdown.left
             anchors.leftMargin: description.length > 0 ? 12 : 0
             anchors.rightMargin: 40
-            font.family: "Arial"
+            font.family: "Lato Black"
             font.pixelSize: 16
             color: "#ffffff"
             text: address
@@ -99,7 +99,7 @@ ListView {
             anchors.bottomMargin: 12
 
             width: 139
-            font.family: "Arial"
+            font.family: "Lato Black"
             font.pixelSize: 12
             color: "#ffffff"
             text: qsTr("Payment ID:") + translationManager.emptyString
@@ -114,7 +114,7 @@ ListView {
             anchors.right: dropdown.left
             readOnly: true
 
-            font.family: "Arial"
+            font.family: "Lato Black"
             font.pixelSize: 13
             color: "#545454"
             text: paymentId

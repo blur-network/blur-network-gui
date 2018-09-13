@@ -90,7 +90,7 @@ ColumnLayout {
         Text {
             Layout.fillWidth: true
             id: titleText
-            font.family: "Arial"
+            font.family: "Lato Black"
             font.pixelSize: 28 * scaleRatio
             wrapMode: Text.Wrap
             horizontalAlignment: Text.AlignHCenter
@@ -104,7 +104,7 @@ ColumnLayout {
             Layout.fillWidth: true
             Layout.topMargin: 30 * scaleRatio
             Layout.bottomMargin: 30 * scaleRatio
-            font.family: "Arial"
+            font.family: "Lato Black"
             font.pixelSize: 18 * scaleRatio
             wrapMode: Text.Wrap
             //renderType: Text.NativeRendering
@@ -153,7 +153,7 @@ ColumnLayout {
                 Layout.fillWidth: true
                 text: persistentSettings.blockchainDataDir
                 placeholderFontBold: true
-                placeholderFontFamily: "Arial"
+                placeholderFontFamily: "Lato Black"
                 placeholderColor: Style.legacy_placeholderFontColor
                 placeholderOpacity: 1.0
                 placeholderText: qsTr("(optional)") + translationManager.emptyString
@@ -188,7 +188,7 @@ ColumnLayout {
                 id: bootstrapNodeEdit
 
                 placeholderFontBold: true
-                placeholderFontFamily: "Arial"
+                placeholderFontFamily: "Lato Black"
                 placeholderColor: Style.legacy_placeholderFontColor
                 placeholderOpacity: 1.0
 
@@ -231,7 +231,7 @@ ColumnLayout {
                 daemonPortText: rna.search(":") != -1 ? (rna.split(":")[1].trim() == "") ? "38081" : persistentSettings.remoteNodeAddress.split(":")[1] : ""
 
                 placeholderFontBold: true
-                placeholderFontFamily: "Arial"
+                placeholderFontFamily: "Lato Black"
                 placeholderColor: Style.legacy_placeholderFontColor
                 placeholderOpacity: 1.0
 

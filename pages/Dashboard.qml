@@ -51,7 +51,7 @@ Rectangle {
         anchors.topMargin: 20
         elide: Text.ElideRight
         anchors.margins: 17
-        font.family: "Arial"
+        font.family: "Lato Black"
         font.pixelSize: 18
         color: "#4A4949"
         text: qsTr("Quick transfer") + translationManager.emptyString
@@ -95,7 +95,7 @@ Rectangle {
 
         Text {
             anchors.verticalCenter: parent.verticalCenter
-            font.family: "Arial"
+            font.family: "Lato Black"
             font.pixelSize: 12
             color: "#545454"
             textFormat: Text.RichText

@@ -66,7 +66,7 @@ ColumnLayout {
 
         Text {
             Layout.fillWidth: true
-            font.family: "Arial"
+            font.family: "Lato Black"
             font.pixelSize: 28 * scaleRatio
             //renderType: Text.NativeRendering
             color: "#C9C9C9"
@@ -77,7 +77,7 @@ ColumnLayout {
 
         Text {
             Layout.fillWidth: true
-            font.family: "Arial"
+            font.family: "Lato Black"
             font.pixelSize: 18 * scaleRatio
             //renderType: Text.NativeRendering
             color: "#C9C9C9"
@@ -134,7 +134,7 @@ ColumnLayout {
 
             Text {
                 Layout.preferredWidth: page.buttonSize
-                font.family: "Arial"
+                font.family: "Lato Black"
                 font.pixelSize: 16 * scaleRatio
                 color: "#4A4949"
                 horizontalAlignment: Text.AlignHCenter
@@ -176,7 +176,7 @@ ColumnLayout {
 
             Text {
                 Layout.preferredWidth: page.buttonSize
-                font.family: "Arial"
+                font.family: "Lato Black"
                 font.pixelSize: 16 * scaleRatio
                 color: "#4A4949"
                 horizontalAlignment: Text.AlignHCenter
@@ -219,7 +219,7 @@ ColumnLayout {
 
             Text {
                 Layout.preferredWidth: page.buttonSize
-                font.family: "Arial"
+                font.family: "Lato Black"
                 font.pixelSize: 16 * scaleRatio
                 color: "#4A4949"
                 horizontalAlignment: Text.AlignHCenter

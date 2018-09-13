@@ -128,7 +128,7 @@ Rectangle {
             }, State {
                name: "SharedRingDB"
                PropertyChanges { target: root; currentView: sharedringdbView }
-               PropertyChanges { target: mainFlickable; contentHeight: sharedringdbView.panelHeight + 100  }
+               PropertyChanges { target: mainFlickable; contentHeight: minHeight  }
             }, State {
                 name: "AddressBook"
                 PropertyChanges {  target: root; currentView: addressBookView  }
@@ -140,7 +140,7 @@ Rectangle {
             }, State {
                 name: "Settings"
                PropertyChanges { target: root; currentView: settingsView }
-               PropertyChanges { target: mainFlickable; contentHeight: settingsView.settingsHeight + 100 }
+               PropertyChanges { target: mainFlickable; contentHeight: 2000 * scaleRatio }
             }, State {
                 name: "Mining"
                 PropertyChanges { target: root; currentView: miningView }
@@ -151,6 +151,22 @@ Rectangle {
                 PropertyChanges { target: mainFlickable; contentHeight: minHeight  + 200 * scaleRatio }
             }
         ]
+
+    // color stripe at the top
+    Row {
+        id: styledRow
+        height: 4
+        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.right: parent.right
+
+
+        Rectangle { height: 4; width: parent.width / 5; color: "#FFE00A" }
+        Rectangle { height: 4; width: parent.width / 5; color: "#6B0072" }
+        Rectangle { height: 4; width: parent.width / 5; color: "#4CB860" }
+        Rectangle { height: 4; width: parent.width / 5; color: "#FFD781" }
+        Rectangle { height: 4; width: parent.width / 5; color: "#FF4F41" }
+    }
 
     ColumnLayout {
         anchors.fill: parent

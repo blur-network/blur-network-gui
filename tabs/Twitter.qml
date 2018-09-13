@@ -138,7 +138,7 @@ Item {
                 anchors.top: parent.top
                 anchors.topMargin: 11
                 elide: Text.ElideRight
-                font.family: "Arial"
+                font.family: "Lato Black"
                 font.pixelSize: 18
                 color: "#000000"
                 text: model.name
@@ -153,7 +153,7 @@ Item {
                 anchors.bottomMargin: 10
                 wrapMode: Text.Wrap
                 elide: Text.ElideRight
-                font.family: "Arial"
+                font.family: "Lato Black"
                 font.pixelSize: 12
                 color: "#535353"
                 text: model.statusText

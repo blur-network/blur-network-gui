@@ -27,7 +27,7 @@ Column {
             property alias placeholderText: memoTextPlaceholder.text
             textMargin: 8 * scaleRatio
             text: ""
-            font.family: "Arial"
+            font.family: "Lato Black"
             font.pixelSize: 16 * scaleRatio
             wrapMode: TextInput.Wrap
             width: parent.width
@@ -41,7 +41,7 @@ Column {
                 font.pixelSize: 16 * scaleRatio
                 anchors.margins: 8 * scaleRatio
                 font.bold:true
-                font.family: "Arial"
+                font.family: "Lato Black"
                 text: qsTr("Enter your 25 (or 24) word mnemonic seed") + translationManager.emptyString
                 color: "#BABABA"
                 visible: !memoTextInput.text/* && !parent.focus*/
@@ -86,7 +86,7 @@ Column {
                 anchors.rightMargin: 16 * scaleRatio
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
-                font.family: "Arial"
+                font.family: "Lato Black"
                 font.pixelSize: 15 * scaleRatio
                 color: "#C9C9C9"
                 wrapMode: Text.Wrap

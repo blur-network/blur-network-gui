@@ -99,7 +99,7 @@ Item {
                     id: dropText
                     width: 114 - 12
                     anchors.verticalCenter: parent.verticalCenter
-                    font.family: "Arial"
+                    font.family: "Lato Black"
                     font.pixelSize: 12
                     font.bold: true
                     color: "#4A4747"
@@ -194,7 +194,7 @@ Item {
                             elide: Text.ElideRight
                             anchors.leftMargin: 12
                             anchors.rightMargin: 12
-                            font.family: "Arial"
+                            font.family: "Lato Black"
                             font.bold: true
                             font.pixelSize: 12
                             color: delegateArea.pressed || parent.isCurrent ? "#FFFFFF" : "#4A4646"

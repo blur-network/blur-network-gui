@@ -122,7 +122,7 @@ ColumnLayout {
 
         Text {
             Layout.fillWidth: true
-            font.family: "Arial"
+            font.family: "Lato Black"
             font.pixelSize: 28 * scaleRatio
             wrapMode: Text.Wrap
             horizontalAlignment: Text.AlignHCenter
@@ -134,7 +134,7 @@ ColumnLayout {
         Text {
             Layout.fillWidth: true
             id: settingsText
-            font.family: "Arial"
+            font.family: "Lato Black"
             font.pixelSize: 16 * scaleRatio
             wrapMode: Text.Wrap
             textFormat: Text.RichText

@@ -46,7 +46,6 @@ Rectangle {
     property string startLinkText: qsTr("<style type='text/css'>a {text-decoration: none; color: #4CB860; font-size: 14px;}</style><font size='2'> (</font><a href='#'>Start daemon</a><font size='2'>)</font>") + translationManager.emptyString
     property bool showAdvanced: false
 
-
     Clipboard { id: clipboard }
 
     function scaleValueToMixinCount(scaleValue) {
@@ -325,7 +324,7 @@ Rectangle {
           LineEdit {
               id: paymentIdLine
               fontBold: true
-              labelText: qsTr("Payment ID <font size='2'>(Optional)</font>") + translationManager.emptyString
+              labelText: qsTr("Payment ID <font size='2'>( Optional )</font>") + translationManager.emptyString
               placeholderText: qsTr("16 or 64 hexadecimal characters") + translationManager.emptyString
               Layout.fillWidth: true
           }
@@ -334,7 +333,7 @@ Rectangle {
       RowLayout {
           LineEdit {
               id: descriptionLine
-              labelText: qsTr("Description <font size='2'>(Optional)</font>") + translationManager.emptyString
+              labelText: qsTr("Description <font size='2'>( Optional )</font>") + translationManager.emptyString
               placeholderText: qsTr("Saved to local wallet history") + translationManager.emptyString
               Layout.fillWidth: true
           }
@@ -428,7 +427,7 @@ Rectangle {
                 onClicked: {
                     persistentSettings.transferShowAdvanced = !persistentSettings.transferShowAdvanced
                 }
-                text: qsTr("Advanced Options") + translationManager.emptyString
+                text: qsTr("Advanced options") + translationManager.emptyString
             }
         }
 
@@ -436,7 +435,7 @@ Rectangle {
             visible: persistentSettings.transferShowAdvanced
             Layout.fillWidth: true
             height: 1
-            color: Qt.rgba(255, 255, 255, 0.25)
+            color: Style.dividerColor
             opacity: Style.dividerOpacity
             Layout.bottomMargin: 30 * scaleRatio
         }
@@ -630,6 +629,8 @@ Rectangle {
 
     }
 
+
+
     Component.onCompleted: {
         //Disable password page until enabled by updateStatus
         pageRoot.enabled = false
@@ -692,3 +693,4 @@ Rectangle {
         descriptionLine.text = description
     }
 }
+

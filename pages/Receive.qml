@@ -50,7 +50,7 @@ Rectangle {
     property string trackingLineText: ""
 
     function makeQRCodeString() {
-        var s = ""
+        var s = "blur:"
         var nfields = 0
         s += current_address;
         var amount = amountLine.text.trim()
@@ -72,12 +72,12 @@ Rectangle {
     }
 
     function update() {
-        if (!appWindow.currentWallet || !trackingEnabled.checked) {
+        if (!appWindow.currentWallet) {
             setTrackingLineText("-")
             return
         }
         if (appWindow.currentWallet.connected() == Wallet.ConnectionStatus_Disconnected) {
-            setTrackingLineText(qsTr("WARNING: No connection to daemon"))
+            setTrackingLineText(qsTr("WARNING: no connection to daemon"))
             return
         }
 
@@ -286,7 +286,7 @@ Rectangle {
                 Layout.fillWidth: true
                 validator: DoubleValidator {
                     bottom: 0.0
-                    top: 9223300.0000000000000
+                    top: 9223300.000000000000
                     decimals: 12
                     notation: DoubleValidator.StandardNotation
                     locale: "C"
@@ -308,7 +308,7 @@ Rectangle {
                       translationManager.emptyString
                 width: mainLayout.labelWidth
                 onLinkActivated: {
-                    trackingHowToUseDialog.title  = qsTr("Tracking Payments") + translationManager.emptyString;
+                    trackingHowToUseDialog.title  = qsTr("Tracking payments") + translationManager.emptyString;
                     trackingHowToUseDialog.text = qsTr(
                         "<p><font size='+2'>This is a simple sales tracker:</font></p>" +
                         "<p>Let your customer scan that QR code to make a payment (if that customer has software which " +

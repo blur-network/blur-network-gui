@@ -616,8 +616,12 @@ ApplicationWindow {
             transactionConfirmationPopup.text += (paymentId === "" ? "" : (qsTr("\nPayment ID: ") + paymentId));
             transactionConfirmationPopup.text +=  qsTr("\n\nAmount: ") + walletManager.displayAmount(transaction.amount);
             transactionConfirmationPopup.text +=  qsTr("\nFee: ") + walletManager.displayAmount(transaction.fee);
-            transactionConfirmationPopup.text +=  qsTr("\n\nNumber Of Transactions: ") + transaction.txCount
-            transactionConfirmationPopup.text +=  (transactionDescription === "" ? "" : (qsTr("\nDescription: ") + transactionDescription))
+            transactionConfirmationPopup.text +=  qsTr("\nRingsize: ") + (mixinCount + 1);
+            if(mixinCount !== 4){
+                transactionConfirmationPopup.text +=  qsTr("\n\nWARNING: incorrect ring size");
+            }
+            transactionConfirmationPopup.text +=  qsTr("\n\nNumber of transactions: ") + transaction.txCount
+            transactionConfirmationPopup.text +=  (transactionDescription === "" ? "" : (qsTr("Description: ") + transactionDescription))
             for (var i = 0; i < transaction.subaddrIndices.length; ++i){
                 transactionConfirmationPopup.text += qsTr("\nSpending Address Index: ") + transaction.subaddrIndices[i];
             }
@@ -1594,7 +1598,7 @@ ApplicationWindow {
                 anchors.horizontalCenter: parent.horizontalCenter
                 y: 6
                 lineHeight: 0.7
-                font.family: "Arial"
+                font.family: "Lato Black"
                 font.pixelSize: 12 * scaleRatio
                 color: "#FFFFFF"
             }
@@ -1735,17 +1739,6 @@ ApplicationWindow {
             middlePanel.focus = true
             middlePanel.focus = false
         }
-    }
-
-    // Daemon console
-    DaemonConsole {
-        id: daemonConsolePopup
-        height:500
-        width:800
-        title: qsTr("Daemon Log") + translationManager.emptyString
-        onAccepted: {
-            close();
-        }
-    }
+}
 
 }

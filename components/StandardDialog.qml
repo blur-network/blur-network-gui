@@ -107,7 +107,7 @@ Rectangle {
                 id: dialogTitle
                 horizontalAlignment: Text.AlignHCenter
                 fontSize: 18 * scaleRatio
-                fontFamily: "Arial"
+                fontFamily: "Lato Black"
                 color: MoneroComponents.Style.defaultFontColor
             }
 

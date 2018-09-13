@@ -88,7 +88,7 @@ ListView {
             anchors.top: addressLine.bottom
             anchors.left: parent.left
             anchors.leftMargin: 20
-            font.family: "Arial"
+            font.family: "Lato Black"
             font.bold: true
             font.pixelSize: 12
             color: "#FFFFFF"
@@ -101,7 +101,7 @@ ListView {
             anchors.left: indexText.right
             anchors.right: parent.right
             anchors.leftMargin: 10
-            font.family: "Arial"
+            font.family: "Lato Black"
             font.bold: true
             font.pixelSize: 12
             color: MoneroComponents.Style.greyFontColor

@@ -75,7 +75,7 @@ Rectangle {
                 wrapMode: Text.Wrap
                 Layout.fillWidth: true
                 font.family: Style.fontRegular.name
-                font.pixelSize: 14 * scaleRatio
+                font.pixelSize: 16 * scaleRatio
                 color: Style.defaultFontColor
             }
 
@@ -128,7 +128,6 @@ Rectangle {
                     color: Style.defaultFontColor
                     text: qsTr("Manage miner") + translationManager.emptyString
                     fontSize: 16
-                    Layout.preferredWidth: 120
                 }
 
                 StandardButton {
@@ -168,14 +167,12 @@ Rectangle {
             }
         }
 
-            Text {
-                id: statusText
-                text: qsTr("Status: Not Mining")
-                color: Style.defaultFontColor
-                textFormat: Text.RichText
-                font.pixelSize: 14
-                wrapMode: Text.Wrap
-            }
+        Text {
+            id: statusText
+            text: qsTr("Status: not mining")
+            color: Style.defaultFontColor
+            textFormat: Text.RichText
+            wrapMode: Text.Wrap
         }
     }
 

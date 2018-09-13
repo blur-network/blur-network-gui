@@ -162,7 +162,7 @@ Rectangle {
                     anchors.leftMargin: 20
                     anchors.top: parent.top
                     anchors.topMargin: 76
-                    font.family: "Arial"
+                    font.family: "Lato Black"
                     color: "#FFFFFF"
                     text: "N/A"
                     // dynamically adjust text size
@@ -183,7 +183,7 @@ Rectangle {
                     anchors.leftMargin: 20
                     anchors.top: parent.top
                     anchors.topMargin: 126
-                    font.family: "Arial"
+                    font.family: "Lato Black"
                     color: "#FFFFFF"
                     text: "N/A"
                     // dynamically adjust text size

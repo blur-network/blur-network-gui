@@ -65,7 +65,7 @@ ColumnLayout {
 
         Text {
             Layout.fillWidth: true
-            font.family: "Arial"
+            font.family: "Lato Black"
             font.pixelSize: 28 * scaleRatio
             color: "#C9C9C9"
             wrapMode: Text.Wrap
@@ -75,7 +75,7 @@ ColumnLayout {
 
         Text {
             Layout.fillWidth: true
-            font.family: "Arial"
+            font.family: "Lato Black"
             font.pixelSize: 18 * scaleRatio
             color: "#C9C9C9"
             wrapMode: Text.Wrap
@@ -147,7 +147,7 @@ ColumnLayout {
                 }
 
                 Text {
-                    font.family: "Arial"
+                    font.family: "Lato Black"
                     font.pixelSize: 18 * scaleRatio
 //                    anchors.horizontalCenter: parent.horizontalCenter
                     font.bold: gridView.currentIndex === index

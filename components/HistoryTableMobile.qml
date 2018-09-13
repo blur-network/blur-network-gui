@@ -74,7 +74,7 @@ ListView {
 
         Text {
             anchors.centerIn: parent
-            font.family: "Arial"
+            font.family: "Lato Black"
             font.pixelSize: 14 * scaleRatio
             color: "#545454"
             text: qsTr("No more results") + translationManager.emptyString
@@ -193,7 +193,7 @@ ListView {
                 Layout.leftMargin: 10 * scaleRatio
                 spacing: 2
                 Text {
-                    font.family: "Arial"
+                    font.family: "Lato Black"
                     font.pixelSize: 14 * scaleRatio
                     color: isOut ? MoneroComponents.Style.defaultFontColor : "#2eb358"
                     text: isOut ? "↓" : "↑"
@@ -201,7 +201,7 @@ ListView {
 
                 Text {
                     id: amountText
-                    font.family: "Arial"
+                    font.family: "Lato Black"
                     font.pixelSize: 18 * scaleRatio
                     color: isOut ? MoneroComponents.Style.defaultFontColor : "#2eb358"
                     text:  displayAmount

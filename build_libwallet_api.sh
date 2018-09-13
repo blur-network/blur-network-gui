@@ -21,8 +21,8 @@ pushd $MONERO_DIR/build/release
 platform=$(get_platform)
 
 pushd $MONERO_DIR/build/release/src/wallet
-make -j$CPU_CORE_COUNT
-make install -j$CPU_CORE_COUNT
+make -j4
+make install -j4
 popd
 
 # unbound is one more dependency. can't be merged to the wallet_merged
@@ -34,7 +34,7 @@ if [ "$platform" != "linux" ]; then
     pushd $MONERO_DIR/build/release/external/unbound
     # no need to make, it was already built as dependency for libwallet
     # make -j$CPU_CORE_COUNT
-    make install -j$CPU_CORE_COUNT
+    make install -j4
     popd
 fi
 

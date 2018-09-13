@@ -96,7 +96,7 @@ Rectangle {
                     anchors.leftMargin: 13
                     anchors.rightMargin: 13
                     elide: Text.ElideRight
-                    font.family: "Arial"
+                    font.family: "Lato Black"
                     font.pixelSize: 14
                     color: {
                         if(delegateArea.pressed)

@@ -85,7 +85,7 @@ Item {
         anchors.leftMargin: 16
         width: parent.width - dotsRow.width - 16
 
-        font.family: "Arial"
+        font.family: "Lato Black"
         font.pixelSize: 28
         wrapMode: Text.Wrap
         //renderType: Text.NativeRendering
@@ -127,7 +127,7 @@ Item {
                     anchors.fill: parent
                     verticalAlignment: Text.AlignVCenter
                     horizontalAlignment: Text.AlignHCenter
-                    font.family: "Arial"
+                    font.family: "Lato Black"
                     font.pixelSize: 18
                     color: "#6B0072"
                     text: "50"
@@ -145,7 +145,7 @@ Item {
 
             Text {
                 anchors.verticalCenter: parent.verticalCenter
-                font.family: "Arial"
+                font.family: "Lato Black"
                 font.pixelSize: 18
                 color: "#C9C9C9"
                 text: qsTr("% of my fee added to each transaction") + translationManager.emptyString
@@ -155,7 +155,7 @@ Item {
         Text {
             anchors.left: parent.left
             anchors.right: parent.right
-            font.family: "Arial"
+            font.family: "Lato Black"
             font.pixelSize: 15
             color: "#C9C9C9"
             wrapMode: Text.Wrap
@@ -183,7 +183,7 @@ Item {
             Text {
                 anchors.left: parent.left
                 anchors.right: parent.right
-                font.family: "Arial"
+                font.family: "Lato Black"
                 font.pixelSize: 15
                 color: "#C9C9C9"
                 wrapMode: Text.Wrap

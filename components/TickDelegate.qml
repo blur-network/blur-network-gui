@@ -49,7 +49,7 @@ Item {
             anchors.rightMargin: 12
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 2
-            font.family: "Arial"
+            font.family: "Lato Black"
             font.bold: true
             font.pixelSize: 12 * scaleRatio
             color: MoneroComponents.Style.defaultFontColor

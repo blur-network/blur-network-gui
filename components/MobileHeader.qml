@@ -45,7 +45,7 @@ Rectangle {
             id: balanceLabel
             width: 116 * scaleRatio
             height: 20 * scaleRatio
-            font.family: "Arial"
+            font.family: "Lato Black"
             font.pixelSize: 12 * scaleRatio
             font.letterSpacing: -1
             elide: Text.ElideRight
@@ -59,7 +59,7 @@ Rectangle {
             id: balanceText
             width: 110 * scaleRatio
             height: 20 * scaleRatio
-            font.family: "Arial"
+            font.family: "Lato Black"
             font.pixelSize: 18 * scaleRatio
             font.letterSpacing: -1
             elide: Text.ElideRight
@@ -83,7 +83,7 @@ Rectangle {
         Text {
             width: 116 * scaleRatio
             height: 20 * scaleRatio
-            font.family: "Arial"
+            font.family: "Lato Black"
             font.pixelSize: 12 * scaleRatio
             font.letterSpacing: -1
             elide: Text.ElideRight
@@ -97,7 +97,7 @@ Rectangle {
             id: availableBalanceText
             width: 110 * scaleRatio
             height: 20 * scaleRatio
-            font.family: "Arial"
+            font.family: "Lato Black"
             font.pixelSize: 14 * scaleRatio
             font.letterSpacing: -1
             elide: Text.ElideRight

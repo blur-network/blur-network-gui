@@ -82,7 +82,7 @@ Window {
                 id: dialogTitle
                 horizontalAlignment: Text.AlignHCenter
                 font.pixelSize: 32
-                font.family: "Arial"
+                font.family: "Lato Black"
                 color: "#555555"
             }
 
@@ -93,7 +93,7 @@ Window {
                 id : dialogContent
                 Layout.fillWidth: true
                 Layout.fillHeight: true
-                font.family: "Arial"
+                font.family: "Lato Black"
                 textFormat: TextEdit.AutoText
                 readOnly: true
                 font.pixelSize: 12

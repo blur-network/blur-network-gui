@@ -74,7 +74,7 @@ ListView {
 
         Text {
             anchors.centerIn: parent
-            font.family: "Arial"
+            font.family: "Lato Black"
             font.pixelSize: 14
             color: "#545454"
             text: qsTr("No more results") + translationManager.emptyString
