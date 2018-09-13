@@ -1,6 +1,6 @@
 # Blur Network GUI Wallet
 
-Copyright (c) 2018, The Blur Network
+Copyright (c) 2018, The Blur Network</br> 
 Copyright (c) 2014-2018, The Monero Project
 
 ## License
