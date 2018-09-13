@@ -1,7 +1,6 @@
 *.user
 *.user.*
 translations/*.qm
-build
 release
 version.js
 # IOS stuff below
