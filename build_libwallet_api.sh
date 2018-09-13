@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-# MONERO_URL=https://github.com/monero-project/monero.git
+# MONERO_URL=https://github.com/blur-network/blur.git
 # MONERO_BRANCH=master
 CPU_CORE_COUNT=$(grep -c ^processor /proc/cpuinfo 2>/dev/null || sysctl -n hw.ncpu)
 pushd $(pwd)
