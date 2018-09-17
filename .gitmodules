@@ -1,5 +1,4 @@
 [submodule "monero"]
 	path = monero
 	url = https://github.com/blur-network/blur.git
-        ignore = all
-	branch = gui-prerelease
+	branch = v0.1.7
