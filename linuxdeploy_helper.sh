@@ -7,7 +7,7 @@ TARGET=$1
 
 GUI_EXEC=$2
 
-platform=$(get_platform)
+platform=linux64
 
 if [[ "$platform" == "linux64" ]]; then
     PLAT_DIR="/usr/lib/x86_64-linux-gnu"
@@ -38,7 +38,7 @@ mkdir -p $TARGET/libs || exit
 #ldd $TARGET/$GUI_EXEC | grep "=> /" | awk '{print $3}' | grep $INCLUDE | xargs -I '{}' cp -v '{}' $TARGET/libs || exit
 #ldd $TARGET/$GUI_EXEC | grep "=> /" | awk '{print $3}' | grep -Ev $EXCLUDE | xargs -I '{}' cp -v '{}' $TARGET/libs || exit
 #ldd $TARGET/plugins/platforms/libqxcb.so| grep "=> /" | awk '{print $3}' | grep -Ev $EXCLUDE | xargs -I '{}' cp -v '{}' $TARGET/libs || exit
-#cp -v $QTXML_DIR/libQt5XmlPatterns.so.5 $TARGET/libs || exit
+cp -v $QTXML_DIR/libQt5XmlPatterns.so.5 $TARGET/libs || exit
 
 # Create start script
 cat > $TARGET/start-gui.sh <<EOL

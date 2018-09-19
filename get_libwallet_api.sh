@@ -1,6 +1,6 @@
 #!/bin/bash
 MONERO_URL=https://github.com/blur-network/blur.git
-MONERO_BRANCH=gui-v0.1.7.1
+MONERO_BRANCH=v0.1.7
 
 pushd $(pwd)
 ROOT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -17,12 +17,9 @@ if [ ! -d $MONERO_DIR/src ]; then
 fi
 git submodule update --remote
 git -C $MONERO_DIR fetch
-git -C $MONERO_DIR checkout gui-v0.1.7.1
+git -C $MONERO_DIR checkout -B v0.1.7
 
-# get monero core tag
-get_tag
-# create local monero branch
-git -C $MONERO_DIR checkout -B $VERSIONTAG
+
 
 git -C $MONERO_DIR submodule init
 git -C $MONERO_DIR submodule update
@@ -31,32 +28,32 @@ git -C $MONERO_DIR submodule update
 
 # Workaround for git username requirements
 # Save current user settings and revert back when we are done with merging PR's
-OLD_GIT_USER=$(git -C $MONERO_DIR config --local user.name)
-OLD_GIT_EMAIL=$(git -C $MONERO_DIR config --local user.email)
-git -C $MONERO_DIR config user.name "Monero GUI"
-git -C $MONERO_DIR config user.email "gui@monero.local"
+#OLD_GIT_USER=$(git -C $MONERO_DIR config --local user.name)
+#OLD_GIT_EMAIL=$(git -C $MONERO_DIR config --local user.email)
+#git -C $MONERO_DIR config user.name "Monero GUI"
+#git -C $MONERO_DIR config user.email "gui@monero.local"
 # check for PR requirements in most recent commit message (i.e requires #xxxx)
-for PR in $(git log --format=%B -n 1 | grep -io "requires #[0-9]*" | sed 's/[^0-9]*//g'); do
-    echo "Merging monero push request #$PR"
-    # fetch pull request and merge
-    git -C $MONERO_DIR fetch origin pull/$PR/head:PR-$PR
-    git -C $MONERO_DIR merge --quiet PR-$PR  -m "Merge monero PR #$PR"
-    BUILD_LIBWALLET=true
-done
+#for PR in $(git log --format=%B -n 1 | grep -io "requires #[0-9]*" | sed 's/[^0-9]*//g'); do
+#    echo "Merging monero push request #$PR"
+#    # fetch pull request and merge
+#    git -C $MONERO_DIR fetch origin pull/$PR/head:PR-$PR
+#    git -C $MONERO_DIR merge --quiet PR-$PR  -m "Merge monero PR #$PR"
+#    BUILD_LIBWALLET=true
+#done
 
 # revert back to old git config
-$(git -C $MONERO_DIR config user.name "$OLD_GIT_USER")
-$(git -C $MONERO_DIR config user.email "$OLD_GIT_EMAIL")
+#$(git -C $MONERO_DIR config user.name "$OLD_GIT_USER")
+#$(git -C $MONERO_DIR config user.email "$OLD_GIT_EMAIL")
 
 # Build libwallet if it doesnt exist
-if [ ! -f $MONERO_DIR/lib/libwallet_merged.a ]; then 
+if [ ! -f $MONERO_DIR/lib/libwallet_merged.a ]; then
     echo "libwallet_merged.a not found - Building libwallet"
     BUILD_LIBWALLET=true
 # Build libwallet if no previous version file exists
-elif [ ! -f $MONERO_DIR/version.sh ]; then 
+elif [ ! -f $MONERO_DIR/version.sh ]; then
     echo "monero/version.h not found - Building libwallet"
     BUILD_LIBWALLET=true
-## Compare previously built version with submodule + merged PR's version. 
+# Compare previously built version with submodule + merged PR's version.
 else
     source $MONERO_DIR/version.sh
     # compare submodule version with latest build
@@ -172,7 +169,7 @@ elif [ "$platform" == "linuxarmv7" ]; then
         cmake -D BUILD_TESTS=OFF -D ARCH="armv7-a" -D -D BUILD_64=OFF  -D BUILD_GUI_DEPS=ON -D CMAKE_INSTALL_PREFIX="$MONERO_DIR"  ../..
     fi
 
-## LINUX other 
+## LINUX other
 elif [ "$platform" == "linux" ]; then
     echo "Configuring build for Linux general"
     if [ "$STATIC" == true ]; then

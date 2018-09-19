@@ -56,7 +56,7 @@ function get_tag()
       # save tag name + commit if availible
       TAGNAME=$(git describe | sed -e 's/[\t ]*//')
       if test -z "$TAGNAME"
-      then
+     then
         TAGNAME="$VERSIONTAG"
       fi
     fi

@@ -151,8 +151,7 @@ ios {
         -lboost_chrono \
         -lboost_program_options \
         -lssl \
-        -lcrypto \
-        -ldl
+        -lcrypto 
 }
 
 CONFIG(WITH_SCANNER) {
@@ -261,9 +260,9 @@ linux {
         message("using static libraries")
         LIBS+= -Wl,-Bstatic    
         QMAKE_LFLAGS += -static-libgcc -static-libstdc++
-   #     contains(QT_ARCH, x86_64) {
-            LIBS+= -lunbound -ldl
-   #     }
+        contains(QT_ARCH, x86_64) {
+            LIBS+= -lunbound
+        }
     } else {
       # On some distro's we need to add dynload
       LIBS+= -ldl
@@ -281,7 +280,6 @@ linux {
         -lssl \
         -llmdb \
         -lcrypto
-	-ldl
 
     if(!android) {
         LIBS+= \
@@ -319,8 +317,7 @@ macx {
         -lboost_chrono \
         -lboost_program_options \
         -lssl \
-        -lcrypto \
-        -ldl
+        -lcrypto 
 
     LIBS+= -framework PCSC
 
