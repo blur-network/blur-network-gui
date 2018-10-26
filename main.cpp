@@ -98,7 +98,13 @@ int main(int argc, char *argv[])
 //    qDebug() << "High DPI auto scaling - enabled";
 //#endif
 
+    // Log settings
+    Monero::Wallet::init(argv[0], "blur-network-gui");
+//    qInstallMessageHandler(messageHandler);
+
     MainApp app(argc, argv);
+
+    qDebug() << "app startd";
 
     app.setApplicationName("blur-network-wallet");
     app.setOrganizationDomain("blur.cash");
@@ -181,12 +187,12 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("translationManager", TranslationManager::instance());
 
     engine.addImageProvider(QLatin1String("qrcode"), new QRCodeImageProvider());
-    const QStringList arguments = QCoreApplication::arguments();
 
     engine.rootContext()->setContextProperty("mainApp", &app);
 
 // Exclude daemon manager from IOS
 #ifndef Q_OS_IOS
+    const QStringList arguments = (QStringList) QCoreApplication::arguments().at(0);
     DaemonManager * daemonManager = DaemonManager::instance(&arguments);
     engine.rootContext()->setContextProperty("daemonManager", daemonManager);
 #endif
@@ -198,17 +204,8 @@ int main(int argc, char *argv[])
 //  Windows, ~/Monero Accounts/ on nix / osx
 #if defined(Q_OS_WIN) || defined(Q_OS_IOS)
     QStringList moneroAccountsRootDir = QStandardPaths::standardLocations(QStandardPaths::DocumentsLocation);
-#elif defined(Q_OS_IOS)
-    isIOS = true;
-    QStringList moneroAccountsRootDir = QStandardPaths::standardLocations(QStandardPaths::DocumentsLocation);
-#elif defined(Q_OS_UNIX)
+#else
     QStringList moneroAccountsRootDir = QStandardPaths::standardLocations(QStandardPaths::HomeLocation);
-#endif
-#ifdef Q_OS_MAC
-    isMac = true;
-#endif
-#ifdef Q_OS_ANDROID
-    isAndroid = true;
 #endif
 
     engine.rootContext()->setContextProperty("isWindows", isWindows);
@@ -252,12 +249,10 @@ int main(int argc, char *argv[])
 
     // Get default account name
     QString accountName = qgetenv("USER"); // mac/linux
-    if (accountName.isEmpty()){
+    if (accountName.isEmpty())
         accountName = qgetenv("USERNAME"); // Windows
-    }
-    if (accountName.isEmpty()) {
+    if (accountName.isEmpty())
         accountName = "My Blur Account";
-    }
 
     engine.rootContext()->setContextProperty("defaultAccountName", accountName);
     engine.rootContext()->setContextProperty("applicationDirectory", QApplication::applicationDirPath());
