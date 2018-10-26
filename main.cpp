@@ -54,6 +54,7 @@
 #include "Subaddress.h"
 #include "model/SubaddressModel.h"
 #include "wallet/api/wallet2_api.h"
+#include "Logger.h"
 #include "MainApp.h"
 
 // IOS exclusions
@@ -65,36 +66,47 @@
 #include "QrCodeScanner.h"
 #endif
 
-void messageHandler(QtMsgType type, const QMessageLogContext &context, const QString &msg)
-{
-    // Send all message types to logger
-    Monero::Wallet::debug("qml", msg.toStdString());
-}
+bool isIOS = false;
+bool isAndroid = false;
+bool isWindows = false;
+bool isDesktop = false;
 
 int main(int argc, char *argv[])
 {
-    Monero::Utils::onStartup();
+    // platform dependant settings
+#if !defined(Q_OS_ANDROID) && !defined(Q_OS_IOS)
+    bool isDesktop = true;
+#elif defined(Q_OS_ANDROID)
+    bool isAndroid = true;
+#elif defined(Q_OS_IOS)
+    bool isIOS = true;
+#endif
+#ifdef Q_OS_WIN
+    bool isWindows = true;
+#endif
+
+    // disable "QApplication: invalid style override passed" warning
+    if (isDesktop) putenv((char*)"QT_STYLE_OVERRIDE=fusion");
+#ifdef Q_OS_LINUX
+    // force platform xcb
+    if (isDesktop) putenv((char*)"QT_QPA_PLATFORM=xcb");
+#endif
+
 //    // Enable high DPI scaling on windows & linux
 //#if !defined(Q_OS_ANDROID) && QT_VERSION >= 0x050600
 //    QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 //    qDebug() << "High DPI auto scaling - enabled";
 //#endif
 
-    // Log settings
-    Monero::Wallet::init(argv[0], "blur-network-gui");
-//    qInstallMessageHandler(messageHandler);
-
     MainApp app(argc, argv);
 
-    qDebug() << "app startd";
-
-    app.setApplicationName("blur-network-gui");
+    app.setApplicationName("blur-network-wallet");
     app.setOrganizationDomain("blur.cash");
     app.setOrganizationName("blur-network");
 
-    #if defined(Q_OS_LINUX) && !defined(Q_OS_ANDROID)
-    app.setWindowIcon(QIcon(":/images/appicon.ico"));
-    #endif
+#if defined(Q_OS_LINUX)
+    if (isDesktop) app.setWindowIcon(QIcon(":/images/appicon.ico"));
+#endif
 
     filter *eventFilter = new filter;
     app.installEventFilter(eventFilter);
@@ -184,12 +196,7 @@ int main(int argc, char *argv[])
 //  to save the wallet file (.keys, .bin), they have to be user-accessible for
 //  backups - I reckon we save that in My Documents\Monero Accounts\ on
 //  Windows, ~/Monero Accounts/ on nix / osx
-    bool isWindows = false;
-    bool isIOS = false;
-    bool isMac = false;
-    bool isAndroid = false;
-#ifdef Q_OS_WIN
-    isWindows = true;
+#if defined(Q_OS_WIN) || defined(Q_OS_IOS)
     QStringList moneroAccountsRootDir = QStandardPaths::standardLocations(QStandardPaths::DocumentsLocation);
 #elif defined(Q_OS_IOS)
     isIOS = true;
@@ -277,14 +284,15 @@ int main(int argc, char *argv[])
 
 #ifdef WITH_SCANNER
     QObject *qmlCamera = rootObject->findChild<QObject*>("qrCameraQML");
-    if( qmlCamera ){
-        qDebug() << "QrCodeScanner : object found";
+    if (qmlCamera)
+    {
+        qWarning() << "QrCodeScanner : object found";
         QCamera *camera_ = qvariant_cast<QCamera*>(qmlCamera->property("mediaObject"));
         QObject *qmlFinder = rootObject->findChild<QObject*>("QrFinder");
         qobject_cast<QrCodeScanner*>(qmlFinder)->setSource(camera_);
-    } else {
-        qDebug() << "QrCodeScanner : something went wrong !";
     }
+    else
+        qCritical() << "QrCodeScanner : something went wrong !";
 #endif
 
     QObject::connect(eventFilter, SIGNAL(sequencePressed(QVariant,QVariant)), rootObject, SLOT(sequencePressed(QVariant,QVariant)));
