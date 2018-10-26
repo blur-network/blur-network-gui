@@ -215,7 +215,7 @@ eval $make_exec  -j4
 eval $make_exec  install -j4
 popd
 
-# Build monerod
+# Build blurd
 # win32 need to build daemon manually with msys2 toolchain
 if [ "$platform" != "mingw32" ] && [ "$ANDROID" != true ]; then
     pushd $MONERO_DIR/build/$BUILD_TYPE/src/daemon
