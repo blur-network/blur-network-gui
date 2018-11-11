@@ -341,9 +341,9 @@ macx {
         -lsodium \
         -lcrypto \
         -ldl
-    LIBS+= -framework PCSC
+    LIBS+=
 
-    QMAKE_LFLAGS += -pie
+    QMAKE_LFLAGS +=
 }
 
 
