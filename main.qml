@@ -1,3 +1,4 @@
+// Copyright (c) 2018, Blur Network
 // Copyright (c) 2014-2018, The Monero Project
 //
 // All rights reserved.
@@ -73,12 +74,12 @@ ApplicationWindow {
     property bool remoteNodeConnected: false
     property bool androidCloseTapped: false;
     // Default daemon addresses
-    readonly property string localDaemonAddress : persistentSettings.nettype == NetworkType.MAINNET ? "localhost:14895" : persistentSettings.nettype == NetworkType.TESTNET ? "localhost:21111" : "localhost:14895"
+    readonly property string localDaemonAddress : persistentSettings.nettype == NetworkType.MAINNET ? "127.0.0.1:13895" : persistentSettings.nettype == NetworkType.TESTNET ? "127.0.0.1:21111" : "127.0.0.1:13895"
     property string currentDaemonAddress;
     property bool startLocalNodeCancelled: false
 
     // true if wallet ever synchronized
-    property bool walletInitialized : false
+    property bool walletInitialized : true
 
     function altKeyReleased() { ctrlPressed = false; }
 
@@ -1024,7 +1025,7 @@ ApplicationWindow {
         property bool   allow_background_mining : false
         property bool   miningIgnoreBattery : true
         property var    nettype: NetworkType.MAINNET
-        property string daemon_address: nettype == NetworkType.TESTNET ? "localhost:21111" : nettype == NetworkType.STAGENET ? "localhost:31106" : "localhost:14895"
+        property string daemon_address: nettype == NetworkType.TESTNET ? "127.0.0.1:21111" : nettype == NetworkType.STAGENET ? "127.0.0.1:31106" : "127.0.0.1:13895"
         property string payment_id
         property int    restore_height : 0
         property bool   is_recovering : false
@@ -1039,7 +1040,7 @@ ApplicationWindow {
         property bool useRemoteNode: false
         property string remoteNodeAddress: ""
         property string bootstrapNodeAddress: ""
-        property bool segregatePreForkOutputs: true
+        property bool segregatePreForkOutputs: false
         property bool keyReuseMitigation2: true
         property int segregationHeight: 0
     }

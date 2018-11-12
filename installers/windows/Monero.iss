@@ -1,23 +1,24 @@
-; Monero Lithium Luna GUI Wallet Installer for Windows
+; Blur Network GUI Wallet Installer for Windows
+; Copyright (c) 2018, Blur Network
 ; Copyright (c) 2014-2018, The Monero Project
 ; See LICENSE
 
 [Setup]
-AppName=Monero GUI Wallet
+AppName=Blur Network Wallet
 ; For InnoSetup this is the property that uniquely identifies the application as such
 ; Thus it's important to keep this stable over releases
 ; With a different "AppName" InnoSetup would treat a mere update as a completely new application and thus mess up
 
-AppVersion=0.12.0.0
-DefaultDirName={pf}\Monero GUI Wallet
-DefaultGroupName=Monero GUI Wallet
-UninstallDisplayIcon={app}\monero-wallet-gui.exe
+AppVersion=0.1.7.6.1
+DefaultDirName={pf}\Blur Network Wallet
+DefaultGroupName=Blur Network Wallet
+UninstallDisplayIcon={app}\blur-gui-wallet.exe
 PrivilegesRequired=admin
 ArchitecturesInstallIn64BitMode=x64
 ArchitecturesAllowed=x64
 WizardSmallImageFile=WizardSmallImage.bmp
 WizardImageFile=WelcomeImage.bmp
-DisableWelcomePage=no
+DisableWelcomePage=yes
 LicenseFile=LICENSE
 
 
@@ -46,36 +47,33 @@ Name: "en"; MessagesFile: "compiler:Default.isl"
 ; Note that it would be very dangerous to use "ignoreversion" on files that may be shared with other
 ; applications somehow. Luckily this is no issue here because ALL files are "private" to Monero.
 
-Source: "ReadMe.htm"; DestDir: "{app}"; Flags: ignoreversion
+;Source: "ReadMe.htm"; DestDir: "{app}"; Flags: ignoreversion
 Source: "FinishImage.bmp"; Flags: dontcopy
 
 ; Monero GUI wallet
-Source: "bin\monero-wallet-gui.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\blur-gui-wallet.exe"; DestDir: "{app}"; Flags: ignoreversion
 
 ; Monero GUI wallet log file
 ; The GUI wallet does not have the "--log-file" command-line option of the CLI wallet and insists to put the .log beside the .exe
 ; so pre-create the file and give the necessary permissions to the wallet to write into it
 ; Flag is "onlyifdoesntexist": We do not want to overwrite an already existing log
-Source: "monero-wallet-gui.log"; DestDir: "{app}"; Flags: onlyifdoesntexist; Permissions: users-modify
+Source: "blur-gui-wallet.log"; DestDir: "{app}"; Flags: onlyifdoesntexist; Permissions: users-modify
 
 ; Monero CLI wallet
-Source: "bin\monero-wallet-cli.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\blur-wallet-cli.exe"; DestDir: "{app}"; Flags: ignoreversion
 
 ; Monero wallet RPC interface implementation
-Source: "bin\monero-wallet-rpc.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\blur-wallet-rpc.exe"; DestDir: "{app}"; Flags: ignoreversion
 
 ; Monero daemon
 Source: "bin\blurd.exe"; DestDir: "{app}"; Flags: ignoreversion
 
 ; Monero daemon wrapped in a batch file that stops before the text window closes, to see any error messages
-Source: "monero-daemon.bat"; DestDir: "{app}"; Flags: ignoreversion;
+Source: "blur-daemon.bat"; DestDir: "{app}"; Flags: ignoreversion;
 
 ; Monero blockchain utilities
-Source: "bin\monero-blockchain-export.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "bin\monero-blockchain-import.exe"; DestDir: "{app}"; Flags: ignoreversion
-
-; was present in 0.10.3.1, not present anymore in 0.11.1.0 and after
-; Source: "bin\monero-utils-deserialize.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\blur-blockchain-export.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\blur-blockchain-import.exe"; DestDir: "{app}"; Flags: ignoreversion
 
 ; Various .qm files for translating the wallet UI "on the fly" into all supported languages
 Source: "bin\translations\*"; DestDir: "{app}\translations"; Flags: recursesubdirs ignoreversion
@@ -116,7 +114,6 @@ Source: "bin\playlistformats\*"; DestDir: "{app}\playlistformats"; Flags: recurs
 ; Qt graphical effects as part of the core runtime, effects like blurring and blending
 Source: "bin\QtGraphicalEffects\*"; DestDir: "{app}\QtGraphicalEffects"; Flags: recursesubdirs ignoreversion
 
-; No more Qt "private" directory in 0.12.0.0
 
 ; Qt QML files
 Source: "bin\QtQml\*"; DestDir: "{app}\QtQml"; Flags: recursesubdirs ignoreversion
@@ -125,24 +122,18 @@ Source: "bin\QtQml\*"; DestDir: "{app}\QtQml"; Flags: recursesubdirs ignoreversi
 Source: "bin\QtQuick\*"; DestDir: "{app}\QtQuick"; Flags: recursesubdirs ignoreversion
 Source: "bin\QtQuick.2\*"; DestDir: "{app}\QtQuick.2"; Flags: recursesubdirs ignoreversion
 
-; Qt Quick 2D Renderer fallback for systems / environments with "low-level graphics" i.e. without 3D support
-Source: "bin\scenegraph\*"; DestDir: "{app}\scenegraph"; Flags: recursesubdirs ignoreversion
-Source: "bin\start-low-graphics-mode.bat"; DestDir: "{app}"; Flags: ignoreversion
-
-; Mesa, open-source OpenGL implementation; part of "low-level graphics" support
-Source: "bin\opengl32sw.dll"; DestDir: "{app}"; Flags: ignoreversion
 
 ; Left out subdirectory "qmltooling" with the Qt QML debugger: Probably not relevant in an end-user package
 
 ; Microsoft Direct3D runtime
-Source: "bin\D3Dcompiler_47.dll"; DestDir: "{app}"; Flags: ignoreversion
+;Source: "bin\D3Dcompiler_47.dll"; DestDir: "{app}"; Flags: ignoreversion
 
 ; bzip2 support
 Source: "bin\libbz2-1.dll"; DestDir: "{app}"; Flags: ignoreversion
 
 ; ANGLE ("Almost Native Graphics Layer Engine") support, as used by Qt
-Source: "bin\libEGL.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "bin\libGLESV2.dll"; DestDir: "{app}"; Flags: ignoreversion
+;Source: "bin\libEGL.dll"; DestDir: "{app}"; Flags: ignoreversion
+;Source: "bin\libGLESV2.dll"; DestDir: "{app}"; Flags: ignoreversion
 
 ; FreeType font engine, as used by Qt
 Source: "bin\libfreetype-6.dll"; DestDir: "{app}"; Flags: ignoreversion
@@ -168,18 +159,14 @@ Source: "bin\libiconv-2.dll"; DestDir: "{app}"; Flags: ignoreversion
 ; ICU, International Components for Unicode
 ; After changes for supporting UTF-8 path and file names by using Boost Locale, all those 5
 ; ICU libraries are needed in 0.12.0.0
-Source: "bin\libicudt58.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "bin\libicuin58.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "bin\libicuio58.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "bin\libicutu58.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "bin\libicuuc58.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\libicudt62.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\libicuin62.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\libicuio62.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\libicutu62.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\libicuuc62.dll"; DestDir: "{app}"; Flags: ignoreversion
 
 ; Library for native language support, part of GNU gettext
 Source: "bin\libintl-8.dll"; DestDir: "{app}"; Flags: ignoreversion
-
-; JasPer, support for JPEG-2000
-; was present in 0.10.3.1, not present anymore in 0.11.1.0 and after
-; Source: "bin\libjasper-1.dll"; DestDir: "{app}"; Flags: ignoreversion
 
 ; libjpeg, C library for reading and writing JPEG image files
 Source: "bin\libjpeg-8.dll"; DestDir: "{app}"; Flags: ignoreversion
@@ -224,10 +211,10 @@ Name: desktopicon; Description: "Create a &desktop icon"; GroupDescription: "Add
 
 
 [Run]
-Filename: "{app}\ReadMe.htm"; Description: "Show ReadMe"; Flags: postinstall shellexec skipifsilent
+; Filename: "{app}\ReadMe.htm"; Description: "Show ReadMe"; Flags: postinstall shellexec skipifsilent
 
 ; DON'T offer to run the wallet right away, let the people read about initial blockchain download first in the ReadMe
-; Filename: "{app}\monero-wallet-gui.exe"; Description: "Run GUI Wallet now"; Flags: postinstall nowait skipifsilent
+Filename: "{app}\blur-gui-wallet.exe"; Description: "Run GUI Wallet now"; Flags: postinstall nowait skipifsilent
 
 
 [Code]
@@ -242,15 +229,15 @@ begin
   // Large image for the "Welcome" page, with page reconfigured
   WizardForm.WelcomeLabel1.Visible := false;
   WizardForm.WelcomeLabel2.Visible := false;
-  WizardForm.WizardBitmapImage.Height := 300;
-  WizardForm.WizardBitmapImage.Width := 500;
+  WizardForm.WizardBitmapImage.Height := 360;
+  WizardForm.WizardBitmapImage.Width := 600;
 
-  // Image for the "Finnish" screen, in standard WizardBitmapImage size of 164 x 314
+  // Image for the "Finish" screen, in standard WizardBitmapImage size of 164 x 314
   ExtractTemporaryFile('FinishImage.bmp');
   WizardForm.WizardBitmapImage2.Bitmap.LoadFromFile(ExpandConstant('{tmp}\FinishImage.bmp'));
 
   // Additional wizard page for entering a special blockchain location
-  blockChainDefaultDir := ExpandConstant('{commonappdata}\bitmonero');
+  blockChainDefaultDir := ExpandConstant('{commonappdata}\blur-net');
   s := 'The default folder to store the Monero blockchain is ' + blockChainDefaultDir;
   s := s + '. As this will need more than 50 GB of free space, you may want to use a folder on a different drive.';
   s := s + ' If yes, specify that folder here.';
@@ -300,7 +287,7 @@ end;
 function DaemonLog(Param: String) : String;
 // Full filename of the log of the daemon
 begin
-  Result := BlockChainDir('') + '\bitmonero.log';
+  Result := BlockChainDir('') + '\blur-net.log';
   // No quotes for filename with blanks as this is never used as part of a command line
 end;
 
@@ -327,12 +314,12 @@ procedure CurStepChanged(CurStep: TSetupStep);
 var s: TArrayOfString;
 begin
   if CurStep = ssPostInstall then begin
-    // Re-build "monero-daemon.bat" according to actual install and blockchain directory used
+    // Re-build "blur-daemon.bat" according to actual install and blockchain directory used
     SetArrayLength(s, 3);
-    s[0] := 'REM Execute the Monero daemon and then stay with window open after it exits';
+    s[0] := 'REM Execute the BLUR daemon and then stay with window open after it exits';
     s[1] := '"' + ExpandConstant('{app}\blurd.exe') + '" ' + DaemonFlags('');
     s[2] := 'PAUSE';
-    SaveStringsToFile(ExpandConstant('{app}\monero-daemon.bat'), s, false); 
+    SaveStringsToFile(ExpandConstant('{app}\blur-daemon.bat'), s, false); 
   end;
 end;
 
@@ -348,41 +335,40 @@ end;
 
 
 [Icons]
-; Icons in the "Monero GUI Wallet" program group
+; Icons in the "Blur Network Wallet" program group
 ; Windows will almost always display icons in alphabetical order, per level, so specify the text accordingly
-Name: "{group}\GUI Wallet"; Filename: "{app}\monero-wallet-gui.exe"
+Name: "{group}\GUI Wallet"; Filename: "{app}\blur-gui-wallet.exe"
 Name: "{group}\Uninstall GUI Wallet"; Filename: "{uninstallexe}"
 
 ; Sub-folder "Utilities";
 ; Note that Windows 10, unlike Windows 7, ignores such sub-folders completely
 ; and insists on displaying ALL icons on one single level
-Name: "{group}\Utilities\Monero Daemon"; Filename: "{app}\blurd.exe"; Parameters: {code:DaemonFlags}
-Name: "{group}\Utilities\Read Me"; Filename: "{app}\ReadMe.htm"
+Name: "{group}\Utilities\Blur Network Daemon"; Filename: "{app}\blurd.exe"; Parameters: {code:DaemonFlags}
+; Name: "{group}\Utilities\Read Me"; Filename: "{app}\ReadMe.htm"
 
 ; CLI wallet: Needs a working directory ("Start in:") set in the icon, because with no such directory set
 ; it tries to create new wallets without a path given in the probably non-writable program folder and will abort with an error
-Name: "{group}\Utilities\Textual (CLI) Wallet"; Filename: "{app}\monero-wallet-cli.exe"; WorkingDir: "{userdocs}\Monero\wallets"
+Name: "{group}\Utilities\Textual (CLI) Wallet"; Filename: "{app}\blur-wallet-cli.exe"; WorkingDir: "{userdocs}\Blur Network\wallets"
 
 ; Icons for troubleshooting problems / testing / debugging
 ; To show that they are in some way different (not for everyday use), make them visually different
 ; from the others by text, and make them sort at the end by the help of "x" in front 
 Name: "{group}\Utilities\x (Check Blockchain Folder)"; Filename: "{win}\Explorer.exe"; Parameters: {code:BlockChainDir}
 Name: "{group}\Utilities\x (Check Daemon Log)"; Filename: "Notepad"; Parameters: {code:DaemonLog}
-Name: "{group}\Utilities\x (Check Default Wallet Folder)"; Filename: "{win}\Explorer.exe"; Parameters: "{userdocs}\Monero\wallets"
-Name: "{group}\Utilities\x (Check GUI Wallet Log)"; Filename: "Notepad"; Parameters: "{app}\monero-wallet-gui.log"
-Name: "{group}\Utilities\x (Try Daemon, Exit Confirm)"; Filename: "{app}\monero-daemon.bat"
-Name: "{group}\Utilities\x (Try GUI Wallet Low Graphics Mode)"; Filename: "{app}\start-low-graphics-mode.bat"
+Name: "{group}\Utilities\x (Check Default Wallet Folder)"; Filename: "{win}\Explorer.exe"; Parameters: "{userdocs}\Blur Network\wallets"
+Name: "{group}\Utilities\x (Check GUI Wallet Log)"; Filename: "Notepad"; Parameters: "{app}\blur-gui-wallet.log"
+Name: "{group}\Utilities\x (Try Daemon, Exit Confirm)"; Filename: "{app}\blur-daemon.bat"
 Name: "{group}\Utilities\x (Try Kill Daemon)"; Filename: "Taskkill.exe"; Parameters: "/IM blurd.exe /T /F"
 
 ; Desktop icons, optional with the help of the "Task" section
-Name: "{userdesktop}\GUI Wallet"; Filename: "{app}\monero-wallet-gui.exe"; Tasks: desktopicon
+Name: "{userdesktop}\Blur Network Wallet"; Filename: "{app}\blur-gui-wallet.exe"; Tasks: desktopicon
 
 
 [Registry]
 ; Store any special flags for the daemon in the registry location where the GUI wallet will take it from
 ; So if the wallet is used to start the daemon instead of the separate icon the wallet will pass the correct flags
 ; Side effect, mostly positive: The uninstaller will clean the registry
-Root: HKCU; Subkey: "Software\monero-project"; Flags: uninsdeletekeyifempty
-Root: HKCU; Subkey: "Software\monero-project\monero-core"; Flags: uninsdeletekey
-Root: HKCU; Subkey: "Software\monero-project\monero-core"; ValueType: string; ValueName: "daemonFlags"; ValueData: {code:DaemonFlags};
+Root: HKCU; Subkey: "Software\blur-network"; Flags: uninsdeletekeyifempty
+Root: HKCU; Subkey: "Software\blur-network\blur"; Flags: uninsdeletekey
+Root: HKCU; Subkey: "Software\blur-network\blur"; ValueType: string; ValueName: "daemonFlags"; ValueData: {code:DaemonFlags};
 
