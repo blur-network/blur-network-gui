@@ -17,7 +17,7 @@ See [LICENSE](LICENSE).
 
   - For Debian distributions (Debian, Ubuntu, Mint, Tails...)
 
-	`sudo apt install build-essential cmake libboost-all-dev miniupnpc libunbound-dev graphviz doxygen libunwind8-dev pkg-config libssl-dev libzmq3-dev libhidapi-dev`
+	`sudo apt install build-essential cmake libboost-all-dev libsodium-dev libpgm-dev libunbound-dev graphviz doxygen libunwind8-dev pkg-config libssl-dev libzmq3-dev libhidapi-dev`
 
   - For Gentoo
 
