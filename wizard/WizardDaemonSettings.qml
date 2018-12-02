@@ -95,7 +95,7 @@ ColumnLayout {
             wrapMode: Text.Wrap
             horizontalAlignment: Text.AlignHCenter
             //renderType: Text.NativeRendering
-            color: "#C9C9C9"
+            color: "#260052"
             text: "Daemon settings"
 
         }
@@ -108,7 +108,7 @@ ColumnLayout {
             font.pixelSize: 18 * scaleRatio
             wrapMode: Text.Wrap
             //renderType: Text.NativeRendering
-            color: "#C9C9C9"
+            color: "#260052"
             textFormat: Text.RichText
 //            horizontalAlignment: Text.AlignHCenter
             text: qsTr("To be able to communicate with the Blur Network network your wallet needs to be connected to a Blur Network node. For best privacy it's recommended to run your own node. \
@@ -126,7 +126,7 @@ ColumnLayout {
                 text: qsTr("Start a node automatically in background (recommended)") + translationManager.emptyString
                 checkedIcon: "../images/checkedBlackIcon.png"
                 background: "#FFFFFF"
-                fontColor: "#C9C9C9"
+                fontColor: "#260052"
                 fontSize: 16 * scaleRatio
                 checked: !appWindow.persistentSettings.useRemoteNode && !isAndroid && !isIOS
                 visible: !isAndroid && !isIOS
@@ -211,7 +211,7 @@ ColumnLayout {
                 checkedIcon: "../images/checkedBlackIcon.png"
                 Layout.topMargin: 20 * scaleRatio
                 background: "#FFFFFF"
-                fontColor: "#C9C9C9"
+                fontColor: "#260052"
                 fontSize: 16 * scaleRatio
                 checked: appWindow.persistentSettings.useRemoteNode
                 onClicked: {

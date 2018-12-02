@@ -69,7 +69,7 @@ ColumnLayout {
             font.family: "Lato Black"
             font.pixelSize: 28 * scaleRatio
             //renderType: Text.NativeRendering
-            color: "#C9C9C9"
+            color: "#260052"
             wrapMode: Text.Wrap
             horizontalAlignment: Text.AlignHCenter
             text: qsTr("Welcome to Blur Network!") + translationManager.emptyString
@@ -80,7 +80,7 @@ ColumnLayout {
             font.family: "Lato Black"
             font.pixelSize: 18 * scaleRatio
             //renderType: Text.NativeRendering
-            color: "#C9C9C9"
+            color: "#260052"
             wrapMode: Text.Wrap
             horizontalAlignment: Text.AlignHCenter
             text: qsTr("Please select one of the following options:") + translationManager.emptyString
@@ -136,7 +136,7 @@ ColumnLayout {
                 Layout.preferredWidth: page.buttonSize
                 font.family: "Lato Black"
                 font.pixelSize: 16 * scaleRatio
-                color: "#C9C9C9"
+                color: "#260052"
                 horizontalAlignment: Text.AlignHCenter
                 wrapMode: Text.WordWrap
                 text: qsTr("Create a new wallet") + translationManager.emptyString
@@ -178,7 +178,7 @@ ColumnLayout {
                 Layout.preferredWidth: page.buttonSize
                 font.family: "Lato Black"
                 font.pixelSize: 16 * scaleRatio
-                color: "#C9C9C9"
+                color: "#260052"
                 horizontalAlignment: Text.AlignHCenter
                 text: qsTr("Restore wallet from keys or mnemonic seed") + translationManager.emptyString
                 width:page.buttonSize
@@ -221,7 +221,7 @@ ColumnLayout {
                 Layout.preferredWidth: page.buttonSize
                 font.family: "Lato Black"
                 font.pixelSize: 16 * scaleRatio
-                color: "#C9C9C9"
+                color: "#260052"
                 horizontalAlignment: Text.AlignHCenter
                 text: qsTr("Open a wallet from file") + translationManager.emptyString
                 wrapMode: Text.WordWrap
@@ -246,7 +246,7 @@ ColumnLayout {
                 id: testNet
                 text: qsTr("Testnet") + translationManager.emptyString
                 background: "#FFFFFF"
-                fontColor: "#C9C9C9"
+                fontColor: "#260052"
                 fontSize: 16 * scaleRatio
                 checkedIcon: "../images/checkedBlackIcon.png"
                 uncheckedIcon: "../images/uncheckedIcon.png"
@@ -265,7 +265,7 @@ ColumnLayout {
                 id: stageNet
                 text: qsTr("Stagenet") + translationManager.emptyString
                 background: "#FFFFFF"
-                fontColor: "#C9C9C9"
+                fontColor: "#260052"
                 fontSize: 16 * scaleRatio
                 checkedIcon: "../images/checkedBlackIcon.png"
                 uncheckedIcon: "../images/uncheckedIcon.png"

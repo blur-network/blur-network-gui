@@ -127,7 +127,7 @@ ColumnLayout {
             wrapMode: Text.Wrap
             horizontalAlignment: Text.AlignHCenter
             //renderType: Text.NativeRendering
-            color: "#C9C9C9"
+            color: "#260052"
             text: qsTr("You’re all set up!") + translationManager.emptyString
         }
 
@@ -140,7 +140,7 @@ ColumnLayout {
             textFormat: Text.RichText
             horizontalAlignment: Text.AlignHLeft
             //renderType: Text.NativeRendering
-            color: "#C9C9C9"
+            color: "#260052"
         }
     }
 }

@@ -67,7 +67,7 @@ ColumnLayout {
             Layout.fillWidth: true
             font.family: "Lato Black"
             font.pixelSize: 28 * scaleRatio
-            color: "#C9C9C9"
+            color: "#260052"
             wrapMode: Text.Wrap
             horizontalAlignment: Text.AlignHCenter
             text: qsTr("Welcome to Blur Network!") + translationManager.emptyString
@@ -77,7 +77,7 @@ ColumnLayout {
             Layout.fillWidth: true
             font.family: "Lato Black"
             font.pixelSize: 18 * scaleRatio
-            color: "#C9C9C9"
+            color: "#260052"
             wrapMode: Text.Wrap
             horizontalAlignment: Text.AlignHCenter
             text: qsTr("Please choose a language and regional format.") + translationManager.emptyString
@@ -152,7 +152,7 @@ ColumnLayout {
 //                    anchors.horizontalCenter: parent.horizontalCenter
                     font.bold: gridView.currentIndex === index
 //                    elide: Text.ElideRight
-                    color: "#C9C9C9"
+                    color: "#260052"
                     text: display_name
 //                    horizontalAlignment: Text.AlignHCenter
                     Layout.alignment: Qt.AlignHCenter
