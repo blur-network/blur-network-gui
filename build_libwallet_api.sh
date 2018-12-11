@@ -2,7 +2,7 @@
 
 
 # MONERO_URL=https://github.com/blur-network/blur.git
-# MONERO_BRANCH=v0.1.7.5u
+# MONERO_BRANCH=stable
 CPU_CORE_COUNT=$(grep -c ^processor /proc/cpuinfo 2>/dev/null || sysctl -n hw.ncpu)
 pushd $(pwd)
 ROOT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -33,9 +33,9 @@ if [ "$platform" != "linux" ]; then
     echo "Building libunbound..."
     pushd $MONERO_DIR/build/release/external/unbound
     # no need to make, it was already built as dependency for libwallet
-    make -j4
-    make install -j4
-    popd
+#    make -j4
+#    make install -j4
+#    popd
 fi
 
 popd

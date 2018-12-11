@@ -9,7 +9,7 @@ AppName=Blur Network Wallet
 ; Thus it's important to keep this stable over releases
 ; With a different "AppName" InnoSetup would treat a mere update as a completely new application and thus mess up
 
-AppVersion=0.1.7.6.1
+AppVersion=0.1.8.1
 DefaultDirName={pf}\Blur Network Wallet
 DefaultGroupName=Blur Network Wallet
 UninstallDisplayIcon={app}\blur-gui-wallet.exe
@@ -18,7 +18,7 @@ ArchitecturesInstallIn64BitMode=x64
 ArchitecturesAllowed=x64
 WizardSmallImageFile=WizardSmallImage.bmp
 WizardImageFile=WelcomeImage.bmp
-DisableWelcomePage=yes
+DisableWelcomePage=no
 LicenseFile=LICENSE
 
 

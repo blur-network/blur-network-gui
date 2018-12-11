@@ -1,6 +1,6 @@
 #!/bin/bash
 MONERO_URL=https://github.com/blur-network/blur.git
-MONERO_BRANCH=master
+MONERO_BRANCH=stable
 
 pushd $(pwd)
 ROOT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -17,7 +17,7 @@ if [ ! -d $MONERO_DIR/src ]; then
 fi
 git submodule update --remote
 git -C $MONERO_DIR fetch
-git -C $MONERO_DIR checkout master
+git -C $MONERO_DIR checkout stable
 
 
 
