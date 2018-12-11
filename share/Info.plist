@@ -18,13 +18,13 @@
   <string>????</string>
 
   <key>CFBundleExecutable</key>
-  <string>monero-wallet-gui</string>
+  <string>blur-gui-wallet</string>
   
   <key>CFBundleName</key>
-  <string>Monero GUI</string>
+  <string>Blur Network GUI Wallet</string>
 
   <key>CFBundleIdentifier</key>
-  <string>org.monero-project.monero-wallet-gui</string>
+  <string>org.blur-network.blur-gui-wallet</string>
 
   <key>NSSupportsAutomaticGraphicsSwitching</key>
   <true/>
