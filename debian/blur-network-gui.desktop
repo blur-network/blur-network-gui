@@ -1,11 +1,12 @@
 [Desktop Entry]
 Type=Application
 Encoding=UTF-8
-Name=Blur Network GUI
+Name=Blur Network GUI Wallet
 Comment=BLUR is an experimental private cryptocurrency  that allows users to transact in a way that is secure and verifiable to only the parties they choose.  Transaction amounts and participants are obfuscated to protect your privacy.  BLUR features the new Cryptonight-Dynamic algorithm, which adjusts once every second. Join the Fight for Financial Freedom.   
-Icon=/usr/share/icons/hicolor/256x256/apps/blur-network-gui/icon.png
-Exec=/usr/bin/blur-network-gui/start-gui.sh
+Icon=/usr/share/icons/hicolor/256x256/apps/blur-icon.png
+Exec=/usr/bin/blur-network-gui/blur-gui-wallet
 Terminal=false
-Categories=Network;Science;Utility
+Categories=Network
+Hints=P2P
 
-Name[en_US]=blur-network-gui.desktop
+Name[en_US]=Blur Network GUI Wallet
