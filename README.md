@@ -68,4 +68,4 @@ The executables can be found in the build/release/bin folder.
 	./start-gui-wallet.sh
 	```
 	
-Using the `./start-gui-wallet.sh` script will start a daemon in the background connecting to the seed nodes in the network, with a p2p port at 14894 and rpc on 14895.  The daemon will run in the background and only be interactive through the GUI interface.  Closing the GUI wallet and clicking 'stop daemon' will terminate the daemon.
+Using the `./start-gui.sh` script will start a daemon in the background connecting to the seed nodes in the network, with a p2p port at 13894 and rpc on 13895.  The daemon will run in the background and only be interactive through the GUI interface.  Closing the GUI wallet and clicking 'stop daemon' will terminate the daemon.
