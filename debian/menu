@@ -1,0 +1,5 @@
+?package(monero-gui):needs="X11" \
+                    section="Applications/Network"\
+                    title="Blur Network GUI" \
+                    command="/usr/bin/blur-network-gui/start-gui.sh"
+                    icon="/usr/share/icons/hicolor/256x256/apps/blur-network-gui/blur-icon.png"

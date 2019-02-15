@@ -1,0 +1,83 @@
+#!/usr/bin/make -f
+ 
+clean:
+	qmake
+	dh_auto_clean
+build:
+	qmake
+	sh -c './build.sh release'	
+	make -j2
+	make deploy
+	mkdir -p $(CURDIR)/debian/blur-network-gui
+	mkdir -p $(CURDIR)/debian/blur-network-gui/usr/bin
+	mkdir -p $(CURDIR)/debian/blur-network-gui/usr/lib/qt5
+	mkdir -p $(CURDIR)/debian/blur-network-gui/usr/lib/blur-network-gui
+	mkdir -p $(CURDIR)/debian/blur-network-gui/usr/share/icons/hicolor/256x256/apps/blur-network/gui
+	mkdir -p $(CURDIR)/debian/blur-network-gui/usr/share/applications
+	cp $(CURDIR)/release/bin/start-gui.sh $(CURDIR)/debian/blur-network-gui/usr/lib/blur-network-gui
+	cp $(CURDIR)/release/bin/blur-gui-wallet $(CURDIR)/debian/blur-network-gui/usr/bin
+	cp $(CURDIR)/build/release/bin/blurd $(CURDIR)/debian/blur-network-gui/usr/lib/blur-network-gui
+	cp -r $(CURDIR)/release/bin/libs $(CURDIR)/debian/blur-network-gui/usr/lib/qt5
+	cp -r $(CURDIR)/release/bin/plugins $(CURDIR)/debian/blur-network-gui/usr/lib/qt5
+	cp -r $(CURDIR)/release/bin/qml $(CURDIR)/debian/blur-network-gui/usr/lib
+	cp $(CURDIR)/debian/blur-icon.png $(CURDIR)/debian/blur-network-gui/usr/share/icons/hicolor/256x256/apps/blur-network-gui
+	cp $(CURDIR)/blur-network-gui.desktop $(CURDIR)/debian/blur-network-gui/usr/share/applications
+	cp $(CURDIR)/LICENSE $(CURDIR)/debian/blur-network-gui/usr/share/doc/package/copyright
+	chmod 755 $(CURDIR)/debian/blur-network-gui/usr/share/applications/blur-network-gui/blur-network-gui.desktop
+	dh_gencontrol
+	dh_builddeb
+
+build-arch:
+	qmake
+	sh -c './build.sh release'
+	make -j2
+	make deploy
+	mkdir -p $(CURDIR)/debian/blur-network-gui
+	mkdir -p $(CURDIR)/debian/blur-network-gui/usr/bin
+	mkdir -p $(CURDIR)/debian/blur-network-gui/usr/lib/qt5
+	mkdir -p $(CURDIR)/debian/blur-network-gui/usr/lib/blur-network-gui
+	mkdir -p $(CURDIR)/debian/blur-network-gui/usr/share/icons/hicolor/256x256/apps/blur-network-gui
+	mkdir -p $(CURDIR)/debian/blur-network-gui/usr/share/applications
+	cp $(CURDIR)/release/bin/start-gui.sh $(CURDIR)/debian/blur-network-gui/usr/bin/
+	cp $(CURDIR)/release/bin/blur-gui-wallet $(CURDIR)/debian/blur-network-gui/usr/bin/
+	cp $(CURDIR)/build/release/bin/blurd $(CURDIR)/debian/blur-network-gui/usr/bin/
+	cp -r $(CURDIR)/release/bin/libs $(CURDIR)/debian/blur-network-gui/usr/lib/qt5
+	cp -r $(CURDIR)/release/bin/plugins $(CURDIR)/debian/blur-network-gui/usr/lib/qt5
+	cp -r $(CURDIR)/release/bin/qml $(CURDIR)/debian/blur-network-gui/usr/lib
+	cp $(CURDIR)/debian/blur-icon.png $(CURDIR)/debian/blur-network-gui/usr/share/icons/hicolor/256x256/apps/blur-network-gui/
+	cp $(CURDIR)/debian/blur-network-gui.desktop $(CURDIR)/debian/blur-network-gui/usr/share/applications/
+	chmod 755 $(CURDIR)/debian/blur-network-gui/usr/share/applications/blur-network-gui.desktop
+	dh_gencontrol
+	dh_builddeb
+
+build-indep:
+	qmake
+	sh -c './build.sh release'
+	make -j2
+	make deploy
+	mkdir -p $(CURDIR)/debian/blur-network-gui
+	mkdir -p $(CURDIR)/debian/blur-network-gui/usr/bin
+	mkdir -p $(CURDIR)/debian/blur-network-gui/usr/lib/qt5
+	mkdir -p $(CURDIR)/debian/blur-network-gui/usr/lib/blur-network-gui
+	mkdir -p $(CURDIR)/debian/blur-network-gui/usr/share/icons/hicolor/256x256/apps/blur-network-gui
+	mkdir -p $(CURDIR)/debian/blur-network-gui/usr/share/applications
+	cp $(CURDIR)/release/bin/start-gui.sh $(CURDIR)/debian/blur-network-gui/usr/bin/
+	cp $(CURDIR)/release/bin/blur-gui-wallet $(CURDIR)/debian/blur-network-gui/usr/bin/
+	cp $(CURDIR)/build/release/bin/blurd $(CURDIR)/debian/blur-network-gui/usr/bin/
+	cp -r $(CURDIR)/release/bin/libs $(CURDIR)/debian/blur-network-gui/usr/lib/qt5
+	cp -r $(CURDIR)/release/bin/plugins $(CURDIR)/debian/blur-network-gui/usr/lib/qt5
+	cp -r $(CURDIR)/release/bin/qml $(CURDIR)/debian/blur-network-gui/usr/lib
+	cp $(CURDIR)/debian/blur-icon.png $(CURDIR)/debian/blur-network-gui/usr/share/icons/hicolor/256x256/apps/blur-network-gui
+	cp $(CURDIR)/debian/blur-network-gui.desktop $(CURDIR)/debian/blur-network-gui/usr/share/applications/
+	chmod 755 $(CURDIR)/debian/blur-network-gui/usr/share/applications/blur-network-gui.desktop
+	dh_gencontrol
+	dh_builddeb
+
+binary:	
+	@#Do nothing
+
+binary-arch:
+	@#Do nothing
+
+binary-indep:
+	@#Do nothing

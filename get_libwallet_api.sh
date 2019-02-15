@@ -202,25 +202,19 @@ else
     fi
 fi
 
-# set CPU core count
-# thanks to SO: http://stackoverflow.com/a/20283965/4118915
-if test -z "4"; then
-  CPU_CORE_COUNT=$(grep -c ^processor /proc/cpuinfo 2>/dev/null || sysctl -n hw.ncpu)
-fi
-
 # Build libwallet_merged
 pushd $MONERO_DIR/build/$BUILD_TYPE/src/wallet
 eval $make_exec version -C ../..
-eval $make_exec  -j4
-eval $make_exec  install -j4
+eval $make_exec  -j2
+eval $make_exec  install -j2
 popd
 
 # Build blurd
 # win32 need to build daemon manually with msys2 toolchain
 if [ "$platform" != "mingw32" ] && [ "$ANDROID" != true ]; then
     pushd $MONERO_DIR/build/$BUILD_TYPE/src/daemon
-    eval make  -j4
-    eval make install -j4
+    eval make  -j2
+    eval make install -j2
     popd
 fi
 
@@ -237,8 +231,8 @@ eval make -C $MONERO_DIR/build/$BUILD_TYPE/external/db_drivers/liblmdb all insta
 echo "Installing libunbound..."
 pushd $MONERO_DIR/build/$BUILD_TYPE/external/unbound
 # no need to make, it was already built as dependency for libwallet
-# make -j4
-$make_exec install -j4
+# make -j2
+$make_exec install -j2
 popd
 
 
