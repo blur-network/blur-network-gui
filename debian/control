@@ -7,5 +7,5 @@ Homepage: https://blur.cash
 
 Package: blur-network-gui
 Architecture: all
-Depends: build-essential, libunwind-dev, cmake, libssl-dev, libboost-all-dev, libssl-dev, libhidapi-dev, libusb-1.0-0-dev, libzmq3-dev, libpgm-dev, libunbound-dev, libsodium-dev, qtbase5-dev, qtbase5-dev, qt5-default, qtdeclarative5-dev, qml-module-qtquick-controls, qml-module-qtquick-controls2, qml-module-qtquick-dialogs, qml-module-qtquick-xmllistmodel, qml-module-qt-labs-settings, qml-module-qt-labs-folderlistmodel, qttools5-dev-tools
+Depends: qtbase5-dev, qt5-default, qtdeclarative5-dev, qml-module-qtquick-controls, qml-module-qtquick-controls2, qml-module-qtquick-dialogs, qml-module-qtquick-xmllistmodel, qml-module-qt-labs-settings, qml-module-qt-labs-folderlistmodel, qttools5-dev-tools
 Description: BLUR is an experimental private cryptocurrency  that allows users to transact in a way that is secure and verifiable to only the parties they choose.  Transaction amounts and participants are obfuscated to protect your privacy.  BLUR features the new Cryptonight-Dynamic algorithm, which adjusts once every second. Join the Fight for Financial Freedom.  
