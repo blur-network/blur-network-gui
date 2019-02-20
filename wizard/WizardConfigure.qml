@@ -166,8 +166,8 @@ Item {
                 font.pixelSize: 15
                 color: "#260052"
                 wrapMode: Text.Wrap
-                text: qsTr("Mining secures the Blur Network network, and also pays a small reward for the work done. This option " +
-                           "will let Blur Network mine when your computer is on mains power and is idle. It will stop mining when you continue working.")
+                text: qsTr("Mining secures the Blur Network, and also pays a small reward for the work done. This option " +
+                           "will let Blur mine when your computer is on mains power and is idle. It will stop mining when you continue working.")
                         + translationManager.emptyString
             }
         }

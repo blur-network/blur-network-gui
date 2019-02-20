@@ -70,7 +70,7 @@ ColumnLayout {
             color: "#260052"
             wrapMode: Text.Wrap
             horizontalAlignment: Text.AlignHCenter
-            text: qsTr("Welcome to Blur Network!") + translationManager.emptyString
+            text: qsTr("Welcome to the Blur Network!") + translationManager.emptyString
         }
 
         Text {

@@ -110,7 +110,7 @@ ColumnLayout {
             wrapMode: Text.Wrap
             horizontalAlignment: Text.AlignHCenter
             //renderType: Text.NativeRendering
-            color: "#C9C9C9"
+            color: "#260052"
 
         }
 
@@ -121,7 +121,7 @@ ColumnLayout {
             font.pixelSize: 18 * scaleRatio
             wrapMode: Text.Wrap
             //renderType: Text.NativeRendering
-            color: "#C9C9C9"
+            color: "#260052"
             horizontalAlignment: Text.AlignHCenter
             text: qsTr(" <br>Note: this password cannot be recovered. If you forget it then the wallet will have to be restored from its 25 word mnemonic seed.<br/><br/>
                         <b>Enter a strong password</b> (using letters, numbers, and/or symbols):")

@@ -111,9 +111,9 @@ ColumnLayout {
             color: "#260052"
             textFormat: Text.RichText
 //            horizontalAlignment: Text.AlignHCenter
-            text: qsTr("To be able to communicate with the Blur Network network your wallet needs to be connected to a Blur Network node. For best privacy it's recommended to run your own node. \
+            text: qsTr("To be able to communicate with the Blur Network, your wallet needs to be connected to a Blur Network node. For best privacy it's recommended to run your own node. \
                         <br><br> \
-                        If you don't have the option to run an own node there's an option to connect to a remote node.")
+                        If you don't have the option to run your own node, there's an option to connect to a remote node.")
                     + translationManager.emptyString
         }
     }
