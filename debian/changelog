@@ -2,7 +2,7 @@ blur-network-gui (0.1.9.1-0) unstable; urgency=medium
 
   * Update package to fix v10 hardfork & sync issues
 
- -- The Blur Network <admin@blur.cash> Fri, 1 Mar 2019 00:00:00 +0000
+ -- The Blur Network <admin@blur.cash>  Fri, 1 Mar 2019 00:00:00 +0000
 
 blur-network-gui (0.1.9-0) unstable; urgency=medium
 
