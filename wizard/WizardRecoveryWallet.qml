@@ -115,7 +115,7 @@ ColumnLayout {
     WizardManageWalletUI {
         id: uiItem
         accountNameText: defaultAccountName
-        titleText: qsTr("Restore wallet") + translationManager.emptyString
+        titleText: qsTr("Restore Wallet") + translationManager.emptyString
         wordsTextItem.clipboardButtonVisible: false
         wordsTextItem.tipTextVisible: false
         wordsTextItem.memoTextReadOnly: false

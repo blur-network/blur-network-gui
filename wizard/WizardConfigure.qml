@@ -125,7 +125,7 @@ Item {
                 anchors.left: parent.left
                 anchors.right: parent.right
                 background: "#F0EEEE"
-                fontColor: "#c9c9c9"
+                fontColor: "#260052"
                 fontSize: 18
                 checked: true
             }
