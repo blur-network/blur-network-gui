@@ -62,7 +62,7 @@ bool DaemonManager::start(const QString &flags, NetworkType::Type nettype, const
 
     // Custom data-dir
     if(!dataDir.isEmpty()) {
-//        arguments << "--data-dir" << dataDir;
+        arguments << "--data-dir" << dataDir;
     }
 
     // Bootstrap node address
