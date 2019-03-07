@@ -114,7 +114,7 @@ Rectangle {
                 width: 259 * scaleRatio
 
                 Image {
-                    width: 259; height: 170
+                    width: 294; height: 211
                     fillMode: Image.PreserveAspectFit
                     source: "images/card-background.png"
                 }
