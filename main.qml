@@ -74,7 +74,7 @@ ApplicationWindow {
     property bool remoteNodeConnected: false
     property bool androidCloseTapped: false;
     // Default daemon addresses
-    readonly property string localDaemonAddress : persistentSettings.nettype == NetworkType.MAINNET ? "127.0.0.1:13895" : persistentSettings.nettype == NetworkType.TESTNET ? "127.0.0.1:21111" : "127.0.0.1:13895"
+    readonly property string localDaemonAddress : persistentSettings.nettype == NetworkType.MAINNET ? "127.0.0.1:52542" : persistentSettings.nettype == NetworkType.TESTNET ? "127.0.0.1:42542" : "127.0.0.1:52542"
     property string currentDaemonAddress;
     property bool startLocalNodeCancelled: false
 
@@ -1025,7 +1025,7 @@ ApplicationWindow {
         property bool   allow_background_mining : false
         property bool   miningIgnoreBattery : true
         property var    nettype: NetworkType.MAINNET
-        property string daemon_address: nettype == NetworkType.TESTNET ? "127.0.0.1:21111" : nettype == NetworkType.STAGENET ? "127.0.0.1:31106" : "127.0.0.1:13895"
+        property string daemon_address: nettype == NetworkType.TESTNET ? "127.0.0.1:42542" : nettype == NetworkType.STAGENET ? "127.0.0.1:31106" : "127.0.0.1:52542"
         property string payment_id
         property int    restore_height : 0
         property bool   is_recovering : false
