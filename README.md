@@ -1,4 +1,5 @@
 # Blur Network GUI Wallet
+![Blur Network Wallet](https://cdn.discordapp.com/attachments/453123992736366594/553617741760692234/gui.png)
 
 Copyright (c) 2018, The Blur Network</br> 
 Copyright (c) 2014-2018, The Monero Project
