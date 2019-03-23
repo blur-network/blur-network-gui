@@ -1,16 +1,23 @@
-blur-network-gui (0.1.9.1-0) unstable; urgency=medium
+
+blur-network-gui (0.1.9.5-0) UNRELEASED; urgency=medium
+
+  * Update package to fix v10 hardfork & sync issues
+
+ -- The Blur Network <admin@blur.cash>  Fri, 23 Mar 2019 00:00:00 +0000
+
+blur-network-gui (0.1.9.1-0) UNRELEASED; urgency=medium
 
   * Update package to fix v10 hardfork & sync issues
 
  -- The Blur Network <admin@blur.cash>  Fri, 1 Mar 2019 00:00:00 +0000
 
-blur-network-gui (0.1.9-0) unstable; urgency=medium
+blur-network-gui (0.1.9-0) UNRELEASED; urgency=medium
 
   * Update package for network upgrade at block 342,000
 
  -- The Blur Network <admin@blur.cash>  Tue, 19 Feb 2019 15:57:56 +0000
 
-blur-network-gui (0.1.8.3-0) unstable; urgency=medium
+blur-network-gui (0.1.8.3-0) UNRELEASED; urgency=medium
 
   * Initial release
 
