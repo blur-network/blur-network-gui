@@ -70,9 +70,6 @@ bool DaemonManager::start(const QString &flags, NetworkType::Type nettype, const
         arguments << "--bootstrap-daemon-address" << bootstrapNodeAddress;
     }
 
-    arguments << "--check-updates" << "disabled";
-
-
 
     qDebug() << "starting blurd " + m_blurd;
     qDebug() << "With command line arguments " << arguments;
