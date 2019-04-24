@@ -636,7 +636,7 @@ Rectangle {
             Layout.fillWidth: true
             font.pixelSize: 14
             textFormat: Text.RichText
-            property var txt: "<style type='text/css'>a {text-decoration: none; color: #4CB860}</style>" + qsTr("Wallet creation height: ") + (currentWallet ? "0" : "") + translationManager.emptyString
+            property var txt: "<style type='text/css'>a {text-decoration: none; color: #4CB860}</style>" + qsTr("Wallet creation height: ") + (currentWallet ? wallet.creationHeight : 342000) + translationManager.emptyString
             property var linkTxt: qsTr(" <a href='#'>(Click to change)</a>") + translationManager.emptyString
             text: (typeof currentWallet == "undefined") ? "" : txt + linkTxt
 
@@ -653,7 +653,7 @@ Rectangle {
                 id: restoreHeight
                 Layout.preferredWidth: 80
                 Layout.fillWidth: true
-                text: currentWallet ? "0" : "0"
+                text: currentWallet ? wallet.creationHeight : 342000
                 validator: IntValidator {
                     bottom:0
                 }

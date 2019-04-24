@@ -254,7 +254,6 @@ win32 {
         -lwsock32 \
         -lIphlpapi \
         -lcrypt32 \
-        -lhidapi \
         -lgdi32
     
     !contains(QMAKE_TARGET.arch, x86_64) {
@@ -295,7 +294,6 @@ linux {
         -lssl \
         -llmdb \
         -lsodium \
-        -lhidapi-libusb \
         -lcrypto
 
     if(!android) {
@@ -326,7 +324,6 @@ macx {
         -L/usr/local/opt/openssl/lib \
         -L/usr/local/opt/boost/lib \
         -lboost_serialization \
-        -lhidapi \
         -lboost_thread-mt \
         -lboost_system \
         -lboost_date_time \

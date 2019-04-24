@@ -228,7 +228,7 @@ ColumnLayout {
         appWindow.persistentSettings.locale   = settings.locale
         appWindow.persistentSettings.account_name = settings.account_name
         appWindow.persistentSettings.wallet_path = new_wallet_filename
-        appWindow.persistentSettings.restore_height = (isNaN(settings.restore_height))? 0 : settings.restore_height
+        appWindow.persistentSettings.restore_height = (isNaN(settings.restore_height))? 342000 : settings.restore_height
         appWindow.persistentSettings.is_recovering = (settings.is_recovering === undefined)? false : settings.is_recovering
     }
 

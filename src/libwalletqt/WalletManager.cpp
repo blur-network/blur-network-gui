@@ -278,8 +278,7 @@ bool WalletManager::isDaemonLocal(const QString &daemon_address) const
 QString WalletManager::resolveOpenAlias(const QString &address) const
 {
     bool dnssec_valid = false;
-    std::string res = m_pimpl->resolveOpenAlias(address.toStdString(), dnssec_valid);
-    res = std::string(dnssec_valid ? "true" : "false") + "|" + res;
+    std::string res = m_pimpl->resolveOpenAlias(address.toStdString());
     return QString::fromStdString(res);
 }
 bool WalletManager::parse_uri(const QString &uri, QString &address, QString &payment_id, uint64_t &amount, QString &tx_description, QString &recipient_name, QVector<QString> &unknown_parameters, QString &error)
