@@ -46,11 +46,6 @@ ColumnLayout {
         var trStart = '<tr><td style="padding-top:5px;"><b>',
             trMiddle = '</b></td><td style="padding-left:10px;padding-top:5px;">',
             trEnd = "</td></tr>",
-            autoDonationEnabled = wizard.settings['auto_donations_enabled'] === true,
-            autoDonationText = autoDonationEnabled ? qsTr("Enabled") : qsTr("Disabled"),
-            autoDonationAmount = wizard.settings["auto_donations_amount"] + " %",
-            backgroundMiningEnabled = wizard.settings["allow_background_mining"] === true,
-            backgroundMiningText = backgroundMiningEnabled ? qsTr("Enabled") : qsTr("Disabled"),
             nettype = appWindow.persistentSettings.nettype,
             networkText = nettype == NetworkType.TESTNET ? qsTr("Testnet") : nettype == NetworkType.STAGENET ? qsTr("Stagenet") : qsTr("Mainnet"),
             restoreHeightEnabled = wizard.settings['restore_height'] !== undefined;
@@ -62,11 +57,6 @@ ColumnLayout {
 //            + trStart + qsTr("Backup seed") + trMiddle + wizard.settings["wallet"].seed + trEnd
             + trStart + qsTr("Backup seed") + trMiddle + '****' + trEnd
             + trStart + qsTr("Wallet path") + trMiddle + wizard.settings["wallet_path"] + trEnd
-            // + trStart + qsTr("Auto donations") + trMiddle + autoDonationText + trEnd
-            // + (autoDonationEnabled
-                // ? trStart + qsTr("Donation amount") + trMiddle + autoDonationAmount + trEnd
-                // : "")
-            // + trStart + qsTr("Background mining") + trMiddle + backgroundMiningText + trEnd
             + trStart + qsTr("Daemon address") + trMiddle + persistentSettings.daemon_address + trEnd
             + trStart + qsTr("Network Type") + trMiddle + networkText + trEnd
             + (restoreHeightEnabled

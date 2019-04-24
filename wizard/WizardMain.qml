@@ -48,7 +48,7 @@ ColumnLayout {
     property var m_wallet;
 
     property var paths: {
-     //   "create_wallet" : [welcomePage, optionsPage, createWalletPage, passwordPage, donationPage, finishPage ],
+     //   "create_wallet" : [welcomePage, optionsPage, createWalletPage, passwordPage,  finishPage ],
      //   "recovery_wallet" : [welcomePage, optionsPage, recoveryWalletPage, passwordPage, donationPage, finishPage ],
         // disable donation page
         "create_wallet" : [welcomePage, optionsPage, createWalletPage, passwordPage, daemonSettingsPage, finishPage ],
@@ -228,18 +228,12 @@ ColumnLayout {
         appWindow.persistentSettings.locale   = settings.locale
         appWindow.persistentSettings.account_name = settings.account_name
         appWindow.persistentSettings.wallet_path = new_wallet_filename
-        appWindow.persistentSettings.allow_background_mining = false //settings.allow_background_mining
-        appWindow.persistentSettings.auto_donations_enabled = false //settings.auto_donations_enabled
-        appWindow.persistentSettings.auto_donations_amount = false //settings.auto_donations_amount
         appWindow.persistentSettings.restore_height = (isNaN(settings.restore_height))? 0 : settings.restore_height
         appWindow.persistentSettings.is_recovering = (settings.is_recovering === undefined)? false : settings.is_recovering
     }
 
     // reading settings from persistent storage
     Component.onCompleted: {
-        settings['allow_background_mining'] = appWindow.persistentSettings.allow_background_mining
-        settings['auto_donations_enabled'] = appWindow.persistentSettings.auto_donations_enabled
-        settings['auto_donations_amount'] = appWindow.persistentSettings.auto_donations_amount
     }
 
     MessageDialog {
@@ -291,12 +285,6 @@ ColumnLayout {
 
     WizardDaemonSettings {
         id: daemonSettingsPage
-        Layout.bottomMargin: wizardBottomMargin
-        Layout.topMargin: wizardTopMargin
-    }
-
-    WizardDonation {
-        id: donationPage
         Layout.bottomMargin: wizardBottomMargin
         Layout.topMargin: wizardTopMargin
     }
