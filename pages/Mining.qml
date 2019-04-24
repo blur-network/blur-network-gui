@@ -98,31 +98,6 @@ Rectangle {
             }
 
             RowLayout {
-                Layout.leftMargin: 125
-                CheckBox {
-                    id: backgroundMining
-                    enabled: startSoloMinerButton.enabled
-                    checked: persistentSettings.allow_background_mining
-                    onClicked: {persistentSettings.allow_background_mining = checked}
-                    text: qsTr("Background mining (experimental)") + translationManager.emptyString
-                }
-
-            }
-
-            RowLayout {
-                // Disable this option until stable
-                visible: false
-                Layout.leftMargin: 125
-                CheckBox {
-                    id: ignoreBattery
-                    enabled: startSoloMinerButton.enabled
-                    checked: !persistentSettings.miningIgnoreBattery
-                    onClicked: {persistentSettings.miningIgnoreBattery = !checked}
-                    text: qsTr("Enable mining when running on battery") + translationManager.emptyString
-                }
-            }
-
-            RowLayout {
                 Label {
                     id: manageSoloMinerLabel
                     color: Style.defaultFontColor
@@ -138,7 +113,7 @@ Rectangle {
                     small: true
                     text: qsTr("Start mining") + translationManager.emptyString
                     onClicked: {
-                        var success = walletManager.startMining(appWindow.currentWallet.address(0, 0), soloMinerThreadsLine.text, persistentSettings.allow_background_mining, persistentSettings.miningIgnoreBattery)
+                        var success = walletManager.startMining(appWindow.currentWallet.address(0, 0), soloMinerThreadsLine.text)
                         if (success) {
                             update()
                         } else {

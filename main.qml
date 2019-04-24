@@ -1020,12 +1020,8 @@ ApplicationWindow {
         property string locale
         property string account_name
         property string wallet_path
-        property bool   auto_donations_enabled : false
-        property int    auto_donations_amount : 50
-        property bool   allow_background_mining : false
-        property bool   miningIgnoreBattery : true
         property var    nettype: NetworkType.MAINNET
-        property string daemon_address: nettype == NetworkType.TESTNET ? "127.0.0.1:42542" : nettype == NetworkType.STAGENET ? "127.0.0.1:31106" : "127.0.0.1:52542"
+        property string daemon_address: nettype == NetworkType.TESTNET ? "localhost:21111" : nettype == NetworkType.STAGENET ? "localhost:31106" : "localhost:52542"
         property string payment_id
         property int    restore_height : 0
         property bool   is_recovering : false
@@ -1036,7 +1032,7 @@ ApplicationWindow {
         property string daemonUsername: ""
         property string daemonPassword: ""
         property bool transferShowAdvanced: false
-        property string blockchainDataDir: ""
+        property string blockchainDataDir: dataDir
         property bool useRemoteNode: false
         property string remoteNodeAddress: ""
         property string bootstrapNodeAddress: ""
