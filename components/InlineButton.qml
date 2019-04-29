@@ -45,8 +45,6 @@ Item {
     signal clicked()
 
     function doClick() {
-        // Android workaround
-        releaseFocus();
         clicked();
     }
 

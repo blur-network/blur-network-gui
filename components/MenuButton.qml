@@ -42,7 +42,6 @@ Rectangle {
 
     function doClick() {
         // Android workaround
-        releaseFocus();
         clicked();
     }
 

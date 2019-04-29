@@ -51,7 +51,6 @@ Item {
 
     function doClick() {
         // Android workaround
-        releaseFocus();
         clicked();
     }
 
@@ -72,12 +71,12 @@ Item {
 
             // possibly do some hover effects here
             onEntered: {
-//                if(button.enabled) parent.color = Style.buttonBackgroundColorHover;
-//                else parent.color = Style.buttonBackgroundColorDisabledHover;
+                if(button.enabled) parent.color = Style.buttonBackgroundColorHover;
+                else parent.color = Style.buttonBackgroundColorDisabledHover;
             }
             onExited: {
-//                if(button.enabled) parent.color = Style.buttonBackgroundColor;
-//                else parent.color = Style.buttonBackgroundColorDisabled;
+                if(button.enabled) parent.color = Style.buttonBackgroundColor;
+                else parent.color = Style.buttonBackgroundColorDisabled;
             }
         }
     }

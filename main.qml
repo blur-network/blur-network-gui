@@ -965,7 +965,6 @@ ApplicationWindow {
         //
         walletManager.walletOpened.connect(onWalletOpened);
         walletManager.walletClosed.connect(onWalletClosed);
-        walletManager.checkUpdatesComplete.connect(onWalletCheckUpdatesComplete);
 
         if(typeof daemonManager != "undefined") {
             daemonManager.daemonStarted.connect(onDaemonStarted);
@@ -1004,7 +1003,6 @@ ApplicationWindow {
             passwordDialog.open(usefulName(walletPath()))
         }
 
-        checkUpdates();
     }
 
     onRightPanelExpandedChanged: {
@@ -1032,7 +1030,7 @@ ApplicationWindow {
         property string daemonUsername: ""
         property string daemonPassword: ""
         property bool transferShowAdvanced: false
-        property string blockchainDataDir: dataDir
+        property string blockchainDataDir: ""
         property bool useRemoteNode: false
         property string remoteNodeAddress: ""
         property string bootstrapNodeAddress: ""
@@ -1706,41 +1704,5 @@ ApplicationWindow {
         Qt.quit();
     }
 
-    function onWalletCheckUpdatesComplete(update) {
-        if (update === "")
-            return
-        print("Update found: " + update)
-        var parts = update.split("|")
-        if (parts.length == 4) {
-          var version = parts[0]
-          var hash = parts[1]
-          var user_url = parts[2]
-          var auto_url = parts[3]
-          var msg = qsTr("New version of blur-gui-wallet is available: %1<br>%2").arg(version).arg(user_url) + translationManager.emptyString
-          notifier.show(msg)
-        }
-        else {
-          print("Failed to parse update spec")
-        }
-    }
-
-    function checkUpdates() {
-        walletManager.checkUpdatesAsync("blur-gui-wallet", "gui")
-    }
-
-    Timer {
-        id: updatesTimer
-        interval: 3600*1000; running: true; repeat: true
-        onTriggered: checkUpdates()
-    }
-
-    function releaseFocus() {
-        // Workaround to release focus from textfield when scrolling (https://bugreports.qt.io/browse/QTBUG-34867)
-        if(isAndroid) {
-            console.log("releasing focus")
-            middlePanel.focus = true
-            middlePanel.focus = false
-        }
-}
 
 }

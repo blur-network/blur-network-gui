@@ -103,7 +103,6 @@ Rectangle {
             onEntered: goToBasicVersionButton.color = "#262626";
             onExited: goToBasicVersionButton.color = "transparent";
             onClicked: {
-                releaseFocus()
                 parent.checked = !parent.checked
                 titleBar.goToBasicVersion(leftPanel.visible)
             }
