@@ -238,7 +238,7 @@ int main(int argc, char *argv[])
 
 
     if (!moneroAccountsRootDir.empty()) {
-        QString moneroAccountsDir = moneroAccountsRootDir.at(0) + "$PWD/Blur Network/wallets";
+        QString moneroAccountsDir = moneroAccountsRootDir.at(0) + "/Blur Network/wallets";
         engine.rootContext()->setContextProperty("moneroAccountsDir", moneroAccountsDir);
     }
 

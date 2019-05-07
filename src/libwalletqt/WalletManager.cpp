@@ -275,11 +275,6 @@ bool WalletManager::isDaemonLocal(const QString &daemon_address) const
     return Monero::Utils::isAddressLocal(daemon_address.toStdString());
 }
 
-QString WalletManager::resolveOpenAlias(const QString &address, const Monero::NetworkType nettype) const
-{
-    std::string res = m_pimpl->resolveOpenAlias(address.toStdString(), nettype);
-    return QString::fromStdString(res);
-}
 bool WalletManager::parse_uri(const QString &uri, QString &address, QString &payment_id, uint64_t &amount, QString &tx_description, QString &recipient_name, QVector<QString> &unknown_parameters, QString &error)
 {
     if (m_currentWallet)

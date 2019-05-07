@@ -181,12 +181,11 @@ Rectangle {
             clip: true
 
             onFlickingChanged: {
-                releaseFocus();
             }
 
             // Disabled scrollbars, gives crash on startup on windows
-//            ScrollIndicator.vertical: ScrollIndicator { }
-//            ScrollBar.vertical: ScrollBar { }       // uncomment to test
+            //ScrollIndicator.vertical: ScrollIndicator { }
+            //ScrollBar.vertical: ScrollBar { }       // uncomment to test
 
             // Views container
             StackView {
