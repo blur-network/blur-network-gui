@@ -18,11 +18,9 @@ See [LICENSE](LICENSE).
 
   - For Debian distributions (Debian, Ubuntu, Mint, Tails...)
 
-	`sudo apt install build-essential cmake libboost-all-dev libsodium-dev libpgm-dev libunbound-dev graphviz doxygen libunwind8-dev pkg-config libssl-dev libzmq3-dev libhidapi-dev`
+	`sudo apt install build-essential cmake libboost-all-dev libsodium-dev libunwind8-dev pkg-config libssl-dev`
 
-  - For Gentoo
 
-	`sudo emerge app-arch/xz-utils app-doc/doxygen dev-cpp/gtest dev-libs/boost dev-libs/expat dev-libs/openssl dev-util/cmake media-gfx/graphviz net-dns/unbound net-libs/ldns net-libs/miniupnpc net-libs/zeromq sys-libs/libunwind`
 
 2. Install Qt:
 
@@ -32,21 +30,12 @@ See [LICENSE](LICENSE).
 
     `sudo apt install qtbase5-dev qt5-default qtdeclarative5-dev qml-module-qtquick-controls qml-module-qtquick-controls2 qml-module-qtquick-dialogs qml-module-qtquick-xmllistmodel qml-module-qt-labs-settings qml-module-qt-labs-folderlistmodel qttools5-dev-tools qml-module-qtquick-templates2`
 
-  - For Gentoo
-
-    `sudo emerge dev-qt/qtcore:5 dev-qt/qtdeclarative:5 dev-qt/qtquickcontrols:5 dev-qt/qtquickcontrols2:5 dev-qt/qtgraphicaleffects:5`
 
   - Optional : To build the flag `WITH_SCANNER`
 
     - For Ubuntu
 
       `sudo apt install qtmultimedia5-dev qml-module-qtmultimedia libzbar-dev`
-
-    - For Gentoo
-
-      The *qml* USE flag must be enabled.
-
-      `emerge dev-qt/qtmultimedia:5 media-gfx/zbar`
 
 
 3. Clone repository

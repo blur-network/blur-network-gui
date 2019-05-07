@@ -114,7 +114,6 @@ LIBS += -L$$WALLET_ROOT/lib \
         -lwallet_merged \
         -llmdb \
         -lepee \
-        -lunbound \
         -lsodium \
         -leasylogging
 }
@@ -125,7 +124,6 @@ android {
         -lwallet_merged \
         -llmdb \
         -lepee \
-        -lunbound \
         -lsodium \
         -leasylogging
 }
@@ -145,7 +143,6 @@ ios {
         -lwallet_merged \
         -llmdb \
         -lepee \
-        -lunbound \
         -lsodium \
         -leasylogging
 
@@ -275,7 +272,7 @@ linux {
         LIBS+= -Wl,-Bstatic    
         QMAKE_LFLAGS += -static-libgcc -static-libstdc++
    #     contains(QT_ARCH, x86_64) {
-            LIBS+= -lunbound
+            LIBS+=
    #     }
     } else {
       # On some distro's we need to add dynload
