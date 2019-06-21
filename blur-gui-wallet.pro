@@ -320,14 +320,14 @@ macx {
         -L/usr/local/lib \
         -L/usr/local/opt/openssl/lib \
         -L/usr/local/opt/boost/lib \
-        -lboost_serialization \
+        -lboost_serialization-mt \
         -lboost_thread-mt \
-        -lboost_system \
-        -lboost_date_time \
-        -lboost_filesystem \
+        -lboost_system-mt \
+        -lboost_date_time-mt \
+        -lboost_filesystem-mt \
         -lboost_regex \
-        -lboost_chrono \
-        -lboost_program_options \
+        -lboost_chrono-mt \
+        -lboost_program_options-mt \
         -lssl \
         -lsodium \
         -lcrypto \

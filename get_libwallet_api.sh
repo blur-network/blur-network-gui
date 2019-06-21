@@ -1,6 +1,6 @@
 #!/bin/bash
 MONERO_URL=https://github.com/blur-network/blur.git
-MONERO_BRANCH=stable
+MONERO_BRANCH=v0.1.9.7
 
 pushd $(pwd)
 ROOT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -17,7 +17,7 @@ if [ ! -d $MONERO_DIR/src ]; then
 fi
 git submodule update --remote
 git -C $MONERO_DIR fetch
-git -C $MONERO_DIR checkout stable
+git -C $MONERO_DIR checkout v0.1.9.7
 
 
 
@@ -83,7 +83,7 @@ echo "GUI_MONERO_VERSION=\"$VERSIONTAG\"" > $MONERO_DIR/version.sh
 # default build type
 BUILD_TYPE=$1
 if [ -z $BUILD_TYPE ]; then
-    BUILD_TYPE=release
+    BUILD_TYPE=Release
 fi
 
 STATIC=false
