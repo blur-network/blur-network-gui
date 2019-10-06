@@ -76,7 +76,7 @@ fi
  
 # build zxcvbn
 if [ "$DISABLE_PASS_STRENGTH_METER" != true ]; then
-    $MAKE -C src/zxcvbn-c || exit
+    $MAKE -C ../../../src/zxcvbn-c || exit
 fi
 
 if [ ! -d build ]; then mkdir build; fi
