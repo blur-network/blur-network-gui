@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Blur Network GUI Wallet
+Comment=Blur: The Private Cryptocurrency
+Icon=/usr/share/icons/hicolor/256x256/apps/blur-icon.png
+Exec=/snap/bin/blur-wallet.blur-wallet-gui
+Terminal=false
+Categories=Network
+Hints=P2P
+
+Name[en_US]=Blur Network GUI Wallet
+
+

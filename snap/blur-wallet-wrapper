@@ -1,0 +1,4 @@
+#!/bin/sh
+
+exec "/snap/bin/blur-wallet.blurd" "--detach --config=${HOME}/snap/blur-wallet/current/blurd.conf"
+exec "/snap/bin/blur-wallet.blur-wallet-gui" "$@"
