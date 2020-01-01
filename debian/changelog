@@ -1,3 +1,8 @@
+blur-network-gui (0.1.9.9.2-0) UNRELEASED; urgency=medium
+
+  * Remove old dependencies, update version
+
+ -- The Blur Network <admin@blur.cash>  Fri, 1 Jan 2020 00:00:00 +0000
 
 blur-network-gui (0.1.9.5-0) UNRELEASED; urgency=medium
 

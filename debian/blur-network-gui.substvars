@@ -1,2 +1,2 @@
-misc:Depends=
-misc:Pre-Depends=
+misc:Depends= libboost-all-dev, libssl-dev, libsodium-dev, qtbase5-dev, qt5-default, qtdeclarative5-dev, qml-module-qtquick-controls, qml-module-qtquick-controls2, qml-module-qtquick-dialogs, qml-module-qtquick-xmllistmodel, qml-module-qt-labs-settings, qml-module-qt-labs-folderlistmodel, qttools5-dev-tools
+misc:Pre-Depends= build-essential, debhelper (>= 9), git, cmake, pkg-config
