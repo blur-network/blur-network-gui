@@ -1,5 +1,5 @@
 name: blur-wallet
-version: 0.1.9.9.1
+version: 0.1.9.9.2
 summary: "Blur Network: The private cryptocurrency (https://blur.cash)"
 description: |
     BLUR is a privacy-focused cryptocurrency based on code from Monero. The Blur
@@ -10,26 +10,32 @@ description: |
 grade: stable
 confinement: strict
 
+
 apps:
     blurd:
         command: |
-          blurd-wrapper --data-dir ${HOME}/.blurnetwork
+          $SNAP/blur-wallet/current/bin/blurd --data-dir ${HOME}/.blurnetwork
         plugs:
             - network
             - network-bind
     blur-wallet-gui:
         command: |
-          blur-wallet-wrapper
+          $SNAP/blur-wallet/current/bin/blur-gui-wallet --log-file ${SNAP_USER_DATA}
         plugs:
             - home
             - network
+            - network-bind
 
 parts:
     blur-wallet:
         build-packages: [build-essential, git, cmake, pkg-config, libboost-all-dev, libssl-dev, libsodium-dev, qtbase5-dev, qt5-default, qtdeclarative5-dev, qml-module-qtquick-controls, qml-module-qtquick-dialogs, qml-module-qtquick-xmllistmodel, qml-module-qt-labs-folderlistmodel, qml-module-qt-labs-settings,  qttools5-dev-tools, liblzma5, libtinfo5, libunwind8, libunwind-dev]
         plugin: dump
-        override-build: wget https://github.com/blur-network/blur-network-gui/releases/download/v0.1.9.9.1-snap/blur-network-gui-v0.1.9.9.1-linux-x86_64-snap.tar.gz && tar xvzf blur-network-gui-v0.1.9.9.1-linux-x86_64-snap.tar.gz && mkdir bin && cd blur-network-gui-v0.1.9.9.1-linux-x86_64 && chmod 0755 blurd-wrapper && chmod 0755 blur-wallet-wrapper && mv blurd-wrapper ../bin/blurd-wrapper && mv blur-wallet-wrapper ../bin/blur-wallet-wrapper
+        override-build: sh -c '${HOME}/blur-network-gui/build_snap.sh' && cp ${HOME}/blur-gui/parts/blur-wallet/build/build/release/bin/* ${HOME}/blur-network-gui/ && cp ${HOME}/blur-network-gui/parts/blur-wallet/build/build/release/bin/* ${HOME}/blur-network-gui/stage/
         source: .
+        filesets:
+          binary-files:
+          - blurd
+          - blur-gui-wallet
         stage-packages:
             - libboost-all-dev
             - libssl-dev
@@ -41,7 +47,10 @@ parts:
             - qtbase5-dev
             - qt5-default
             - qtdeclarative5-dev
+            - qt-qtquick-controls2-dev
             - qml-module-qtquick-controls
+            - qml-module-qtquick-controls2
+            - qml-module-qtquick-templates2
             - qml-module-qtquick-dialogs
             - qml-module-qtquick-xmllistmodel
             - qml-module-qt-labs-settings
@@ -50,28 +59,7 @@ parts:
             - liblzma5
             - libtinfo5
         prime:
-            - -../parts/blur-wallet/build/bin
+            - $binary-files
             - usr/lib
-            - -bin
-            - -usr/lib
             - -usr/share
-            - -usr/share/icons/hicolor/256x256/apps
-            - -usr/share/applications
-
-    dist-files:
-        plugin: dump
-        source: .
-        organize:
-            bin: bin
-            blur-network-gui-v0.1.9.9.1-linux-x86_64/blurd.conf: etc/blurd.conf
-            blur-network-gui-v0.1.9.9.1-linux-x86_64/blur-gui-wallet: bin/blur-gui-wallet
-            blur-network-gui-v0.1.9.9.1-linux-x86_64/blurd-wrapper: bin/blurd-wrapper
-            blur-network-gui-v0.1.9.9.1-linux-x86_64/blur-wallet-wrapper: bin/blur-wallet-wrapper
-            blur-network-gui-v0.1.9.9.1-linux-x86_64/start-gui.sh: bin/start-gui.sh
-            blur-network-gui-v0.1.9.9.1-linux-x86_64/blur-wallet.desktop: usr/share/applications/blur-wallet.desktop
-            blur-network-gui-v0.1.9.9.1-linux-x86_64/blur-icon.png: usr/share/icons/hicolor/256x256/apps/blur-icon.png
-        prime:
-            - -etc
-            - -bin
-            - -usr/share/applications
-            - -usr/share/icons/hicolor/256x256/apps
+            - -usr/lib/gcc
