@@ -47,7 +47,7 @@ parts:
             - qtbase5-dev
             - qt5-default
             - qtdeclarative5-dev
-            - qt-qtquick-controls2-dev
+            - qtquickcontrols2-5-dev
             - qml-module-qtquick-controls
             - qml-module-qtquick-controls2
             - qml-module-qtquick-templates2
