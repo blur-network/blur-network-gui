@@ -14,13 +14,13 @@ confinement: strict
 apps:
     blurd:
         command: |
-          $SNAP/blur-wallet/current/bin/blurd --data-dir ${HOME}/.blurnetwork
+          /snap/blur-wallet/current/blurd --data-dir ${HOME}/.blurnetwork
         plugs:
             - network
             - network-bind
     blur-wallet-gui:
         command: |
-          $SNAP/blur-wallet/current/bin/blur-gui-wallet --log-file ${SNAP_USER_DATA}
+          /snap/blur-wallet/current/blur-gui-wallet --log-file ${SNAP_USER_DATA}
         plugs:
             - home
             - network
