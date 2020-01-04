@@ -10,7 +10,6 @@ description: |
 grade: stable
 confinement: strict
 
-
 apps:
     blurd:
         command: |
@@ -25,6 +24,7 @@ apps:
             - home
             - network
             - network-bind
+        desktop: /snap/blur-wallet/current/snap/blur-wallet.desktop
 
 parts:
     blur-wallet:
