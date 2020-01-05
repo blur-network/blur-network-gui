@@ -1,5 +1,7 @@
 <RCC>
-  <qresource prefix="/translations/">
+  <qresource prefix="/">
+    <file>monero-core_ar.qm</file>
+    <file>monero-core_cat.qm</file>
     <file>monero-core_cs.qm</file>
     <file>monero-core_da.qm</file>
     <file>monero-core_de.qm</file>

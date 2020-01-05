@@ -29,7 +29,11 @@
 #ifndef CLIPBOARDADAPTER_H
 #define CLIPBOARDADAPTER_H
 
-#include <QGuiApplication>
+#if QT_MAJOR_VERSION < 5
+  #include <QApplication>
+#else
+  #include <QGuiApplication>
+#endif
 #include <QClipboard>
 #include <QObject>
 

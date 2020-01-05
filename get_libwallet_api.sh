@@ -1,6 +1,6 @@
 #!/bin/bash
 MONERO_URL=https://github.com/blur-network/blur.git
-MONERO_BRANCH=v0.1.9.9.1
+MONERO_BRANCH=v0.1.9.9.2
 
 pushd $(pwd)
 ROOT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -17,7 +17,7 @@ if [ ! -d $MONERO_DIR/src ]; then
 fi
 git submodule update --remote
 git -C $MONERO_DIR fetch
-git -C $MONERO_DIR checkout v0.1.9.9.1
+git -C $MONERO_DIR checkout v0.1.9.9.2
 
 
 
@@ -204,7 +204,6 @@ fi
 
 # Build libwallet_merged
 pushd $MONERO_DIR/build/$BUILD_TYPE/src/wallet
-eval $make_exec version -C ../..
 eval $make_exec  -j2
 eval $make_exec  install -j2
 popd

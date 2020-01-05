@@ -1,11 +1,11 @@
-# qml components require at least QT 5.7.0
-lessThan (QT_MAJOR_VERSION, 5) | lessThan (QT_MINOR_VERSION, 7) {
-  error("Can't build with Qt $${QT_VERSION}. Use at least Qt 5.7.0")
-}
+#qml components require at least QT 5.7.0
+#lessThan (QT_MAJOR_VERSION, 5) | lessThan (QT_MINOR_VERSION, 7) {
+#  error("Can't build with Qt $${QT_VERSION}. Use at least Qt 5.7.0")
+#}
 
 TEMPLATE = app
 
-QT += qml quick widgets
+QT += qml quick widgets concurrent
 
 WALLET_ROOT=$$PWD/monero
 
@@ -298,14 +298,6 @@ linux {
             -Wl,-Bdynamic \
             -lGL
     }
-    # currently monero has an issue with "static" build and linunwind-dev,
-    # so we link libunwind-dev only for non-Ubuntu distros
-    CONFIG(libunwind_off) {
-        message(Building without libunwind)
-    } else {
-        message(Building with libunwind)
-        LIBS += -Wl,-Bdynamic -lunwind
-    }
 
     QMAKE_LFLAGS += -pie -Wl,-z,relro -Wl,-z,now -Wl,-z,noexecstack
 }
@@ -365,8 +357,8 @@ TRANSLATION_TARGET_DIR = $$OUT_PWD/translations
         else:LANGREL = $$[QT_INSTALL_BINS]/lrelease
     }
 
-    langupd.command = \
-        $$LANGUPD $$LANGUPD_OPTIONS $$shell_path($$_PRO_FILE) -ts $$_PRO_FILE_PWD/$$TRANSLATIONS
+#    langupd.command = \
+#        $$LANGUPD $$LANGUPD_OPTIONS $$shell_path($$_PRO_FILE) -ts $$_PRO_FILE_PWD/$$TRANSLATIONS
 
 
 
@@ -382,23 +374,23 @@ TRANSLATION_TARGET_DIR = $$OUT_PWD/translations
 
     # Compile an initial version of translation files when running qmake
     # the first time and generate the resource file for translations.
-    !exists($$TRANSLATION_TARGET_DIR) {
-        mkpath($$TRANSLATION_TARGET_DIR)
-    }
-    qrc_entry = "<RCC>"
-    qrc_entry += '  <qresource prefix="/">'
-    write_file($$TRANSLATION_TARGET_DIR/translations.qrc, qrc_entry)
-    for(tsfile, TRANSLATIONS) {
-        qmfile = $$TRANSLATION_TARGET_DIR/$$basename(tsfile)
-        qmfile ~= s/.ts$/.qm/
-        system($$LANGREL $$LANGREL_OPTIONS $$tsfile -qm $$qmfile)
-        qrc_entry = "    <file>$$basename(qmfile)</file>"
-        write_file($$TRANSLATION_TARGET_DIR/translations.qrc, qrc_entry, append)
-    }
-    qrc_entry = "  </qresource>"
-    qrc_entry += "</RCC>"
-    write_file($$TRANSLATION_TARGET_DIR/translations.qrc, qrc_entry, append)
-    RESOURCES += $$TRANSLATION_TARGET_DIR/translations.qrc
+#    !exists($$TRANSLATION_TARGET_DIR) {
+#        mkpath($$TRANSLATION_TARGET_DIR)
+#    }
+#    qrc_entry = "<RCC>"
+#    qrc_entry += '  <qresource prefix="/">'
+#    write_file($$TRANSLATION_TARGET_DIR/translations.qrc, qrc_entry)
+#    for(tsfile, TRANSLATIONS) {
+#        qmfile = $$TRANSLATION_TARGET_DIR/$$basename(tsfile)
+#        qmfile ~= s/.ts$/.qm/
+#        system($$LANGREL $$LANGREL_OPTIONS $$tsfile -qm $$qmfile)
+#        qrc_entry = "    <file>$$basename(qmfile)</file>"
+#        write_file($$TRANSLATION_TARGET_DIR/translations.qrc, qrc_entry, append)
+#    }
+#    qrc_entry = "  </qresource>"
+#    qrc_entry += "</RCC>"
+#    write_file($$TRANSLATION_TARGET_DIR/translations.qrc, qrc_entry, append)
+#    RESOURCES += $$TRANSLATION_TARGET_DIR/translations.qrc
 }
 
 

@@ -5,8 +5,11 @@
 #include <QTime>
 #include <QMutex>
 #include <QList>
-#include <QtConcurrent/QtConcurrent>
-
+//#if QT_MAJOR_VERSION >= 5
+  #include <QtConcurrent/QtConcurrent>
+//#else
+//  #include <QtCore>
+//#endif
 #include "wallet/api/wallet2_api.h" // we need to have an access to the Monero::Wallet::Status enum here;
 #include "PendingTransaction.h" // we need to have an access to the PendingTransaction::Priority enum here;
 #include "UnsignedTransaction.h"
@@ -32,7 +35,7 @@ class Wallet : public QObject
     Q_PROPERTY(QString seedLanguage READ getSeedLanguage)
     Q_PROPERTY(Status status READ status)
     Q_PROPERTY(NetworkType::Type nettype READ nettype)
-//    Q_PROPERTY(ConnectionStatus connected READ connected)
+    Q_PROPERTY(ConnectionStatus connected READ connected)
     Q_PROPERTY(quint32 currentSubaddressAccount READ currentSubaddressAccount)
     Q_PROPERTY(bool synchronized READ synchronized)
     Q_PROPERTY(QString errorString READ errorString)
