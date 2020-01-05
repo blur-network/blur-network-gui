@@ -20,7 +20,7 @@ pushd $MONERO_DIR/build/release
 # reusing function from "utils.sh"
 platform=$(get_platform)
 
-pushd $MONERO_DIR/build/release/src/wallet
+pushd $MONERO_DIR/build/release-static/src/wallet
 make -j4
 make install -j4
 popd

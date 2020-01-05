@@ -31,7 +31,11 @@
 clipboardAdapter::clipboardAdapter(QObject *parent) :
     QObject(parent)
 {
+#if QT_MAJOR_VERSION < 5
+    m_pClipboard = QApplication::clipboard();
+#else
     m_pClipboard = QGuiApplication::clipboard();
+#endif
 }
 
 void clipboardAdapter::setText(const QString &text) {

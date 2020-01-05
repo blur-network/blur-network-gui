@@ -27,7 +27,12 @@
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <QApplication>
-#include <QQmlApplicationEngine>
+#if QT_MAJOR_VERSION >= 5
+  #include <QQmlApplicationEngine>
+#else
+  #include <QGuiApplication>
+#endif
+
 #include <QtQml>
 #include <QStandardPaths>
 #include <QIcon>

@@ -15,7 +15,11 @@
 #include <QDebug>
 #include <QUrl>
 #include <QTimer>
-#include <QtConcurrent/QtConcurrent>
+//#if QT_MAJOR_VERSION >= 5
+  #include <QtConcurrent/QtConcurrent>
+//#else
+//  #include <QtCore>
+//#endif
 #include <QList>
 #include <QVector>
 #include <QMutex>

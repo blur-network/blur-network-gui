@@ -31,7 +31,6 @@ import QtQuick.Controls 1.4
 import QtQuick.Controls.Styles 1.4
 import QtQuick.Layouts 1.1
 import QtQuick.Dialogs 1.2
-import "../version.js" as Version
 
 
 import "../components"
@@ -619,18 +618,6 @@ Rectangle {
             }
         }
 
-        TextBlock {
-            Layout.topMargin: 8
-            font.pixelSize: 14
-            Layout.fillWidth: true
-            text: qsTr("GUI version: ") + Version.GUI_VERSION + translationManager.emptyString
-        }
-        TextBlock {
-            id: guiMoneroVersion
-            Layout.fillWidth: true
-            font.pixelSize: 14
-            text: qsTr("Embedded Blur version: ") + Version.GUI_MONERO_VERSION + translationManager.emptyString
-        }
         TextBlock {
             id: restoreHeightText
             Layout.fillWidth: true
