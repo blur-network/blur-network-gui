@@ -11,55 +11,77 @@ grade: stable
 confinement: strict
 
 apps:
-    blurd:
+    blur-wallet:
         command: |
-          /snap/blur-wallet/current/blurd --data-dir ${HOME}/.blurnetwork
-        plugs:
-            - network
-            - network-bind
-    blur-wallet-gui:
-        command: |
-          /snap/blur-wallet/current/blur-gui-wallet --log-file ${SNAP_USER_DATA}
+          blur-gui-wallet
+        environment:
+          PATH: ${PATH}:${SNAP}/bin:${SNAP}/usr/lib/x86_64-linux-gnu/qt5/bin:${SNAP}/usr/bin
+          LD_LIBRARY_PATH: ${LD_LIBRARY_PATH}:${SNAP}/lib:${SNAP}/usr/x86_64-linux-gnu:${SNAP}/usr/lib:${SNAP}/usr/lib/x86_64-linux-gnu/qt5/lib:${SNAP}/bin/libs
+          QT_PLUGIN_PATH: ${QT_PLUGIN_PATH}:${SNAP}/bin/plugins
+          QML2_IMPORT_PATH: ${QML_IMPORT_PATH}:${SNAP}/bin/qml
         plugs:
             - home
             - network
             - network-bind
-        desktop: /snap/blur-wallet/current/snap/blur-wallet.desktop
+            - desktop
+            - desktop-legacy
+            - x11
+            - opengl
 
 parts:
     blur-wallet:
-        build-packages: [build-essential, git, cmake, pkg-config, libboost-all-dev, libssl-dev, libsodium-dev, qtbase5-dev, qt5-default, qtdeclarative5-dev, qml-module-qtquick-controls, qml-module-qtquick-dialogs, qml-module-qtquick-xmllistmodel, qml-module-qt-labs-folderlistmodel, qml-module-qt-labs-settings,  qttools5-dev-tools, liblzma5, libtinfo5, libunwind8, libunwind-dev]
+        build-packages: [build-essential, git, cmake, pkg-config, libboost-all-dev, libssl1.0-dev, libsodium-dev, qtbase5-dev, qtdeclarative5-dev, qtquickcontrols2-5-dev, qml-module-qtquick-controls, qml-module-qtquick-controls2, qml-module-qtquick-dialogs, qml-module-qtquick-xmllistmodel, qml-module-qt-labs-folderlistmodel, qml-module-qt-labs-settings,  qttools5-dev-tools]
         plugin: dump
-        override-build: sh -c '${HOME}/blur-network-gui/build_snap.sh' && cp ${HOME}/blur-gui/parts/blur-wallet/build/build/release/bin/* ${HOME}/blur-network-gui/ && cp ${HOME}/blur-network-gui/parts/blur-wallet/build/build/release/bin/* ${HOME}/blur-network-gui/stage/
-        source: .
         filesets:
-          binary-files:
-          - blurd
-          - blur-gui-wallet
+          binary-folder:
+            - bin/*
+        source: .
+        override-build: sudo /usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/gdk-pixbuf-query-loaders | sudo tee loaders.cache
         stage-packages:
-            - libboost-all-dev
-            - libssl-dev
-            - libsodium-dev
-            - libstdc++6
+            - libboost-chrono1.62.0
+            - libboost-filesystem1.62.0
+            - libboost-system1.62.0
+            - libboost-date-time1.62.0
+            - libboost-program-options1.62.0
+            - libboost-regex1.62.0
+            - libboost-serialization1.62.0
+            - libboost-atomic1.62.0
+            - libboost-locale1.62.0
+            - libboost-thread1.62.0
+            - libssl1.0.2
+            - libsodium18
             - libgcc1
-            - libreadline-dev
-            - libunwind-dev
-            - qtbase5-dev
-            - qt5-default
-            - qtdeclarative5-dev
-            - qtquickcontrols2-5-dev
-            - qml-module-qtquick-controls
-            - qml-module-qtquick-controls2
-            - qml-module-qtquick-templates2
-            - qml-module-qtquick-dialogs
-            - qml-module-qtquick-xmllistmodel
-            - qml-module-qt-labs-settings
-            - qml-module-qt-labs-folderlistmodel
-            - qttools5-dev-tools
-            - liblzma5
-            - libtinfo5
+            - libglib2.0-dev
+            - libqt5concurrent5
+            - libqt5core5a
+            - libqt5sql5
+            - libqt5dbus5
+            - libqt5gui5
+            - libqt5xml5
+            - libqt5quick5
+            - libqt5quickwidgets5
+            - libqt5quickcontrols2-5
+            - libqt5quicktemplates2-5
+            - libqt5xmlpatterns5
+            - qtbase-abi-5-7-1
+            - qtdeclarative-abi-5-7-0
+            - libgdk-pixbuf2.0-dev
+            - libgtk-3-0
+            - libglu1-mesa-dev
+        organize:
+            start_gui.sh: bin/start_gui.sh
+            loaders.cache: /usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders.cache
+            libs/*: usr/lib/
         prime:
-            - $binary-files
+            - $binary-folder
             - usr/lib
             - -usr/share
-            - -usr/lib/gcc
+
+    dist-files:
+        plugin: dump
+        source: .
+        prime:
+            - bin
+            - blurd
+            - blur-gui-wallet
+     
