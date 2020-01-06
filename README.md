@@ -2,7 +2,7 @@
 
 ![Blur Network Wallet](https://cdn.discordapp.com/attachments/453123992736366594/553617741760692234/gui.png)
 
-Copyright (c) 2018-2019, The Blur Network</br> 
+Copyright (c) 2018-2020, The Blur Network</br> 
 Copyright (c) 2014-2018, The Monero Project
 
 ## License
@@ -14,6 +14,7 @@ See [LICENSE](LICENSE).
 
 [![blur-wallet](https://snapcraft.io//blur-wallet/badge.svg)](https://snapcraft.io/blur-wallet)
 
+Or download with `sudo snap install blur-wallet`, then issue the command `blur-wallet` in your terminal.
 
 ## Compiling the Blur Network GUI Wallet from source
 
@@ -23,9 +24,11 @@ See [LICENSE](LICENSE).
 
 1. Install Monero dependencies
 
+**Please note, all of the dependencies are self-managed within the snap package.**
+
   - For Debian distributions (Debian, Ubuntu, Mint, Tails...)
 
-	`sudo apt install build-essential cmake libboost-all-dev libsodium-dev libunwind8-dev pkg-config libssl-dev`
+	`sudo apt install build-essential cmake libboost-all-dev libsodium-dev pkg-config libssl-dev`
 
 
 
