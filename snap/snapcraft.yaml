@@ -9,34 +9,37 @@ description: |
     Join the Fight for Financial Freedom.
 grade: stable
 confinement: strict
+base: core18
 
 apps:
     blur-wallet:
         command: |
-          blur-gui-wallet
+           ${SNAP}/blur-wallet-wrapper
         environment:
-          PATH: ${PATH}:${SNAP}/bin:${SNAP}/usr/lib/x86_64-linux-gnu/qt5/bin:${SNAP}/usr/bin
-          LD_LIBRARY_PATH: ${LD_LIBRARY_PATH}:${SNAP}/lib:${SNAP}/usr/x86_64-linux-gnu:${SNAP}/usr/lib:${SNAP}/usr/lib/x86_64-linux-gnu/qt5/lib:${SNAP}/bin/libs
+          PATH: ${PATH}:${SNAP}/bin:${SNAP}/usr/lib/${HOSTTYPE}-${OSTYPE}/qt5/bin:${SNAP}/usr/bin
+          LD_LIBRARY_PATH: ${LD_LIBRARY_PATH}:${SNAP}/lib:${SNAP}/usr/${HOSTTYPE}-${OSTYPE}:${SNAP}/usr/lib:${SNAP}/usr/lib/${HOSTTYPE}-${OSTYPE}/qt5/lib:${SNAP}/bin/libs:${SNAP}/usr/lib/${HOSTTYPE}-${OSTYPE}/mesa:${SNAP}/usr/lib/${HOSTTYPE}-${OSTYPE}/mesa-egl
+          LIBGL_DRIVERS_PATH: $SNAP/usr/lib/${HOSTTYPE}-${OSTYPE}/dri
+          XLOCALEDIR: ${SNAP}/usr/share/X11/locale
+          LOCPATH: ${SNAP}/usr/lib/locale
+          APP_DIR: ${SNAP}
+          QT_XKB_CONFIG_ROOT: ${SNAP}/usr/share/X11/xkb
           QT_PLUGIN_PATH: ${QT_PLUGIN_PATH}:${SNAP}/bin/plugins
           QML2_IMPORT_PATH: ${QML_IMPORT_PATH}:${SNAP}/bin/qml
         plugs:
             - home
             - network
-            - network-bind
             - desktop
             - desktop-legacy
-            - x11
             - opengl
+            - wayland
+            - x11
+        extensions: [gnome-3-28]
 
 parts:
     blur-wallet:
         build-packages: [build-essential, git, cmake, pkg-config, libboost-all-dev, libssl1.0-dev, libsodium-dev, qtbase5-dev, qtdeclarative5-dev, qtquickcontrols2-5-dev, qml-module-qtquick-controls, qml-module-qtquick-controls2, qml-module-qtquick-dialogs, qml-module-qtquick-xmllistmodel, qml-module-qt-labs-folderlistmodel, qml-module-qt-labs-settings,  qttools5-dev-tools]
         plugin: dump
-        filesets:
-          binary-folder:
-            - bin/*
         source: .
-        override-build: sudo /usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/gdk-pixbuf-query-loaders | sudo tee loaders.cache
         stage-packages:
             - libboost-chrono1.62.0
             - libboost-filesystem1.62.0
@@ -48,10 +51,9 @@ parts:
             - libboost-atomic1.62.0
             - libboost-locale1.62.0
             - libboost-thread1.62.0
-            - libssl1.0.2
-            - libsodium18
+            - libssl-dev
+            - libsodium-dev
             - libgcc1
-            - libglib2.0-dev
             - libqt5concurrent5
             - libqt5core5a
             - libqt5sql5
@@ -63,18 +65,15 @@ parts:
             - libqt5quickcontrols2-5
             - libqt5quicktemplates2-5
             - libqt5xmlpatterns5
-            - qtbase-abi-5-7-1
-            - qtdeclarative-abi-5-7-0
-            - libgdk-pixbuf2.0-dev
-            - libgtk-3-0
-            - libglu1-mesa-dev
+            - qtdeclarative5-dev
+            - zlib1g
         organize:
-            start_gui.sh: bin/start_gui.sh
-            loaders.cache: /usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders.cache
-            libs/*: usr/lib/
+            bin/libs: lib
+            snap/bin/blur-wallet-wrapper: ${SNAPCRAFT_PART_INSTALL}/blur-wallet-wrapper
         prime:
-            - $binary-folder
+            - bin
             - usr/lib
+            - -usr/lib/gcc
             - -usr/share
 
     dist-files:
@@ -84,4 +83,4 @@ parts:
             - bin
             - blurd
             - blur-gui-wallet
-     
+            - blur-wallet-wrapper
