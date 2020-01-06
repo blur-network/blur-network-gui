@@ -1,4 +1,5 @@
 # Blur Network GUI Wallet
+
 ![Blur Network Wallet](https://cdn.discordapp.com/attachments/453123992736366594/553617741760692234/gui.png)
 
 Copyright (c) 2018-2019, The Blur Network</br> 
@@ -7,6 +8,12 @@ Copyright (c) 2014-2018, The Monero Project
 ## License
 
 See [LICENSE](LICENSE).
+
+[![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-black.svg)](https://snapcraft.io/blur-wallet)
+
+
+[![blur-wallet](https://snapcraft.io//blur-wallet/badge.svg)](https://snapcraft.io/blur-wallet)
+
 
 ## Compiling the Blur Network GUI Wallet from source
 
