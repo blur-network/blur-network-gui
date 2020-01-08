@@ -1,6 +1,7 @@
 #include "WalletManager.h"
 #include "Wallet.h"
 #include "wallet/api/wallet2_api.h"
+#include "zxcvbn-c/zxcvbn.h"
 #include "QRCodeImageProvider.h"
 #include <QFile>
 #include <QFileInfo>
@@ -300,6 +301,23 @@ QUrl WalletManager::localPathToUrl(const QString &path) const
 {
     return QUrl::fromLocalFile(path);
 }
+
+#ifndef DISABLE_PASS_STRENGTH_METER
+double WalletManager::getPasswordStrength(const QString &password) const
+{
+    static const char *local_dict[] = {
+        "monero", "fluffypony", NULL
+    };
+
+    if (!ZxcvbnInit("zxcvbn.dict")) {
+        fprintf(stderr, "Failed to open zxcvbn.dict\n");
+        return 0.0;
+    }
+    double e = ZxcvbnMatch(password.toStdString().c_str(), local_dict, NULL);
+    ZxcvbnUnInit();
+    return e;
+}
+#endif
 
 bool WalletManager::saveQrCode(const QString &code, const QString &path) const
 {
