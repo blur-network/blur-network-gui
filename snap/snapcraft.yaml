@@ -33,6 +33,7 @@ parts:
     blur-wallet:
         build-packages: [build-essential, git, cmake, pkg-config, libboost-all-dev, libssl-dev, libsodium-dev, qtbase5-dev, qt5-default, qtdeclarative5-dev, qml-module-qtquick-controls, qml-module-qtquick-dialogs, qml-module-qtquick-xmllistmodel, qml-module-qt-labs-folderlistmodel, qml-module-qt-labs-settings,  qttools5-dev-tools]
         plugin: dump
+        override-build: sh -c '${SNAPCRAFT_PART_SRC}/build_snap.sh release' && cp -r ${SNAPCRAFT_PART_BUILD}/release/bin ${SNAPCRAFT_PART_INSTALL}/
         source: .
         stage-packages:
             - libboost-serialization1.62.0
@@ -45,7 +46,7 @@ parts:
             - libboost-date-time1.62.0
             - libboost-program-options1.62.0
             - libssl-dev
-            - libsodium-dev
+            - libsodium23
             - libstdc++6
             - libgcc1
             - libreadline-gplv2-dev
@@ -65,7 +66,9 @@ parts:
             - libtinfo5
         organize:
             local/start_gui.sh: bin/start_gui.sh
+            bin: usr/bin
         prime:
+            - usr/bin
             - usr/lib
             - -usr/share
 
@@ -73,5 +76,6 @@ parts:
         plugin: dump
         source: .
         prime:
+            - usr/lib
             - blurd
             - blur-gui-wallet

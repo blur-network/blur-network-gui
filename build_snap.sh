@@ -1,7 +1,7 @@
 #!/bin/bash
 
 BUILD_TYPE=$1
-source ./../../../utils.sh
+source ${SNAPCRAFT_PART_SRC}/utils.sh
 platform=$(get_platform)
 # default build type
 if [ -z $BUILD_TYPE ]; then
@@ -60,7 +60,7 @@ else
 fi
 
 
-source ./../../../utils.sh
+source ${SNAPCRAFT_PART_SRC}/utils.sh
 pushd $(pwd)
 ROOT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 MONERO_DIR=monero
@@ -72,11 +72,11 @@ if [[ $platform == *bsd* ]]; then
 fi
 
 # build libwallet
-./../../../get_libwallet_api.sh $BUILD_TYPE
+${SNAPCRAFT_PART_SRC}/get_libwallet_api.sh $BUILD_TYPE
  
 # build zxcvbn
 if [ "$DISABLE_PASS_STRENGTH_METER" != true ]; then
-    $MAKE -C ../../../src/zxcvbn-c || exit
+    $MAKE -C ${SNAPCRACFT_PART_SRC}/zxcvbn-c || exit
 fi
 
 if [ ! -d build ]; then mkdir build; fi
@@ -96,28 +96,20 @@ elif [ "$platform" == "mingw64" ] || [ "$platform" == "mingw32" ]; then
     MONEROD_EXEC=blurd.exe
 fi
 
-# force version update
-get_tag
-echo "var GUI_VERSION = \"$TAGNAME\"" > version.js
-pushd "$MONERO_DIR"
-get_tag
-popd
-echo "var GUI_MONERO_VERSION = \"$TAGNAME\"" >> version.js
-
 cd build
 if ! QMAKE=$(find_command qmake qmake-qt5); then
     echo "Failed to find suitable qmake command."
     exit 1
 fi
-$QMAKE ../../../../blur-gui-wallet.pro "$CONFIG" || exit
+$QMAKE ${SNAPCRAFT_PART_SRC}/blur-gui-wallet.pro "$CONFIG" || exit
 $MAKE || exit
 
 # Copy blurd to bin folder
 if [ "$platform" != "mingw32" ] && [ "$ANDROID" != true ]; then
-cp ../../../../$MONERO_DIR/bin/$MONEROD_EXEC $BIN_PATH
+cp ${SNAPCRAFT_PART_SRC}/$MONERO_DIR/bin/$MONEROD_EXEC ${SNAPCRAFT_PART_SRC}/release/bin/
 fi
 
-# make deploy
+make deploy
 popd
 
 

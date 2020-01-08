@@ -5,7 +5,7 @@
 
 TEMPLATE = app
 
-QT += qml quick widgets concurrent
+QT += qml quick widgets
 
 WALLET_ROOT=$$PWD/monero
 
