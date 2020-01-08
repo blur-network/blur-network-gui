@@ -66,12 +66,21 @@ parts:
             - libtinfo5
         organize:
             local/start_gui.sh: bin/start_gui.sh
-            ${SNAPCRAFT_PART_BUILD}/build/release/bin/libs/*: ${SNAPCRAFT_PART_INSTALL}/usr/lib/
-            ${SNAPCRAFT_PART_BUILD}/build/release/bin/plugins/*: ${SNAPCRAFT_PART_INSTALL}/usr/lib/x86_64-linux-gnu/qt5/plugins/
-            ${SNAPCRAFT_PART_BUILD}/build/release/bin/qml/*: ${SNAPCRAFT_PART_INSTALL}/usr/lib/x86_64-linux-gnu/qt5/qml/
+            ${SNAPCRAFT_PART_BUILD}/build/release/bin/blur-gui-wallet: ${SNAPCRAFT_PART_STAGE}/blur-gui-wallet
+            ${SNAPCRAFT_PART_BUILD}/build/release/bin/blurd: ${SNAPCRAFT_PART_STAGE}/blurd
+            ${SNAPCRAFT_PART_BUILD}/build/release/bin/libs/*: ${SNAPCRAFT_PART_STAGE}/usr/lib/
+            ${SNAPCRAFT_PART_BUILD}/build/release/bin/plugins/*: ${SNAPCRAFT_PART_STAGE}/usr/lib/x86_64-linux-gnu/qt5/plugins/
+            ${SNAPCRAFT_PART_BUILD}/build/release/bin/qml/*: ${SNAPCRAFT_PART_STAGE}/usr/lib/x86_64-linux-gnu/qt5/qml/
         prime:
             - bin
             - usr/bin
             - usr/lib
             - usr/share
 
+    dist-files:
+        plugin: dump
+        source: .
+        prime: 
+            - blurd
+            - blur-gui-wallet
+            - usr/lib
