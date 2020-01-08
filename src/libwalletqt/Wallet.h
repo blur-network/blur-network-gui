@@ -35,7 +35,7 @@ class Wallet : public QObject
     Q_PROPERTY(QString seedLanguage READ getSeedLanguage)
     Q_PROPERTY(Status status READ status)
     Q_PROPERTY(NetworkType::Type nettype READ nettype)
-    Q_PROPERTY(ConnectionStatus connected READ connected)
+   // Q_PROPERTY(ConnectionStatus connected READ connected)
     Q_PROPERTY(quint32 currentSubaddressAccount READ currentSubaddressAccount)
     Q_PROPERTY(bool synchronized READ synchronized)
     Q_PROPERTY(QString errorString READ errorString)

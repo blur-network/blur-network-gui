@@ -20,14 +20,21 @@ apps:
           QT_PLUGIN_PATH: ${QT_PLUGIN_PATH}:${SNAP}/usr/lib/x86_64-linux-gnu/qt5/plugins
           QT_QPA_PLATFORM_PLUGIN_PATH: ${SNAP}/usr/lib/x86_64-linux-gnu/qt5/plugins
           QML2_IMPORT_PATH: ${QML_IMPORT_PATH}:${SNAP}/usr/lib/x86_64-linux-gnu/qt5/qml
+          QT_XKB_CONFIG_ROOT: ${SNAP}/usr/share/X11/xkb
+#       extensions: [ gnome-3-28 ]
         plugs:
             - home
             - network
             - network-bind
             - x11
             - opengl
-            - desktop
+            - desktop 
             - desktop-legacy
+            - gsettings
+#        slots:
+#            - dbus-daemon
+
+
 
 parts:
     blur-wallet:
@@ -36,7 +43,7 @@ parts:
         filesets:
            bin-files:
              - ${SNAPCRAFT_PART_INSTALL}/bin/*
-        override-build: sh -c '${SNAPCRAFT_PART_SRC}/build_snap.sh release' && mkdir -p ${SNAPCRAFT_PART_INSTALL}/bin && cp -r ${SNAPCRAFT_PART_SRC}/monero/bin/blurd ${SNAPCRAFT_PART_INSTALL}/bin/ && cp -r ${SNAPCRAFT_PART_BUILD}/build/release/bin/* ${SNAPCRAFT_PART_INSTALL}/bin/
+        override-build: sh -c '${SNAPCRAFT_PART_SRC}/build_snap.sh release' && mkdir -p ${SNAPCRAFT_PART_INSTALL}/bin && cp -r ${SNAPCRAFT_PART_SRC}/monero/blurd ${SNAPCRAFT_PART_INSTALL}/bin/ && cp -r ${SNAPCRAFT_PART_BUILD}/build/release/bin/* ${SNAPCRAFT_PART_INSTALL}/bin/
         source: .
         stage-packages:
             - libboost-serialization1.62.0
@@ -76,3 +83,8 @@ parts:
             - usr/lib
             - usr/share
 
+#slots:
+#  dbus-daemon:
+#    interface: dbus
+#    bus: session
+#    name: blur-wallet
