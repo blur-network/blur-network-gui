@@ -46,6 +46,7 @@ HEADERS += \
     src/model/AddressBookModel.h \
     src/libwalletqt/AddressBook.h \
     src/model/SubaddressModel.h \
+    src/zxcvbn-c/zxcvbn.h \
     src/libwalletqt/Subaddress.h \
     src/libwalletqt/UnsignedTransaction.h \
     Logger.h \
@@ -72,12 +73,15 @@ SOURCES += main.cpp \
     src/libwalletqt/AddressBook.cpp \
     src/model/SubaddressModel.cpp \
     src/libwalletqt/Subaddress.cpp \
+    src/zxcvbn-c/zxcvbn.c \
     src/libwalletqt/UnsignedTransaction.cpp \
     Logger.cpp \
     MainApp.cpp
 
 CONFIG(DISABLE_PASS_STRENGTH_METER) {
     DEFINES += "DISABLE_PASS_STRENGTH_METER"
+    HEADERS -= src/zxcvbn-c/zxcvbn.h
+    SOURCES -= src/zxcvbn-c/zxcvbn.c
 }
 
 !ios {

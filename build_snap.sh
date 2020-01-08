@@ -74,6 +74,10 @@ fi
 # build libwallet
 ${SNAPCRAFT_PART_SRC}/get_libwallet_api.sh $BUILD_TYPE
 
+if [ "$DISABLE_PASS_STRENGTH_METER" != true ]; then
+    $MAKE -C ${SNAPCRACFT_PART_SRC}/src/zxcvbn-c || exit
+fi
+
 if [ ! -d build ]; then mkdir build; fi
 
 
