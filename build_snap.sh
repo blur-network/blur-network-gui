@@ -73,11 +73,6 @@ fi
 
 # build libwallet
 ${SNAPCRAFT_PART_SRC}/get_libwallet_api.sh $BUILD_TYPE
- 
-# build zxcvbn
-if [ "$DISABLE_PASS_STRENGTH_METER" != true ]; then
-    $MAKE -C ${SNAPCRACFT_PART_SRC}/zxcvbn-c || exit
-fi
 
 if [ ! -d build ]; then mkdir build; fi
 
@@ -97,10 +92,8 @@ elif [ "$platform" == "mingw64" ] || [ "$platform" == "mingw32" ]; then
 fi
 
 cd build
-if ! QMAKE=$(find_command qmake qmake-qt5); then
-    echo "Failed to find suitable qmake command."
-    exit 1
-fi
+QMAKE='qmake'
+
 $QMAKE ${SNAPCRAFT_PART_SRC}/blur-gui-wallet.pro "$CONFIG" || exit
 $MAKE || exit
 
