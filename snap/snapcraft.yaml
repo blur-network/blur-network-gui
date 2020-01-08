@@ -9,15 +9,14 @@ description: |
     Join the Fight for Financial Freedom.
 grade: stable
 confinement: strict
-
+base: core18
 
 apps:
     blur-wallet:
-        command: |
-          blur-gui-wallet
+        command: blur-gui-wallet
         environment:
-          PATH: ${PATH}:/snap/blur-wallet/current/bin
-          LD_LIBRARY_PATH: ${LD_LIBRARY_PATH}:${SNAP}/lib:${SNAP}/usr/x86_64-linux-gnu/:${SNAP}/usr/lib
+          PATH: ${PATH}:${SNAP}/bin
+          LD_LIBRARY_PATH: ${LD_LIBRARY_PATH}:${SNAP}/lib:${SNAP}/lib/x86_64-linux-gnu/:${SNAP}/usr/lib:${SNAP}/usr/lib/x86_64-linux-gnu/
           QT_PLUGIN_PATH: ${QT_PLUGIN_PATH}:${SNAP}/usr/lib/x86_64-linux-gnu/qt5/plugins
           QT_QPA_PLATFORM_PLUGIN_PATH: ${SNAP}/usr/lib/x86_64-linux-gnu/qt5/plugins
           QML2_IMPORT_PATH: ${QML_IMPORT_PATH}:${SNAP}/usr/lib/x86_64-linux-gnu/qt5/qml
@@ -32,17 +31,24 @@ apps:
 
 parts:
     blur-wallet:
-        build-packages: [build-essential, git, cmake, pkg-config, libboost-all-dev, libssl1.0-dev, libsodium-dev, qtbase5-dev, qt5-default, qtdeclarative5-dev, qml-module-qtquick-controls, qml-module-qtquick-dialogs, qml-module-qtquick-xmllistmodel, qml-module-qt-labs-folderlistmodel, qml-module-qt-labs-settings,  qttools5-dev-tools]
+        build-packages: [build-essential, git, cmake, pkg-config, libboost-all-dev, libssl-dev, libsodium-dev, qtbase5-dev, qt5-default, qtdeclarative5-dev, qml-module-qtquick-controls, qml-module-qtquick-dialogs, qml-module-qtquick-xmllistmodel, qml-module-qt-labs-folderlistmodel, qml-module-qt-labs-settings,  qttools5-dev-tools]
         plugin: dump
         source: .
         stage-packages:
-            - libboost-all-dev
+            - libboost-serialization1.62.0
+            - libboost-chrono1.62.0
+            - libboost-atomic1.62.0
+            - libboost-system1.62.0
+            - libboost-filesystem1.62.0
+            - libboost-locale1.62.0
+            - libboost-regex1.62.0
+            - libboost-date-time1.62.0
+            - libboost-program-options1.62.0
             - libssl-dev
             - libsodium-dev
             - libstdc++6
             - libgcc1
-            - libreadline-dev
-            - libunwind-dev
+            - libreadline-gplv2-dev
             - qtbase5-dev
             - qt5-default
             - qtdeclarative5-dev
