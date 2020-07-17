@@ -21,8 +21,8 @@ pushd $MONERO_DIR/build/release
 platform=$(get_platform)
 
 pushd $MONERO_DIR/build/release/src/wallet
-make -j4
-make install -j4
+make
+make install
 popd
 
 popd
