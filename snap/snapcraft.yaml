@@ -39,7 +39,7 @@ apps:
 
 parts:
     blur-wallet:
-        build-packages: [build-essential, git, cmake, pkg-config, libboost-all-dev, libssl-dev, libsodium-dev, qtbase5-dev, qt5-default, qtdeclarative5-dev, qml-module-qtquick-controls, qml-module-qtquick-dialogs, qml-module-qtquick-xmllistmodel, qml-module-qt-labs-folderlistmodel, qml-module-qt-labs-settings,  qttools5-dev-tools]
+        build-packages: [build-essential, git, cmake, pkg-config, libboost-all-dev, libssl-dev, libsodium-dev, qtbase5-dev, qt5-default, qtdeclarative5-dev, qml-module-qtquick-controls, qml-module-qtquick-dialogs, qml-module-qtquick-xmllistmodel, qml-module-qt-labs-folderlistmodel, qml-module-qt-labs-settings,  qttools5-dev-tools, libreadline-dev]
         plugin: dump
         filesets:
            bin-files:
@@ -60,7 +60,7 @@ parts:
             - libsodium23
             - libstdc++6
             - libgcc1
-            - libreadline-gplv2-dev
+            - libreadline7
             - qtbase5-dev
             - qt5-default
             - qtdeclarative5-dev
