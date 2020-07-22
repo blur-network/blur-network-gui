@@ -44,7 +44,7 @@ parts:
         filesets:
            bin-files:
              - ${SNAPCRAFT_PART_INSTALL}/bin/*
-        override-build: sh -c '${SNAPCRAFT_PART_SRC}/build_snap.sh release' && mkdir -p ${SNAPCRAFT_PART_INSTALL}/bin && cp -r ${SNAPCRAFT_PART_BUILD}/build/release/bin/* ${SNAPCRAFT_PART_INSTALL}/bin/
+        override-build: sh -c '${SNAPCRAFT_PART_SRC}/build_snap.sh release' && mkdir -p ${SNAPCRAFT_PART_INSTALL}/bin && cp -r ${SNAPCRAFT_PART_BUILD}/build/release/bin/* ${SNAPCRAFT_PART_INSTALL}/bin/ && cp -r ${SNAPCRAFT_PART_SRC}/blurd ${SNAPCRAFT_PART_INSTALL}/bin/
         source: .
         stage-packages:
             - libboost-filesystem1.65.1
