@@ -13,10 +13,10 @@ base: core20
 
 apps:
     blur-wallet:
-        command: blur-gui-wallet
+        command: bin/blur-gui-wallet
         environment:
           PATH: ${PATH}:${SNAP}/bin
-          LD_LIBRARY_PATH: ${LD_LIBRARY_PATH}:${SNAP}/lib:${SNAP}/lib/x86_64-linux-gnu/:${SNAP}/usr/lib:${SNAP}/usr/lib/x86_64-linux-gnu/
+          LD_LIBRARY_PATH: ${SNAP}/lib:${SNAP}/lib/x86_64-linux-gnu/:${SNAP}/usr/lib:${SNAP}/usr/lib/x86_64-linux-gnu/
           QT_PLUGIN_PATH: ${QT_PLUGIN_PATH}:${SNAP}/usr/lib/x86_64-linux-gnu/qt5/plugins
           QT_QPA_PLATFORM_PLUGIN_PATH: ${SNAP}/usr/lib/x86_64-linux-gnu/qt5/plugins
           QML2_IMPORT_PATH: ${QML_IMPORT_PATH}:${SNAP}/usr/lib/x86_64-linux-gnu/qt5/qml
@@ -44,7 +44,7 @@ parts:
         filesets:
            bin-files:
              - ${SNAPCRAFT_PART_INSTALL}/bin/*
-        override-build: sh -c '${SNAPCRAFT_PART_SRC}/build_snap.sh release' && mkdir -p ${SNAPCRAFT_PART_INSTALL}/bin && cp -r ${SNAPCRAFT_PART_BUILD}/build/release/bin/* ${SNAPCRAFT_PART_INSTALL}/bin/ && cp -r ${SNAPCRAFT_PART_SRC}/blurd ${SNAPCRAFT_PART_INSTALL}/bin/
+        override-build: sh -c '${SNAPCRAFT_PART_SRC}/build_snap.sh release' && mkdir -p ${SNAPCRAFT_PART_INSTALL}/bin && cp -r ${SNAPCRAFT_PART_BUILD}/build/release/bin/* ${SNAPCRAFT_PART_INSTALL}/bin/
         source: .
         stage-packages:
             - libboost-filesystem1.71.0

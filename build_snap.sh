@@ -101,7 +101,7 @@ $MAKE || exit
 
 # Copy blurd to bin folder
 if [ "$platform" != "mingw32" ] && [ "$ANDROID" != true ]; then
-cp ${SNAPCRAFT_PART_SRC}/$MONERO_DIR/bin/$MONEROD_EXEC ${SNAPCRAFT_PART_SRC}/release/bin/
+cp ${SNAPCRAFT_PART_BUILD}/$MONERO_DIR/bin/$MONEROD_EXEC ${SNAPCRAFT_PART_BUILD}/build/release/bin/
 fi
 
 make deploy
