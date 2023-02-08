@@ -39,7 +39,7 @@ apps:
 
 parts:
     blur-wallet:
-        build-packages: [build-essential, git, cmake, pkg-config, libboost-serialization1.71-dev, libboost-system1.71-dev, libboost-thread1.71-dev, libboost-locale1.71-dev, libboost-filesystem1.71-dev, libboost-program-options1.71-dev, libssl-dev, libsodium-dev, qtbase5-dev, qt5-default, qtdeclarative5-dev, qml-module-qtquick-controls, qml-module-qtquick-dialogs, qml-module-qtquick-xmllistmodel, qml-module-qt-labs-folderlistmodel, qml-module-qt-labs-settings,  qttools5-dev-tools, libreadline-dev]
+        build-packages: [build-essential, git, cmake, pkg-config, libboost-serialization1.71-dev, libboost-system1.71-dev, libboost-thread1.71-dev, libboost-locale1.71-dev, libboost-filesystem1.71-dev, libboost-program-options1.71-dev, libboost-regex1.71-dev, libssl-dev, libsodium-dev, qtbase5-dev, qt5-default, qtdeclarative5-dev, qml-module-qtquick-controls, qml-module-qtquick-dialogs, qml-module-qtquick-xmllistmodel, qml-module-qt-labs-folderlistmodel, qml-module-qt-labs-settings,  qttools5-dev-tools, libreadline-dev]
         plugin: dump
         filesets:
            bin-files:
@@ -52,6 +52,7 @@ parts:
             - libboost-serialization1.71.0
             - libboost-system1.71.0
             - libboost-thread1.71.0
+            - libboost-regex1.71.0
             - libboost-locale1.71.0
             - libssl-dev
             - libsodium23
