@@ -47,6 +47,7 @@ parts:
         override-build: sh -c '${SNAPCRAFT_PART_SRC}/build_snap.sh release' && mkdir -p ${SNAPCRAFT_PART_INSTALL}/bin && cp -r ${SNAPCRAFT_PART_BUILD}/build/release/bin/* ${SNAPCRAFT_PART_INSTALL}/bin/
         source: .
         stage-packages:
+            - libboost-chrono1.71.0
             - libboost-filesystem1.71.0
             - libboost-program-options1.71.0
             - libboost-serialization1.71.0
