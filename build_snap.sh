@@ -74,7 +74,7 @@ fi
 # build libwallet
 ${SNAPCRAFT_PART_SRC}/get_libwallet_api.sh $BUILD_TYPE
 
-make -C '${SNAPCRACFT_PART_SRC}/src/zxcvbn-c'
+make -C '${SNAPCRACFT_PART_BUILD}/src/zxcvbn-c'
 
 if [ ! -d build ]; then mkdir build; fi
 
